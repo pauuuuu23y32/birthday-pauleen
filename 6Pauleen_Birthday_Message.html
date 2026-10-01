@@ -1,0 +1,2259 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Happy Birthday Pauleen 💗</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #ffeaf2;
+    color: #5d3948;
+    overflow-x: hidden;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+/* =========================================
+   MUSIC GATE
+========================================= */
+
+#musicGate {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 20% 20%, #ffd8e7 0, transparent 30%),
+        radial-gradient(circle at 80% 80%, #f8c5d9 0, transparent 35%),
+        linear-gradient(135deg, #ffeaf3, #ffd8e8);
+    cursor: pointer;
+    transition: opacity 1.5s ease;
+    touch-action: manipulation;
+}
+
+.music-box {
+    width: min(90%, 430px);
+    padding: 38px 25px;
+    text-align: center;
+    border-radius: 28px;
+    background: rgba(255,255,255,.8);
+    box-shadow: 0 15px 45px rgba(142,78,104,.18);
+    backdrop-filter: blur(10px);
+
+    opacity: 0;
+    transform: translateY(25px);
+    animation: gateAppear 2s ease forwards;
+}
+
+.music-box .music-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+}
+
+.music-box h2 {
+    margin: 0 0 10px;
+    color: #b45c82;
+}
+
+.music-box p {
+    margin: 0;
+    line-height: 1.6;
+    color: #805568;
+}
+
+.music-tap {
+    margin-top: 22px;
+    font-weight: 700;
+    color: #c45f87;
+}
+
+@keyframes gateAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   GLOBAL PAWS
+========================================= */
+
+#pawsBackground {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.paw {
+    position: absolute;
+    bottom: -120px;
+    width: 70px;
+    height: 85px;
+    opacity: .2;
+    animation: pawRise linear infinite;
+}
+
+.paw .pad {
+    position: absolute;
+    width: 38px;
+    height: 43px;
+    left: 16px;
+    bottom: 3px;
+    border-radius: 50% 50% 45% 45%;
+    background: #cf789b;
+}
+
+.paw .toe {
+    position: absolute;
+    width: 17px;
+    height: 23px;
+    border-radius: 50%;
+    background: #cf789b;
+}
+
+.paw .t1 {
+    left: 5px;
+    top: 28px;
+    transform: rotate(-38deg);
+}
+
+.paw .t2 {
+    left: 19px;
+    top: 14px;
+    transform: rotate(-15deg);
+}
+
+.paw .t3 {
+    left: 37px;
+    top: 13px;
+    transform: rotate(15deg);
+}
+
+.paw .t4 {
+    left: 51px;
+    top: 28px;
+    transform: rotate(38deg);
+}
+
+.paw1 {
+    left: 4%;
+    animation-duration: 22s;
+    animation-delay: -5s;
+}
+
+.paw2 {
+    left: 17%;
+    animation-duration: 27s;
+    animation-delay: -13s;
+}
+
+.paw3 {
+    left: 32%;
+    animation-duration: 24s;
+    animation-delay: -8s;
+}
+
+.paw4 {
+    left: 49%;
+    animation-duration: 29s;
+    animation-delay: -20s;
+}
+
+.paw5 {
+    left: 66%;
+    animation-duration: 25s;
+    animation-delay: -7s;
+}
+
+.paw6 {
+    left: 81%;
+    animation-duration: 28s;
+    animation-delay: -16s;
+}
+
+.paw7 {
+    left: 92%;
+    animation-duration: 26s;
+    animation-delay: -3s;
+}
+
+@keyframes pawRise {
+    0% {
+        bottom: -120px;
+        opacity: 0;
+        transform: translateX(0) rotate(-15deg);
+    }
+
+    12% {
+        opacity: .2;
+    }
+
+    50% {
+        opacity: .27;
+    }
+
+    88% {
+        opacity: .15;
+    }
+
+    100% {
+        bottom: 115vh;
+        opacity: 0;
+        transform: translateX(80px) rotate(45deg);
+    }
+}
+
+/* =========================================
+   INTRO
+========================================= */
+
+.intro {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+
+    background:
+        radial-gradient(circle at 10% 10%, #ffd8e8 0, transparent 28%),
+        radial-gradient(circle at 90% 90%, #f8c8dc 0, transparent 30%),
+        linear-gradient(135deg, #ffeaf3, #fff5f8);
+}
+
+/* =========================================
+   HEART BALLOONS
+========================================= */
+
+.heart-balloons {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.heart-balloon {
+    position: absolute;
+    width: 60px;
+    height: 100px;
+
+    opacity: 0;
+    animation:
+        heartAppear 2.5s ease forwards,
+        heartFloat 8s ease-in-out 2.5s infinite;
+}
+
+.heart-balloon .heart {
+    position: absolute;
+    width: 43px;
+    height: 43px;
+    left: 8px;
+    top: 7px;
+    background: #e88daf;
+    transform: rotate(-45deg);
+    border-radius: 7px;
+}
+
+.heart-balloon .heart::before,
+.heart-balloon .heart::after {
+    content: "";
+    position: absolute;
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background: #e88daf;
+}
+
+.heart-balloon .heart::before {
+    top: -22px;
+    left: 0;
+}
+
+.heart-balloon .heart::after {
+    left: 22px;
+    top: 0;
+}
+
+.heart-balloon .string {
+    position: absolute;
+    width: 1px;
+    height: 70px;
+    background: #9d627a;
+    left: 30px;
+    top: 50px;
+}
+
+.hb1 {
+    left: 7%;
+    top: 8%;
+    animation-delay: .5s, 2.5s;
+}
+
+.hb2 {
+    right: 7%;
+    top: 12%;
+    animation-delay: 1.2s, 3.2s;
+}
+
+.hb3 {
+    left: 15%;
+    bottom: 12%;
+    transform: scale(.7);
+    animation-delay: 1.8s, 3.8s;
+}
+
+.hb4 {
+    right: 13%;
+    bottom: 13%;
+    transform: scale(.75);
+    animation-delay: 2.2s, 4.2s;
+}
+
+.hb5 {
+    left: 45%;
+    top: 3%;
+    transform: scale(.6);
+    animation-delay: 2.6s, 4.6s;
+}
+
+@keyframes heartAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.7);
+    }
+
+    to {
+        opacity: .8;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes heartFloat {
+    0%,100% {
+        margin-top: 0;
+        rotate: -3deg;
+    }
+
+    50% {
+        margin-top: -22px;
+        rotate: 4deg;
+    }
+}
+
+/* =========================================
+   CONFETTI
+========================================= */
+
+#confettiContainer {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    top: -20px;
+    opacity: 0;
+
+    animation:
+        confettiAppear .5s ease forwards,
+        confettiFall linear forwards;
+}
+
+@keyframes confettiAppear {
+    to {
+        opacity: .9;
+    }
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-30px) rotate(0);
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+/* =========================================
+   INTRO CARD
+========================================= */
+
+.intro-card {
+    position: relative;
+    z-index: 15;
+
+    width: min(92%, 560px);
+
+    padding: 35px 28px 42px;
+
+    text-align: center;
+
+    border-radius: 34px;
+
+    background: rgba(255,255,255,.84);
+
+    box-shadow:
+        0 25px 70px rgba(143,79,106,.2);
+
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+    transform: translateY(40px);
+
+    animation:
+        introCardAppear 2s ease 1s forwards;
+}
+
+@keyframes introCardAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.intro-card h1,
+.intro-card h2,
+.intro-card > p,
+.open-btn {
+    opacity: 0;
+}
+
+.intro-card h1 {
+    margin: 0;
+
+    font-size: clamp(29px,7vw,45px);
+
+    color: #bd5d83;
+
+    animation:
+        textAppear 1.5s ease 1.8s forwards;
+}
+
+.intro-card h2 {
+    margin: 10px 0 4px;
+
+    font-size: clamp(24px,6vw,35px);
+
+    color: #d16d94;
+
+    animation:
+        textAppear 1.5s ease 2.2s forwards;
+}
+
+.intro-card > p {
+    margin: 12px auto 18px;
+
+    max-width: 390px;
+
+    font-size: 16px;
+
+    line-height: 1.65;
+
+    color: #805568;
+
+    animation:
+        textAppear 1.5s ease 2.6s forwards;
+}
+
+@keyframes textAppear {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   CAKE
+========================================= */
+
+.cake-area {
+    position: relative;
+
+    width: 260px;
+    height: 245px;
+
+    margin: 5px auto 0;
+
+    opacity: 0;
+    transform: translateY(30px) scale(.9);
+
+    animation:
+        cakeAppear 2s ease 2.9s forwards;
+}
+
+@keyframes cakeAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.cake {
+    position: absolute;
+
+    width: 190px;
+    height: 105px;
+
+    left: 35px;
+    bottom: 28px;
+}
+
+.cake-bottom {
+    position: absolute;
+
+    width: 190px;
+    height: 65px;
+
+    bottom: 0;
+    left: 0;
+
+    border-radius: 12px 12px 22px 22px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #f6b5ca 0%,
+            #f6b5ca 45%,
+            #e995b3 46%,
+            #e995b3 100%
+        );
+
+    box-shadow: 0 8px 0 #d47c9d;
+}
+
+.cake-middle {
+    position: absolute;
+
+    width: 165px;
+    height: 55px;
+
+    left: 12px;
+    bottom: 53px;
+
+    border-radius: 12px 12px 15px 15px;
+
+    background: #ffd7e5;
+
+    box-shadow: 0 6px 0 #e8a1bb;
+}
+
+.cake-top {
+    position: absolute;
+
+    width: 145px;
+    height: 42px;
+
+    left: 23px;
+    bottom: 96px;
+
+    border-radius: 50%;
+
+    background: #fff0f5;
+
+    box-shadow: 0 5px 0 #e4a0ba;
+}
+
+.frosting {
+    position: absolute;
+
+    width: 165px;
+    height: 30px;
+
+    left: 12px;
+    bottom: 70px;
+
+    z-index: 4;
+}
+
+.drip {
+    position: absolute;
+
+    top: 0;
+
+    width: 24px;
+    height: 30px;
+
+    border-radius: 0 0 14px 14px;
+
+    background: #fff1f6;
+}
+
+.drip:nth-child(1) {
+    left: 12px;
+}
+
+.drip:nth-child(2) {
+    left: 48px;
+    height: 22px;
+}
+
+.drip:nth-child(3) {
+    left: 84px;
+    height: 32px;
+}
+
+.drip:nth-child(4) {
+    left: 120px;
+    height: 23px;
+}
+
+.candle {
+    position: absolute;
+
+    width: 13px;
+    height: 52px;
+
+    bottom: 126px;
+
+    border-radius: 5px;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #e98caf 0,
+            #e98caf 6px,
+            #fff 6px,
+            #fff 11px
+        );
+
+    z-index: 5;
+}
+
+.candle1 {
+    left: 53px;
+}
+
+.candle2 {
+    left: 89px;
+}
+
+.candle3 {
+    left: 125px;
+}
+
+.flame {
+    position: absolute;
+
+    width: 14px;
+    height: 21px;
+
+    bottom: 174px;
+
+    background: #f5a94e;
+
+    border-radius: 50% 50% 50% 10%;
+
+    transform: rotate(-45deg);
+
+    animation:
+        flameDance .7s ease-in-out infinite alternate;
+
+    z-index: 6;
+}
+
+.flame1 {
+    left: 53px;
+}
+
+.flame2 {
+    left: 89px;
+    animation-delay: -.2s;
+}
+
+.flame3 {
+    left: 125px;
+    animation-delay: -.4s;
+}
+
+@keyframes flameDance {
+    from {
+        transform: rotate(-45deg) scale(1);
+    }
+
+    to {
+        transform: rotate(-38deg) scale(1.12);
+    }
+}
+
+.plate {
+    position: absolute;
+
+    width: 225px;
+    height: 20px;
+
+    bottom: 12px;
+    left: 17px;
+
+    border-radius: 50%;
+
+    background: #f3b2c8;
+
+    box-shadow:
+        0 7px 12px rgba(145,74,101,.15);
+}
+
+.cake-sparkle {
+    position: absolute;
+
+    color: #d9769b;
+
+    font-size: 22px;
+
+    animation:
+        sparkle 2s ease-in-out infinite;
+}
+
+.sparkle1 {
+    left: 10px;
+    top: 70px;
+}
+
+.sparkle2 {
+    right: 8px;
+    top: 85px;
+    animation-delay: -.8s;
+}
+
+.sparkle3 {
+    left: 30px;
+    top: 25px;
+    animation-delay: -1.3s;
+}
+
+@keyframes sparkle {
+    0%,100% {
+        opacity: .3;
+        transform: scale(.8) rotate(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15) rotate(20deg);
+    }
+}
+
+/* =========================================
+   SIDE DOGS
+========================================= */
+
+.side-dog {
+    position: absolute;
+
+    z-index: 12;
+
+    width: 105px;
+    height: 120px;
+
+    bottom: 70px;
+
+    opacity: 0;
+
+    animation:
+        dogAppear 1.8s ease 3.7s forwards;
+}
+
+.left-dog {
+    left: -12px;
+    transform: rotate(-5deg) translateX(-25px);
+}
+
+.right-dog {
+    right: -12px;
+    transform:
+        scaleX(-1)
+        rotate(-5deg)
+        translateX(-25px);
+}
+
+@keyframes dogAppear {
+    to {
+        opacity: .95;
+        transform: rotate(-5deg) translateX(0);
+    }
+}
+
+.right-dog {
+    animation-name: dogRightAppear;
+}
+
+@keyframes dogRightAppear {
+    to {
+        opacity: .95;
+        transform:
+            scaleX(-1)
+            rotate(-5deg)
+            translateX(0);
+    }
+}
+
+.side-dog .dog-head {
+    position: absolute;
+
+    width: 82px;
+    height: 72px;
+
+    left: 10px;
+    top: 20px;
+
+    border-radius: 48% 48% 45% 45%;
+
+    background: #c58a61;
+}
+
+.side-dog .dog-ear {
+    position: absolute;
+
+    width: 28px;
+    height: 43px;
+
+    top: 14px;
+
+    background: #9c6548;
+
+    border-radius: 60% 60% 40% 40%;
+}
+
+.side-dog .dog-ear.left {
+    left: 0;
+    transform: rotate(-25deg);
+}
+
+.side-dog .dog-ear.right {
+    right: 0;
+    transform: rotate(25deg);
+}
+
+.side-dog .dog-eye {
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    background: #3c2830;
+
+    border-radius: 50%;
+
+    top: 45px;
+}
+
+.side-dog .dog-eye.left {
+    left: 29px;
+}
+
+.side-dog .dog-eye.right {
+    right: 29px;
+}
+
+.side-dog .dog-nose {
+    position: absolute;
+
+    width: 15px;
+    height: 11px;
+
+    background: #3c2830;
+
+    border-radius: 50%;
+
+    left: 34px;
+    top: 57px;
+}
+
+.side-dog .dog-mouth {
+    position: absolute;
+
+    width: 18px;
+    height: 9px;
+
+    border-bottom: 2px solid #3c2830;
+
+    border-radius: 50%;
+
+    left: 32px;
+    top: 66px;
+}
+
+.right-dog .dog-head {
+    background: #e2b48e;
+}
+
+.right-dog .dog-ear {
+    background: #b77c59;
+}
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.open-btn {
+    border: none;
+
+    padding: 16px 27px;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dc7ca4,
+            #bd5d83
+        );
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(189,93,131,.3);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+
+    animation:
+        buttonAppear 1.5s ease 4.5s forwards;
+}
+
+@keyframes buttonAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.open-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 14px 30px rgba(189,93,131,.4);
+}
+
+.open-btn:active {
+    transform: scale(.96);
+}
+
+/* =========================================
+   MESSAGE SCREEN
+========================================= */
+
+.message-screen {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 70px 20px 90px;
+
+    background:
+        radial-gradient(circle at 10% 20%, #ffdce9 0, transparent 25%),
+        radial-gradient(circle at 90% 80%, #f9d2e1 0, transparent 28%),
+        linear-gradient(135deg, #fff1f6, #ffe7f0);
+
+    display: none;
+
+    overflow: hidden;
+}
+
+.message-card {
+    position: relative;
+
+    z-index: 10;
+
+    width: min(94%,760px);
+
+    margin: auto;
+
+    padding: 45px 32px;
+
+    border-radius: 32px;
+
+    background: rgba(255,255,255,.88);
+
+    box-shadow:
+        0 25px 70px rgba(143,79,106,.18);
+
+    backdrop-filter: blur(10px);
+
+    opacity: 0;
+    transform: translateY(40px);
+
+    animation:
+        messageAppear 2s ease forwards;
+}
+
+@keyframes messageAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-card h1 {
+    margin: 0 0 25px;
+
+    text-align: center;
+
+    font-size: clamp(30px,7vw,48px);
+
+    color: #c15f86;
+
+    opacity: 0;
+
+    animation:
+        textAppear 1.5s ease .7s forwards;
+}
+
+.message-card p {
+    font-size: 16px;
+
+    line-height: 1.85;
+
+    margin: 0 0 22px;
+
+    color: #684657;
+
+    opacity: 0;
+
+    animation:
+        textAppear 1.5s ease 1.2s forwards;
+}
+
+.message-card p:nth-of-type(2) {
+    animation-delay: 1.7s;
+}
+
+.message-card p:nth-of-type(3) {
+    animation-delay: 2.2s;
+}
+
+.message-card p:nth-of-type(4) {
+    animation-delay: 2.7s;
+}
+
+.message-card p:nth-of-type(5) {
+    animation-delay: 3.2s;
+}
+
+.message-card .closing {
+    text-align: center;
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    color: #bd5d83;
+
+    margin-top: 35px;
+
+    animation-delay: 3.7s;
+}
+
+/* =========================================
+   MESSAGE DOGS
+========================================= */
+
+.dogs {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 60px;
+
+    margin: 0 auto 35px;
+
+    opacity: 0;
+
+    animation:
+        textAppear 1.5s ease .4s forwards;
+}
+
+.dog {
+    position: relative;
+
+    width: 100px;
+    height: 110px;
+}
+
+.dog .dog-head {
+    position: absolute;
+
+    width: 82px;
+    height: 72px;
+
+    left: 9px;
+    top: 20px;
+
+    border-radius: 48% 48% 45% 45%;
+
+    background: #c58a61;
+}
+
+.dog .dog-ear {
+    position: absolute;
+
+    width: 28px;
+    height: 43px;
+
+    top: 14px;
+
+    background: #9c6548;
+
+    border-radius: 60% 60% 40% 40%;
+}
+
+.dog .dog-ear.left {
+    left: 0;
+    transform: rotate(-25deg);
+}
+
+.dog .dog-ear.right {
+    right: 0;
+    transform: rotate(25deg);
+}
+
+.dog .dog-eye {
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    background: #3c2830;
+
+    border-radius: 50%;
+
+    top: 45px;
+}
+
+.dog .dog-eye.left {
+    left: 29px;
+}
+
+.dog .dog-eye.right {
+    right: 29px;
+}
+
+.dog .dog-nose {
+    position: absolute;
+
+    width: 15px;
+    height: 11px;
+
+    background: #3c2830;
+
+    border-radius: 50%;
+
+    left: 34px;
+    top: 57px;
+}
+
+.dog .dog-mouth {
+    position: absolute;
+
+    width: 18px;
+    height: 9px;
+
+    border-bottom: 2px solid #3c2830;
+
+    border-radius: 50%;
+
+    left: 32px;
+    top: 66px;
+}
+
+.dog2 .dog-head {
+    background: #e2b48e !important;
+}
+
+.dog2 .dog-ear {
+    background: #b77c59 !important;
+}
+
+/* =========================================
+   PHOTOS
+========================================= */
+
+.photos-section {
+    margin-top: 45px;
+
+    padding-top: 30px;
+
+    border-top:
+        1px solid rgba(193,95,134,.18);
+
+    opacity: 0;
+
+    animation:
+        textAppear 1.5s ease 4.2s forwards;
+}
+
+.photos-section h2 {
+    text-align: center;
+
+    color: #c15f86;
+
+    margin-bottom: 10px;
+}
+
+.photos-section > p {
+    text-align: center;
+
+    font-size: 14px;
+
+    color: #8a6171;
+
+    margin-bottom: 25px;
+}
+
+.photo-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+.photo-placeholder {
+    aspect-ratio: 1 / 1;
+
+    border-radius: 20px;
+
+    border: 2px dashed #dfa2ba;
+
+    background: #fff3f7;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 15px;
+
+    color: #bb718e;
+
+    font-size: 14px;
+}
+
+.photo-placeholder img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+}
+
+/* =========================================
+   FINAL MESSAGE
+========================================= */
+
+.final-birthday {
+    text-align: center;
+
+    margin-top: 45px;
+
+    padding-top: 30px;
+
+    border-top:
+        1px solid rgba(193,95,134,.18);
+
+    opacity: 0;
+
+    animation:
+        textAppear 1.5s ease 5s forwards;
+}
+
+.final-birthday h2 {
+    margin: 0;
+
+    color: #bd5d83;
+
+    font-size:
+        clamp(28px,7vw,42px);
+}
+
+/* =========================================
+   YOUTUBE
+========================================= */
+
+#ytPlayer {
+    position: fixed;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    left: -10px;
+    bottom: -10px;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:650px) {
+
+    .intro-card {
+        width: min(94%,520px);
+
+        padding:
+            30px 15px 35px;
+    }
+
+    .cake-area {
+        transform:
+            translateY(30px)
+            scale(.78);
+    }
+
+    @keyframes cakeAppear {
+        to {
+            opacity: 1;
+
+            transform:
+                translateY(0)
+                scale(.78);
+        }
+    }
+
+    .side-dog {
+        transform:
+            rotate(-5deg)
+            translateX(-15px)
+            scale(.68);
+    }
+
+    .right-dog {
+        transform:
+            scaleX(-1)
+            rotate(-5deg)
+            translateX(-15px)
+            scale(.68);
+    }
+
+    @keyframes dogAppear {
+        to {
+            opacity: .9;
+
+            transform:
+                rotate(-5deg)
+                translateX(0)
+                scale(.68);
+        }
+    }
+
+    @keyframes dogRightAppear {
+        to {
+            opacity: .9;
+
+            transform:
+                scaleX(-1)
+                rotate(-5deg)
+                translateX(0)
+                scale(.68);
+        }
+    }
+
+    .heart-balloon {
+        transform: scale(.65);
+    }
+
+    .message-card {
+        padding: 35px 22px;
+    }
+
+    .message-card p {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .dogs {
+        gap: 25px;
+        transform: scale(.8);
+    }
+
+    .photo-grid {
+        grid-template-columns: 1fr;
+
+        max-width: 260px;
+
+        margin: auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================
+     MUSIC GATE
+========================================= -->
+
+<div id="musicGate">
+
+    <div class="music-box">
+
+        <div class="music-icon">🎵</div>
+
+        <h2>A little birthday surprise</h2>
+
+        <p>
+            Tap anywhere to start the birthday song.
+        </p>
+
+        <div class="music-tap">
+            Then open your surprise whenever you're ready. 💗
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================================
+     FLOATING PAWS
+========================================= -->
+
+<div id="pawsBackground">
+
+    <div class="paw paw1">
+        <span class="pad"></span>
+        <span class="toe t1"></span>
+        <span class="toe t2"></span>
+        <span class="toe t3"></span>
+        <span class="toe t4"></span>
+    </div>
+
+    <div class="paw paw2">
+        <span class="pad"></span>
+        <span class="toe t1"></span>
+        <span class="toe t2"></span>
+        <span class="toe t3"></span>
+        <span class="toe t4"></span>
+    </div>
+
+    <div class="paw paw3">
+        <span class="pad"></span>
+        <span class="toe t1"></span>
+        <span class="toe t2"></span>
+        <span class="toe t3"></span>
+        <span class="toe t4"></span>
+    </div>
+
+    <div class="paw paw4">
+        <span class="pad"></span>
+        <span class="toe t1"></span>
+        <span class="toe t2"></span>
+        <span class="toe t3"></span>
+        <span class="toe t4"></span>
+    </div>
+
+    <div class="paw paw5">
+        <span class="pad"></span>
+        <span class="toe t1"></span>
+        <span class="toe t2"></span>
+        <span class="toe t3"></span>
+        <span class="toe t4"></span>
+    </div>
+
+    <div class="paw paw6">
+        <span class="pad"></span>
+        <span class="toe t1"></span>
+        <span class="toe t2"></span>
+        <span class="toe t3"></span>
+        <span class="toe t4"></span>
+    </div>
+
+    <div class="paw paw7">
+        <span class="pad"></span>
+        <span class="toe t1"></span>
+        <span class="toe t2"></span>
+        <span class="toe t3"></span>
+        <span class="toe t4"></span>
+    </div>
+
+</div>
+
+<!-- =========================================
+     INTRO
+========================================= -->
+
+<section class="intro" id="intro">
+
+    <div class="heart-balloons">
+
+        <div class="heart-balloon hb1">
+            <div class="heart"></div>
+            <div class="string"></div>
+        </div>
+
+        <div class="heart-balloon hb2">
+            <div class="heart"></div>
+            <div class="string"></div>
+        </div>
+
+        <div class="heart-balloon hb3">
+            <div class="heart"></div>
+            <div class="string"></div>
+        </div>
+
+        <div class="heart-balloon hb4">
+            <div class="heart"></div>
+            <div class="string"></div>
+        </div>
+
+        <div class="heart-balloon hb5">
+            <div class="heart"></div>
+            <div class="string"></div>
+        </div>
+
+    </div>
+
+    <div id="confettiContainer"></div>
+
+    <div class="intro-card">
+
+        <h1>
+            A little birthday surprise
+        </h1>
+
+        <h2>
+            For Pauleen 💗
+        </h2>
+
+        <p>
+            Someone left a little message here
+            just for you. ✨
+        </p>
+
+        <!-- =================================
+             CAKE
+        ================================= -->
+
+        <div class="cake-area">
+
+            <!-- LEFT DOG -->
+
+            <div class="side-dog left-dog">
+
+                <div class="dog-ear left"></div>
+                <div class="dog-ear right"></div>
+
+                <div class="dog-head">
+
+                    <div class="dog-eye left"></div>
+                    <div class="dog-eye right"></div>
+
+                    <div class="dog-nose"></div>
+                    <div class="dog-mouth"></div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT DOG -->
+
+            <div class="side-dog right-dog">
+
+                <div class="dog-ear left"></div>
+                <div class="dog-ear right"></div>
+
+                <div class="dog-head">
+
+                    <div class="dog-eye left"></div>
+                    <div class="dog-eye right"></div>
+
+                    <div class="dog-nose"></div>
+                    <div class="dog-mouth"></div>
+
+                </div>
+
+            </div>
+
+            <!-- CAKE -->
+
+            <div class="cake">
+
+                <div class="cake-bottom"></div>
+
+                <div class="cake-middle"></div>
+
+                <div class="cake-top"></div>
+
+                <div class="frosting">
+
+                    <div class="drip"></div>
+                    <div class="drip"></div>
+                    <div class="drip"></div>
+                    <div class="drip"></div>
+
+                </div>
+
+                <div class="candle candle1"></div>
+                <div class="candle candle2"></div>
+                <div class="candle candle3"></div>
+
+                <div class="flame flame1"></div>
+                <div class="flame flame2"></div>
+                <div class="flame flame3"></div>
+
+            </div>
+
+            <div class="plate"></div>
+
+            <div class="cake-sparkle sparkle1">
+                ✦
+            </div>
+
+            <div class="cake-sparkle sparkle2">
+                ✦
+            </div>
+
+            <div class="cake-sparkle sparkle3">
+                ✦
+            </div>
+
+        </div>
+
+        <button
+            class="open-btn"
+            id="openBtn"
+            type="button">
+            Open your surprise 🎁
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     MESSAGE
+========================================= -->
+
+<section
+    class="message-screen"
+    id="messageScreen">
+
+    <div class="message-card">
+
+        <h1>
+            Happy Birthday, Pauleen! 💗
+        </h1>
+
+        <!-- DOGS -->
+
+        <div class="dogs">
+
+            <div class="dog">
+
+                <div class="dog-ear left"></div>
+                <div class="dog-ear right"></div>
+
+                <div class="dog-head">
+
+                    <div class="dog-eye left"></div>
+                    <div class="dog-eye right"></div>
+
+                    <div class="dog-nose"></div>
+                    <div class="dog-mouth"></div>
+
+                </div>
+
+            </div>
+
+            <div class="dog dog2">
+
+                <div class="dog-ear left"></div>
+                <div class="dog-ear right"></div>
+
+                <div class="dog-head">
+
+                    <div class="dog-eye left"></div>
+                    <div class="dog-eye right"></div>
+
+                    <div class="dog-nose"></div>
+                    <div class="dog-mouth"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- MESSAGE -->
+
+        <p>
+            I hope you celebrate your day with your loved ones and the
+            people who are always there for you. I hope you're doing good,
+            and I wish you all the best. May God lead you to the right path
+            and help you achieve all your goals in life.
+        </p>
+
+        <p>
+            I am happy and thankful that you made my last months and my last
+            semester — which was the hardest and most crucial one — a bit lighter.
+            I already graduated. Thankuu ng marami sayo!
+        </p>
+
+        <p>
+            How r u? Nakauwi ka na kaya?
+        </p>
+
+        <p>
+            Sana happy ka sa career and path na tinatahak mo ngayon.
+            May God give you peace, guide you, and lead you to good decisions.
+        </p>
+
+        <p>
+            Take care as always, Pauleen. I genuinely hope that life treats
+            you well and that this new chapter brings you good things.
+        </p>
+
+        <p class="closing">
+            Happy Birthday again. 💗
+        </p>
+
+        <!-- PHOTOS -->
+
+        <div class="photos-section">
+
+            <h2>
+                One More Thing... 📸
+            </h2>
+
+            <p>
+                I also added some old photos of you that you were looking for.
+                I hope you'll enjoy seeing them again. 💗
+            </p>
+
+            <div class="photo-grid">
+
+                <div class="photo-placeholder">
+                    Old Photo 1<br>
+                    📷
+                </div>
+
+                <div class="photo-placeholder">
+                    Old Photo 2<br>
+                    📷
+                </div>
+
+                <div class="photo-placeholder">
+                    Old Photo 3<br>
+                    📷
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FINAL -->
+
+        <div class="final-birthday">
+
+            <h2>
+                Happy Birthday RCST! 🎂💗
+            </h2>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+     YOUTUBE PLAYER
+========================================= -->
+
+<iframe
+    id="ytPlayer"
+    src=""
+    allow="autoplay"
+    title="It Might Be You">
+</iframe>
+
+<script>
+
+/* =========================================
+   HAPPY BIRTHDAY MUSIC
+========================================= */
+
+let audioContext = null;
+let happyBirthdayPlaying = false;
+
+const notes = {
+
+    C4: 261.63,
+    D4: 293.66,
+    E4: 329.63,
+    F4: 349.23,
+    G4: 392.00,
+    A4: 440.00,
+    B4: 493.88,
+
+    C5: 523.25,
+    D5: 587.33,
+    E5: 659.25,
+    F5: 698.46,
+    G5: 783.99
+
+};
+
+const melody = [
+
+    ["G4",.35],
+    ["G4",.35],
+    ["A4",.7],
+    ["G4",.7],
+    ["C5",.7],
+    ["B4",1],
+
+    ["G4",.35],
+    ["G4",.35],
+    ["A4",.7],
+    ["G4",.7],
+    ["D5",.7],
+    ["C5",1],
+
+    ["G4",.35],
+    ["G4",.35],
+    ["G5",.7],
+    ["E5",.7],
+    ["C5",.7],
+    ["B4",.7],
+    ["A4",1],
+
+    ["F5",.35],
+    ["F5",.35],
+    ["E5",.7],
+    ["C5",.7],
+    ["D5",.7],
+    ["C5",1.2]
+
+];
+
+/* =========================================
+   PLAY NOTE
+========================================= */
+
+function playNote(
+    note,
+    duration,
+    startTime
+) {
+
+    if (!audioContext) return;
+
+    const oscillator =
+        audioContext.createOscillator();
+
+    const gain =
+        audioContext.createGain();
+
+    oscillator.type = "sine";
+
+    oscillator.frequency.value =
+        notes[note];
+
+    gain.gain.setValueAtTime(
+        .0001,
+        startTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .16,
+        startTime + .03
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .0001,
+        startTime + duration
+    );
+
+    oscillator.connect(gain);
+
+    gain.connect(
+        audioContext.destination
+    );
+
+    oscillator.start(startTime);
+
+    oscillator.stop(
+        startTime + duration + .05
+    );
+}
+
+/* =========================================
+   PLAY HAPPY BIRTHDAY
+========================================= */
+
+function playHappyBirthdayLoop() {
+
+    if (
+        !happyBirthdayPlaying ||
+        !audioContext
+    ) {
+        return;
+    }
+
+    let time =
+        audioContext.currentTime + .05;
+
+    melody.forEach(
+        ([note,duration]) => {
+
+            playNote(
+                note,
+                duration,
+                time
+            );
+
+            time +=
+                duration + .04;
+
+        }
+    );
+
+    const totalDuration =
+        melody.reduce(
+            (sum,item) =>
+                sum + item[1] + .04,
+            0
+        );
+
+    setTimeout(
+        () => {
+
+            if (happyBirthdayPlaying) {
+                playHappyBirthdayLoop();
+            }
+
+        },
+        totalDuration * 1000
+    );
+}
+
+/* =========================================
+   START MUSIC
+========================================= */
+
+function startHappyBirthday() {
+
+    try {
+
+        const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        if (!AudioContext) {
+            return;
+        }
+
+        audioContext =
+            new AudioContext();
+
+        audioContext.resume();
+
+        happyBirthdayPlaying = true;
+
+        playHappyBirthdayLoop();
+
+    } catch(error) {
+
+        console.log(
+            "Audio could not start:",
+            error
+        );
+
+    }
+}
+
+/* =========================================
+   STOP MUSIC
+========================================= */
+
+function stopHappyBirthday() {
+
+    happyBirthdayPlaying = false;
+
+    if (audioContext) {
+
+        try {
+            audioContext.close();
+        } catch(e) {}
+
+        audioContext = null;
+    }
+}
+
+/* =========================================
+   MUSIC GATE — TOUCH + CLICK FIX
+========================================= */
+
+const musicGate =
+    document.getElementById(
+        "musicGate"
+    );
+
+let musicStarted = false;
+
+function startMusicGate() {
+
+    if (musicStarted) {
+        return;
+    }
+
+    musicStarted = true;
+
+    startHappyBirthday();
+
+    musicGate.style.opacity = "0";
+
+    setTimeout(
+        () => {
+
+            musicGate.style.display =
+                "none";
+
+        },
+        1500
+    );
+}
+
+/*
+   pointerdown works for:
+   - phone touch
+   - tablet touch
+   - mouse
+   - trackpad
+*/
+
+musicGate.addEventListener(
+    "pointerdown",
+    startMusicGate,
+    {passive:true}
+);
+
+musicGate.addEventListener(
+    "touchstart",
+    startMusicGate,
+    {passive:true}
+);
+
+/* fallback */
+
+musicGate.addEventListener(
+    "click",
+    startMusicGate
+);
+
+/* =========================================
+   CONFETTI
+========================================= */
+
+function createConfetti(amount = 180) {
+
+    const container =
+        document.getElementById(
+            "confettiContainer"
+        );
+
+    container.innerHTML = "";
+
+    const colors = [
+
+        "#e78bad",
+        "#f2b4ca",
+        "#d8799d",
+        "#f6cedc",
+        "#c96d91",
+        "#f4a8c1"
+
+    ];
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        const piece =
+            document.createElement(
+                "div"
+            );
+
+        piece.className =
+            "confetti";
+
+        piece.style.left =
+            Math.random() * 100 + "%";
+
+        piece.style.width =
+            5 + Math.random() * 7 + "px";
+
+        piece.style.height =
+            8 + Math.random() * 12 + "px";
+
+        piece.style.background =
+            colors[
+                Math.floor(
+                    Math.random() *
+                    colors.length
+                )
+            ];
+
+        piece.style.animationDuration =
+            (
+                4 +
+                Math.random() * 4
+            ) + "s";
+
+        piece.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+        container.appendChild(
+            piece
+        );
+    }
+
+    setTimeout(
+        () => {
+
+            container.innerHTML = "";
+
+        },
+        10000
+    );
+}
+
+/* =========================================
+   OPEN SURPRISE
+========================================= */
+
+const openBtn =
+    document.getElementById(
+        "openBtn"
+    );
+
+const intro =
+    document.getElementById(
+        "intro"
+    );
+
+const messageScreen =
+    document.getElementById(
+        "messageScreen"
+    );
+
+const ytPlayer =
+    document.getElementById(
+        "ytPlayer"
+    );
+
+openBtn.addEventListener(
+    "click",
+    function(event) {
+
+        event.preventDefault();
+
+        /* Stop Happy Birthday */
+
+        stopHappyBirthday();
+
+        /* Confetti */
+
+        createConfetti(180);
+
+        /*
+           Slowly fade the intro
+        */
+
+        intro.style.transition =
+            "opacity 1.5s ease";
+
+        intro.style.opacity = "0";
+
+        setTimeout(
+            () => {
+
+                intro.style.display =
+                    "none";
+
+                messageScreen.style.display =
+                    "block";
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+                /*
+                   Start It Might Be You
+                */
+
+                setTimeout(
+                    () => {
+
+                        ytPlayer.src =
+                            "https://www.youtube.com/embed/vTsRP8PW0_o" +
+                            "?autoplay=1" +
+                            "&loop=1" +
+                            "&playlist=vTsRP8PW0_o" +
+                            "&controls=1" +
+                            "&rel=0";
+
+                    },
+                    900
+                );
+
+            },
+            1500
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
+```
