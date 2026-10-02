@@ -7,7 +7,9 @@
 <title>Happy Birthday Pauleen 💗</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 html,body{
     margin:0;
@@ -19,7 +21,9 @@ html,body{
     overflow-x:hidden;
 }
 
-body{min-height:100vh}
+body{
+    min-height:100vh;
+}
 
 button{
     border:0;
@@ -27,9 +31,15 @@ button{
     font-family:inherit;
 }
 
-.hidden{display:none!important}
+.hidden{
+    display:none!important;
+}
 
-/* MUSIC GATE */
+
+/* =========================
+   MUSIC GATE
+========================= */
+
 #musicGate{
     position:fixed;
     inset:0;
@@ -44,7 +54,7 @@ button{
 .gate-card{
     width:min(430px,100%);
     text-align:center;
-    background:rgba(255,255,255,.92);
+    background:rgba(255,255,255,.94);
     padding:35px 25px;
     border-radius:28px;
     box-shadow:0 15px 45px rgba(180,90,120,.2);
@@ -78,12 +88,15 @@ button{
     transform:translateY(-2px);
 }
 
-/* MAIN */
+
+/* =========================
+   MAIN
+========================= */
+
 .page{
     min-height:100vh;
     padding:35px 16px 60px;
     position:relative;
-    overflow:hidden;
 }
 
 .card{
@@ -91,7 +104,7 @@ button{
     z-index:2;
     width:min(680px,100%);
     margin:0 auto;
-    background:rgba(255,255,255,.94);
+    background:rgba(255,255,255,.95);
     border-radius:30px;
     padding:35px 25px;
     box-shadow:0 15px 45px rgba(180,90,120,.18);
@@ -116,7 +129,11 @@ h1{
     margin-bottom:25px;
 }
 
-/* CAKE */
+
+/* =========================
+   CAKE
+========================= */
+
 .cake-area{
     width:100%;
     display:flex;
@@ -186,14 +203,22 @@ h1{
     box-shadow:0 0 12px #ffbd4a;
 }
 
-/* DOGS */
+
+/* =========================
+   DOGS
+========================= */
+
 .dog{
     font-size:50px;
     line-height:1;
     transform:translateY(2px);
 }
 
-/* MESSAGE */
+
+/* =========================
+   MESSAGE
+========================= */
+
 .message-title{
     color:#d95b87;
     font-size:16px;
@@ -238,11 +263,17 @@ h1{
     margin-top:30px!important;
 }
 
-/* SLOW REVEAL */
+
+/* =========================
+   SLOW TEXT REVEAL
+========================= */
+
 .reveal{
     opacity:0;
     transform:translateY(18px);
-    transition:opacity 1.5s ease,transform 1.5s ease;
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
 }
 
 .reveal.show{
@@ -250,65 +281,91 @@ h1{
     transform:translateY(0);
 }
 
-/* KARAOKE AREA */
+
+/* =========================
+   KARAOKE SLIDING DOG
+========================= */
+
 .karaoke-area{
     position:relative;
     width:100%;
     margin-top:5px;
 }
 
+
 /*
-   The dog now belongs to the karaoke area itself.
-   It remains visible while the message grows.
+   This is the vertical path of the dog.
+   It stretches with the entire message.
 */
 .karaoke-track{
     position:absolute;
     left:0;
     top:0;
-    width:34px;
-    height:100%;
+    bottom:0;
+    width:42px;
     z-index:20;
     pointer-events:none;
 }
 
-/* VERTICAL TRACK */
+
+/* Thin vertical guide */
 .karaoke-line{
     position:absolute;
-    left:15px;
-    top:5px;
-    bottom:10px;
+    left:17px;
+    top:0;
+    bottom:0;
     width:2px;
-    background:rgba(217,79,130,.15);
+    background:rgba(217,79,130,.12);
     border-radius:2px;
 }
 
-/* SLIDING DOG */
+
+/*
+   THE SLIDING DOG
+
+   It stays inside the karaoke track and
+   changes its top position whenever the
+   next paragraph appears.
+*/
 .message-dog{
     position:absolute;
     left:0;
     top:0;
-    width:32px;
-    height:32px;
+    width:36px;
+    height:36px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:29px;
+
+    font-size:31px;
     line-height:1;
+
     z-index:30;
     opacity:0;
-    transform:translateY(0);
+
     transition:
-        top 1.5s ease,
-        opacity .8s ease;
+        top 1.5s cubic-bezier(.4,0,.2,1),
+        opacity .7s ease;
+
+    pointer-events:none;
 }
 
-/* MESSAGE CONTENT */
+
+/*
+   Message text leaves enough room on the
+   left for the sliding dog.
+*/
 .karaoke-content{
     position:relative;
-    padding-left:42px;
+    padding-left:46px;
 }
 
-/* FLOATING PAWS */
+
+/* =========================
+   FLOATING PAWS
+========================= */
+
 .paw{
     position:fixed;
     z-index:0;
@@ -327,11 +384,20 @@ h1{
 .p8{right:3%;top:65%;animation-delay:3.5s}
 
 @keyframes floatPaw{
-    0%,100%{transform:translateY(0) rotate(0deg)}
-    50%{transform:translateY(-18px) rotate(8deg)}
+    0%,100%{
+        transform:translateY(0) rotate(0deg);
+    }
+
+    50%{
+        transform:translateY(-18px) rotate(8deg);
+    }
 }
 
-/* HEARTS */
+
+/* =========================
+   HEARTS
+========================= */
+
 .heart{
     position:fixed;
     z-index:0;
@@ -348,11 +414,20 @@ h1{
 .h5{left:50%;top:20%;animation-delay:5s}
 
 @keyframes heartFloat{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-20px)}
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-20px);
+    }
 }
 
-/* CONFETTI */
+
+/* =========================
+   CONFETTI
+========================= */
+
 .confetti{
     position:fixed;
     z-index:10;
@@ -370,7 +445,11 @@ h1{
     }
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:600px){
 
     .page{
@@ -389,6 +468,9 @@ h1{
     .subtitle{
         font-size:16px;
     }
+
+
+    /* CAKE */
 
     .cake-area{
         width:100%;
@@ -409,6 +491,9 @@ h1{
         font-size:40px;
     }
 
+
+    /* MESSAGE */
+
     .message-dogs{
         font-size:38px;
     }
@@ -418,8 +503,11 @@ h1{
         line-height:1.7;
     }
 
+
+    /* SLIDING DOG */
+
     .karaoke-track{
-        width:28px;
+        width:30px;
     }
 
     .karaoke-line{
@@ -428,8 +516,8 @@ h1{
 
     .message-dog{
         left:-2px;
-        width:27px;
-        height:27px;
+        width:28px;
+        height:28px;
         font-size:25px;
     }
 
@@ -437,6 +525,7 @@ h1{
         padding-left:34px;
     }
 }
+
 
 @media(max-width:380px){
 
@@ -450,7 +539,12 @@ h1{
         font-size:34px;
     }
 
+    .karaoke-track{
+        width:28px;
+    }
+
     .message-dog{
+        left:-2px;
         font-size:23px;
     }
 
@@ -461,9 +555,14 @@ h1{
 </style>
 </head>
 
+
 <body>
 
-<!-- MUSIC GATE -->
+
+<!-- =========================
+     MUSIC GATE
+========================= -->
+
 <div id="musicGate">
 
     <div class="gate-card">
@@ -474,8 +573,12 @@ h1{
             Tap the button below to start the birthday music.
         </p>
 
-        <button class="start-btn" id="startMusicBtn">
+        <button
+            class="start-btn"
+            id="startMusicBtn">
+
             🎵 Start Birthday Music
+
         </button>
 
     </div>
@@ -483,7 +586,10 @@ h1{
 </div>
 
 
-<!-- DECORATIONS -->
+<!-- =========================
+     DECORATIONS
+========================= -->
+
 <div class="paw p1">🐾</div>
 <div class="paw p2">🐾</div>
 <div class="paw p3">🐾</div>
@@ -500,11 +606,18 @@ h1{
 <div class="heart h5">❤️</div>
 
 
-<!-- MAIN PAGE -->
+<!-- =========================
+     MAIN PAGE
+========================= -->
+
 <main class="page">
 
+
     <!-- INTRO CARD -->
-    <section class="card" id="introCard">
+
+    <section
+        class="card"
+        id="introCard">
 
         <div class="small-title">
             A little birthday surprise
@@ -518,11 +631,15 @@ h1{
             Someone left a little message here just for you. ✨
         </div>
 
+
+        <!-- CAKE -->
+
         <div class="cake-area">
 
             <div class="dog">
                 🐶
             </div>
+
 
             <div class="cake">
 
@@ -538,40 +655,62 @@ h1{
 
             </div>
 
+
             <div class="dog">
                 🐶
             </div>
 
         </div>
 
-        <button class="open-btn" id="openButton">
+
+        <button
+            class="open-btn"
+            id="openButton">
+
             Open your surprise 🎁
+
         </button>
 
     </section>
 
 
-    <!-- MESSAGE CARD -->
-    <section class="card hidden" id="messageCard">
+    <!-- =========================
+         MESSAGE CARD
+    ========================= -->
+
+    <section
+        class="card hidden"
+        id="messageCard">
+
 
         <div class="message-title reveal">
             A little message for you
         </div>
 
+
         <!-- ALWAYS VISIBLE -->
+
         <h1>
             Happy Birthday, Pauleen 💗
         </h1>
+
 
         <div class="message-dogs reveal">
             🐶 🐶
         </div>
 
 
-        <!-- KARAOKE MESSAGE -->
-        <div class="karaoke-area">
+        <!-- =========================
+             KARAOKE MESSAGE
+        ========================= -->
+
+        <div
+            class="karaoke-area"
+            id="karaokeArea">
+
 
             <!-- DOG TRACK -->
+
             <div class="karaoke-track">
 
                 <div class="karaoke-line"></div>
@@ -579,48 +718,62 @@ h1{
                 <div
                     class="message-dog"
                     id="messageDog">
+
                     🐶
+
                 </div>
 
             </div>
 
 
             <!-- MESSAGE CONTENT -->
+
             <div class="karaoke-content">
 
-                <div class="message-text" id="messageText">
+                <div
+                    class="message-text"
+                    id="messageText">
+
 
                     <p class="reveal">
                         I hope you celebrate your day with your loved ones and the people who are always there for you. I hope you're doing good, and I wish you all the best. May God lead you to the right path and help you achieve all your goals in life.
                     </p>
 
+
                     <p class="reveal">
                         I am happy and thankful that you made my last months and my last semester — which was the hardest and most crucial one — a bit lighter. I already graduated. Thankuu ng marami sayo!
                     </p>
+
 
                     <p class="reveal">
                         How r u? Nakauwi ka na kaya?
                     </p>
 
+
                     <p class="reveal">
                         Sana happy ka sa career and path na tinatahak mo ngayon. May God give you peace, guide you, and lead you to good decisions.
                     </p>
+
 
                     <p class="reveal">
                         Take care as always, Pauleen. I genuinely hope that life treats you well and that this new chapter brings you good things.
                     </p>
 
+
                     <p class="closing reveal">
                         Happy Birthday again. 💗
                     </p>
+
 
                     <p class="note reveal">
                         I tried my best to include your favorite animal in this little website, and of course, your favorite song too. I hope you like it. 💗
                     </p>
 
+
                     <p class="final reveal">
                         Happy Birthday RCST! 🎂💗
                     </p>
+
 
                 </div>
 
@@ -633,21 +786,33 @@ h1{
 </main>
 
 
-<!-- LOCAL SONG -->
-<audio id="itMightBeYou" preload="auto">
-    <source src="it-might-be-you.mp3" type="audio/mpeg">
+<!-- =========================
+     LOCAL SONG
+========================= -->
+
+<audio
+    id="itMightBeYou"
+    preload="auto">
+
+    <source
+        src="it-might-be-you.mp3"
+        type="audio/mpeg">
+
 </audio>
 
 
 <script>
+
+
+/* =========================
+   HAPPY BIRTHDAY MUSIC
+========================= */
 
 let birthdayAudioContext = null;
 let birthdayOscillators = [];
 let birthdayGain = null;
 let birthdayPlaying = false;
 
-
-/* HAPPY BIRTHDAY NOTES */
 
 const notes = {
 
@@ -658,6 +823,7 @@ const notes = {
     G4:392.00,
     A4:440.00,
     B4:493.88,
+
     C5:523.25,
     D5:587.33,
     E5:659.25,
@@ -666,8 +832,6 @@ const notes = {
 
 };
 
-
-/* HAPPY BIRTHDAY MELODY */
 
 const birthdayMelody = [
 
@@ -707,13 +871,18 @@ const birthdayMelody = [
 
 function playBirthdayMelody(){
 
-    if(birthdayPlaying) return;
+    if(birthdayPlaying){
+        return;
+    }
 
     birthdayPlaying = true;
 
     birthdayAudioContext =
-        new (window.AudioContext ||
-        window.webkitAudioContext)();
+        new (
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
+
 
     birthdayGain =
         birthdayAudioContext.createGain();
@@ -727,7 +896,10 @@ function playBirthdayMelody(){
 
     function playLoop(){
 
-        if(!birthdayPlaying) return;
+        if(!birthdayPlaying){
+            return;
+        }
+
 
         let time =
             birthdayAudioContext.currentTime + 0.05;
@@ -742,28 +914,39 @@ function playBirthdayMelody(){
                 const gain =
                     birthdayAudioContext.createGain();
 
-                oscillator.type = "sine";
+
+                oscillator.type =
+                    "sine";
+
 
                 oscillator.frequency.value =
                     notes[note];
 
+
                 oscillator.connect(gain);
-                gain.connect(birthdayGain);
+
+                gain.connect(
+                    birthdayGain
+                );
+
 
                 gain.gain.setValueAtTime(
                     0.0001,
                     time
                 );
 
+
                 gain.gain.exponentialRampToValueAtTime(
                     0.8,
                     time + 0.03
                 );
 
+
                 gain.gain.exponentialRampToValueAtTime(
                     0.0001,
                     time + duration / 1000 - 0.03
                 );
+
 
                 oscillator.start(time);
 
@@ -771,11 +954,14 @@ function playBirthdayMelody(){
                     time + duration / 1000
                 );
 
+
                 birthdayOscillators.push(
                     oscillator
                 );
 
-                time += duration / 1000;
+
+                time +=
+                    duration / 1000;
 
             }
         );
@@ -783,7 +969,8 @@ function playBirthdayMelody(){
 
         const totalDuration =
             birthdayMelody.reduce(
-                (sum,item) => sum + item[1],
+                (sum,item) =>
+                    sum + item[1],
                 0
             );
 
@@ -807,23 +994,28 @@ function stopBirthdayMelody(){
 
     birthdayPlaying = false;
 
+
     birthdayOscillators.forEach(
         oscillator => {
 
             try{
                 oscillator.stop();
-            }catch(e){}
+            }
+            catch(e){}
 
         }
     );
 
+
     birthdayOscillators = [];
+
 
     if(birthdayAudioContext){
 
         try{
             birthdayAudioContext.close();
-        }catch(e){}
+        }
+        catch(e){}
 
         birthdayAudioContext = null;
 
@@ -832,29 +1024,43 @@ function stopBirthdayMelody(){
 }
 
 
-/* CONFETTI */
+/* =========================
+   CONFETTI
+========================= */
 
 function createConfetti(){
 
-    for(let i = 0; i < 100; i++){
+    for(
+        let i = 0;
+        i < 100;
+        i++
+    ){
 
         const piece =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
         piece.className =
             "confetti";
 
+
         piece.style.left =
             Math.random() * 100 + "vw";
+
 
         piece.style.animationDuration =
             (3 + Math.random() * 4) + "s";
 
+
         piece.style.animationDelay =
             Math.random() * 2 + "s";
 
+
         piece.style.transform =
             `rotate(${Math.random() * 360}deg)`;
+
 
         piece.style.background =
             [
@@ -864,10 +1070,16 @@ function createConfetti(){
                 "#a7f3d0",
                 "#c4b5fd"
             ][
-                Math.floor(Math.random() * 5)
+                Math.floor(
+                    Math.random() * 5
+                )
             ];
 
-        document.body.appendChild(piece);
+
+        document.body.appendChild(
+            piece
+        );
+
 
         setTimeout(
             () => piece.remove(),
@@ -879,41 +1091,65 @@ function createConfetti(){
 }
 
 
-/* MOVE DOG TO CURRENT MESSAGE */
+/* =========================
+   SLIDING DOG
+========================= */
 
 function moveDogToParagraph(paragraph){
 
     const dog =
-        document.getElementById("messageDog");
+        document.getElementById(
+            "messageDog"
+        );
+
 
     const karaokeArea =
-        document.querySelector(".karaoke-area");
+        document.getElementById(
+            "karaokeArea"
+        );
 
-    if(!dog || !paragraph || !karaokeArea)
+
+    if(
+        !dog ||
+        !paragraph ||
+        !karaokeArea
+    ){
         return;
+    }
 
 
     /*
-     * Get the paragraph position relative
-     * to the karaoke area.
+     * Get the exact screen position
+     * of the paragraph.
      */
-    const paragraphTop =
-        paragraph.offsetTop;
+    const paragraphRect =
+        paragraph.getBoundingClientRect();
+
+
+    const areaRect =
+        karaokeArea.getBoundingClientRect();
 
 
     /*
-     * Put the dog slightly beside the
-     * beginning of the current paragraph.
+     * Calculate the paragraph's position
+     * INSIDE the karaoke area.
+     *
+     * This is the important fix.
      */
-    const dogTop =
-        paragraphTop + 2;
+    const relativeTop =
+        paragraphRect.top -
+        areaRect.top;
 
 
     /*
-     * Keep the dog inside the track.
+     * Put the dog beside the beginning
+     * of the paragraph.
      */
     dog.style.top =
-        dogTop + "px";
+        Math.max(
+            0,
+            relativeTop
+        ) + "px";
 
 
     dog.style.opacity =
@@ -922,7 +1158,9 @@ function moveDogToParagraph(paragraph){
 }
 
 
-/* REVEAL MESSAGE + PLAY SONG */
+/* =========================
+   REVEAL MESSAGE
+========================= */
 
 function revealMessageAndPlayMusic(){
 
@@ -948,13 +1186,15 @@ function revealMessageAndPlayMusic(){
                 () => {
 
                     /*
-                     * Reveal slowly.
+                     * Reveal the current item.
                      */
-                    item.classList.add("show");
+                    item.classList.add(
+                        "show"
+                    );
 
 
                     /*
-                     * Check if this item is
+                     * Check whether this is
                      * an actual message paragraph.
                      */
                     const paragraphIndex =
@@ -963,32 +1203,52 @@ function revealMessageAndPlayMusic(){
                         ).indexOf(item);
 
 
-                    if(paragraphIndex !== -1){
+                    if(
+                        paragraphIndex !== -1
+                    ){
 
                         /*
-                         * Move the dog to the
-                         * paragraph currently appearing.
+                         * Give the browser a moment
+                         * to apply the reveal before
+                         * calculating the position.
                          */
-                        moveDogToParagraph(item);
+                        requestAnimationFrame(
+                            () => {
+
+                                moveDogToParagraph(
+                                    item
+                                );
+
+                            }
+                        );
 
 
                         /*
-                         * Start the song when
-                         * the first paragraph appears.
+                         * Start "It Might Be You"
+                         * when the first actual
+                         * message appears.
                          */
-                        if(paragraphIndex === 0){
+                        if(
+                            paragraphIndex === 0
+                        ){
 
                             const song =
                                 document.getElementById(
                                     "itMightBeYou"
                                 );
 
-                            song.currentTime = 0;
+
+                            song.currentTime =
+                                0;
+
 
                             const playPromise =
                                 song.play();
 
-                            if(playPromise !== undefined){
+
+                            if(
+                                playPromise !== undefined
+                            ){
 
                                 playPromise.catch(
                                     function(error){
@@ -1013,7 +1273,7 @@ function revealMessageAndPlayMusic(){
 
 
             /*
-             * Next message appears after 2.1 seconds.
+             * Time between each message.
              */
             delay += 2100;
 
@@ -1023,17 +1283,26 @@ function revealMessageAndPlayMusic(){
 }
 
 
-/* START MUSIC */
+/* =========================
+   START MUSIC BUTTON
+========================= */
 
 document
-.getElementById("startMusicBtn")
+.getElementById(
+    "startMusicBtn"
+)
 .addEventListener(
     "click",
     function(){
 
         document
-        .getElementById("musicGate")
-        .classList.add("hidden");
+        .getElementById(
+            "musicGate"
+        )
+        .classList.add(
+            "hidden"
+        );
+
 
         playBirthdayMelody();
 
@@ -1041,10 +1310,14 @@ document
 );
 
 
-/* OPEN SURPRISE */
+/* =========================
+   OPEN SURPRISE
+========================= */
 
 document
-.getElementById("openButton")
+.getElementById(
+    "openButton"
+)
 .addEventListener(
     "click",
     function(){
@@ -1056,27 +1329,39 @@ document
 
 
         /*
-         * Reset the song.
+         * Reset the local song.
          */
         const song =
             document.getElementById(
                 "itMightBeYou"
             );
 
+
         song.pause();
-        song.currentTime = 0;
+
+        song.currentTime =
+            0;
 
 
         /*
-         * Show message.
+         * Switch cards.
          */
         document
-        .getElementById("introCard")
-        .classList.add("hidden");
+        .getElementById(
+            "introCard"
+        )
+        .classList.add(
+            "hidden"
+        );
+
 
         document
-        .getElementById("messageCard")
-        .classList.remove("hidden");
+        .getElementById(
+            "messageCard"
+        )
+        .classList.remove(
+            "hidden"
+        );
 
 
         /*
@@ -1095,9 +1380,37 @@ document
 
 
         /*
-         * Reveal messages.
+         * Begin message reveal.
          */
         revealMessageAndPlayMusic();
+
+    }
+);
+
+
+/*
+ * If the browser resizes or the phone
+ * orientation changes, recalculate the
+ * dog's position for the paragraph
+ * currently being shown.
+ */
+window.addEventListener(
+    "resize",
+    function(){
+
+        const visibleParagraph =
+            document.querySelector(
+                "#messageText p.reveal.show:last-of-type"
+            );
+
+
+        if(visibleParagraph){
+
+            moveDogToParagraph(
+                visibleParagraph
+            );
+
+        }
 
     }
 );
