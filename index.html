@@ -7,602 +7,378 @@
 <title>Happy Birthday Pauleen 💗</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
 }
 
-html, body {
-    width: 100%;
-    min-height: 100%;
-    font-family: Georgia, "Times New Roman", serif;
-    background: #fff7fb;
-    color: #5a4050;
+html,body{
+    margin:0;
+    padding:0;
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:linear-gradient(135deg,#ffe6ef,#fff7fb,#ffeef5);
+    color:#5a3945;
+    overflow-x:hidden;
 }
 
-body {
-    overflow-x: hidden;
+body{
+    min-height:100vh;
 }
 
-.page {
-    min-height: 100vh;
-    position: relative;
-    overflow: hidden;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(255,190,215,.28), transparent 28%),
-        radial-gradient(circle at 80% 30%, rgba(255,220,170,.25), transparent 28%),
-        linear-gradient(180deg, #fff8fc 0%, #fff3f8 100%);
+button{
+    border:0;
+    cursor:pointer;
+    font-family:inherit;
 }
 
-/* =========================
-   PAWS
-========================= */
-
-.paw {
-    position: fixed;
-    font-size: 25px;
-    opacity: .12;
-    pointer-events: none;
-    animation: floatPaw 12s linear infinite;
-    z-index: 1;
+.hidden{
+    display:none !important;
 }
 
-.paw:nth-child(1) { left: 8%; top: 85%; animation-delay: 0s; }
-.paw:nth-child(2) { left: 22%; top: 70%; animation-delay: 2s; }
-.paw:nth-child(3) { left: 45%; top: 90%; animation-delay: 4s; }
-.paw:nth-child(4) { left: 70%; top: 75%; animation-delay: 1s; }
-.paw:nth-child(5) { left: 88%; top: 88%; animation-delay: 3s; }
-.paw:nth-child(6) { left: 15%; top: 35%; animation-delay: 5s; }
-.paw:nth-child(7) { left: 82%; top: 42%; animation-delay: 6s; }
-
-@keyframes floatPaw {
-    0% {
-        transform: translateY(30px) rotate(-10deg);
-        opacity: 0;
-    }
-    20% {
-        opacity: .12;
-    }
-    80% {
-        opacity: .12;
-    }
-    100% {
-        transform: translateY(-100px) rotate(12deg);
-        opacity: 0;
-    }
+/* MUSIC GATE */
+#musicGate{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:linear-gradient(135deg,#ffdce9,#fff4f8);
 }
 
-/* =========================
-   HEART BALLOONS
-========================= */
-
-.balloon {
-    position: fixed;
-    width: 48px;
-    height: 62px;
-    border-radius: 50%;
-    background: rgba(255,165,195,.22);
-    pointer-events: none;
-    z-index: 1;
-    animation: balloonFloat 7s ease-in-out infinite;
+.gate-card{
+    width:min(430px,100%);
+    text-align:center;
+    background:rgba(255,255,255,.92);
+    padding:35px 25px;
+    border-radius:28px;
+    box-shadow:0 15px 45px rgba(180,90,120,.2);
 }
 
-.balloon::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 60px;
-    width: 1px;
-    height: 100px;
-    background: rgba(150,100,120,.15);
+.gate-card h1{
+    margin:0 0 12px;
+    color:#d95b87;
+    font-size:28px;
 }
 
-.balloon:nth-of-type(8) {
-    left: 4%;
-    top: 10%;
+.gate-card p{
+    line-height:1.6;
+    margin:0 0 25px;
 }
 
-.balloon:nth-of-type(9) {
-    right: 5%;
-    top: 18%;
-    animation-delay: 2s;
+.start-btn,
+.open-btn{
+    background:linear-gradient(135deg,#ff78a8,#e9568a);
+    color:white;
+    padding:15px 24px;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:bold;
+    box-shadow:0 8px 20px rgba(220,80,130,.25);
+    transition:.25s;
 }
 
-.balloon:nth-of-type(10) {
-    left: 85%;
-    bottom: 10%;
-    animation-delay: 4s;
+.start-btn:hover,
+.open-btn:hover{
+    transform:translateY(-2px);
 }
 
-@keyframes balloonFloat {
-    0%,100% {
-        transform: translateY(0) rotate(-3deg);
-    }
-    50% {
-        transform: translateY(-18px) rotate(4deg);
-    }
+/* MAIN */
+.page{
+    min-height:100vh;
+    padding:35px 16px 60px;
+    position:relative;
+    overflow:hidden;
 }
 
-/* =========================
-   CONFETTI
-========================= */
-
-.confetti {
-    position: fixed;
-    width: 8px;
-    height: 14px;
-    top: -20px;
-    pointer-events: none;
-    z-index: 30;
-    animation: confettiFall linear forwards;
+.card{
+    position:relative;
+    z-index:2;
+    width:min(680px,100%);
+    margin:0 auto;
+    background:rgba(255,255,255,.94);
+    border-radius:30px;
+    padding:35px 25px;
+    box-shadow:0 15px 45px rgba(180,90,120,.18);
+    text-align:center;
 }
 
-@keyframes confettiFall {
-    to {
-        transform: translateY(110vh) rotate(720deg);
-        opacity: 0;
-    }
+.small-title{
+    color:#d65b86;
+    font-size:15px;
+    margin-bottom:10px;
 }
 
-/* =========================
-   MUSIC GATE
-========================= */
-
-#musicGate {
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 24px;
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,255,255,.92),
-            rgba(255,235,245,.98)
-        );
-    transition: opacity .8s ease, visibility .8s ease;
+h1{
+    margin:0 0 15px;
+    color:#d94f82;
+    font-size:34px;
 }
 
-#musicGate.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+.subtitle{
+    font-size:17px;
+    line-height:1.6;
+    margin-bottom:25px;
 }
 
-.gate-card {
-    width: min(460px, 92vw);
-    text-align: center;
-    padding: 38px 28px;
-    border-radius: 28px;
-    background: rgba(255,255,255,.88);
-    box-shadow: 0 20px 60px rgba(110,65,90,.15);
-    border: 1px solid rgba(255,190,215,.6);
-    animation: cardAppear 1.2s ease both;
+/* CAKE */
+.cake-area{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    gap:0;
+    margin:5px auto 20px;
+    overflow:visible;
 }
 
-.gate-card h1 {
-    font-size: clamp(27px,7vw,42px);
-    color: #9b5877;
-    margin-bottom: 12px;
+.cake{
+    position:relative;
+    width:180px;
+    height:130px;
+    margin:0 -10px;
 }
 
-.gate-card p {
-    font-size: 17px;
-    line-height: 1.7;
-    margin-bottom: 26px;
+.cake-bottom{
+    position:absolute;
+    bottom:0;
+    left:20px;
+    width:140px;
+    height:65px;
+    background:#ff9fbd;
+    border-radius:12px 12px 20px 20px;
+    box-shadow:inset 0 -8px rgba(220,75,120,.15);
 }
 
-.music-button,
-.open-button {
-    border: none;
-    cursor: pointer;
-    font-family: Georgia, "Times New Roman", serif;
-    border-radius: 999px;
-    padding: 15px 25px;
-    font-size: 17px;
-    color: white;
-    background: linear-gradient(135deg,#d77da1,#a95d80);
-    box-shadow: 0 10px 25px rgba(169,93,128,.25);
-    transition: transform .25s ease, box-shadow .25s ease;
+.cake-top{
+    position:absolute;
+    bottom:55px;
+    left:30px;
+    width:120px;
+    height:35px;
+    background:#fff;
+    border-radius:50%;
 }
 
-.music-button:hover,
-.open-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 30px rgba(169,93,128,.3);
+.icing{
+    position:absolute;
+    bottom:55px;
+    left:30px;
+    width:120px;
+    height:25px;
+    background:#fff0f5;
+    border-radius:50%;
 }
 
-@keyframes cardAppear {
-    from {
-        opacity: 0;
-        transform: translateY(30px) scale(.96);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+.candle{
+    position:absolute;
+    bottom:83px;
+    left:85px;
+    width:10px;
+    height:30px;
+    background:#f3b1ca;
+    border-radius:4px;
 }
 
-/* =========================
-   MAIN
-========================= */
-
-.main {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 45px 18px;
-    position: relative;
-    z-index: 5;
-}
-
-.card {
-    width: min(720px,94vw);
-    background: rgba(255,255,255,.84);
-    border: 1px solid rgba(255,190,215,.65);
-    border-radius: 32px;
-    padding: clamp(28px,6vw,55px);
-    box-shadow: 0 25px 80px rgba(110,65,90,.13);
-    text-align: center;
-    backdrop-filter: blur(8px);
-    animation: mainAppear 1.4s ease both;
-}
-
-@keyframes mainAppear {
-    from {
-        opacity: 0;
-        transform: translateY(35px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hidden {
-    display: none !important;
-}
-
-.small-title {
-    font-size: 15px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #b47891;
-    margin-bottom: 13px;
-}
-
-h1.main-title {
-    font-size: clamp(38px,9vw,65px);
-    color: #9b5877;
-    line-height: 1.05;
-    margin-bottom: 12px;
-}
-
-.subtitle {
-    font-size: clamp(18px,4vw,22px);
-    color: #765365;
-    margin-bottom: 28px;
-}
-
-/* =========================
-   CAKE
-========================= */
-
-.cake-area {
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: clamp(12px,5vw,50px);
-    margin: 24px 0 32px;
-}
-
-.cake {
-    position: relative;
-    width: 190px;
-    height: 155px;
-    flex: 0 0 190px;
-    margin: 0;
-}
-
-.cake-top {
-    position: absolute;
-    width: 160px;
-    height: 38px;
-    left: 15px;
-    top: 18px;
-    border-radius: 50%;
-    background: #f5b4c8;
-    border: 3px solid #d78ca8;
-    z-index: 3;
-}
-
-.cake-body {
-    position: absolute;
-    width: 160px;
-    height: 85px;
-    left: 15px;
-    top: 35px;
-    border-radius: 12px 12px 18px 18px;
-    background: #ffe1eb;
-    border: 3px solid #d78ca8;
-    z-index: 2;
-}
-
-.cream {
-    position: absolute;
-    width: 160px;
-    height: 27px;
-    left: 15px;
-    top: 47px;
-    background: #fffafc;
-    border-radius: 50%;
-    z-index: 4;
-}
-
-.candle {
-    position: absolute;
-    width: 11px;
-    height: 36px;
-    top: -17px;
-    background: #f6c56e;
-    border-radius: 4px;
-    z-index: 5;
-}
-
-.candle:nth-child(1) { left: 50px; }
-.candle:nth-child(2) { left: 75px; }
-.candle:nth-child(3) { left: 100px; }
-
-.flame {
-    position: absolute;
-    width: 10px;
-    height: 16px;
-    border-radius: 50%;
-    background: #f6b84b;
-    top: -18px;
-    left: .5px;
-    animation: flame 1s ease-in-out infinite alternate;
-}
-
-@keyframes flame {
-    from {
-        transform: scale(.85) translateY(1px);
-    }
-    to {
-        transform: scale(1.1) translateY(-2px);
-    }
+.flame{
+    position:absolute;
+    bottom:112px;
+    left:85px;
+    width:10px;
+    height:15px;
+    background:#ffbd4a;
+    border-radius:50% 50% 50% 50%;
+    box-shadow:0 0 12px #ffbd4a;
 }
 
 /* DOGS */
-
-.dog {
-    font-size: clamp(45px,11vw,75px);
-    line-height: 1;
-    filter: drop-shadow(0 8px 7px rgba(90,50,70,.1));
-    animation: dogFloat 3.5s ease-in-out infinite;
-    flex: 0 0 auto;
+.dog{
+    font-size:50px;
+    line-height:1;
+    transform:translateY(2px);
 }
 
-.dog.left {
-    animation-name: dogFloatLeft;
+/* MESSAGE */
+#messageCard{
+    margin-top:0;
 }
 
-.dog.right {
-    animation-delay: 1s;
+.message-title{
+    color:#d95b87;
+    font-size:16px;
+    margin-bottom:8px;
 }
 
-@keyframes dogFloat {
-    0%,100% {
-        transform: translateY(0) rotate(-2deg);
-    }
-    50% {
-        transform: translateY(-8px) rotate(2deg);
-    }
+.message-card h2{
+    margin:0;
 }
 
-@keyframes dogFloatLeft {
-    0%,100% {
-        transform: scaleX(-1) translateY(0) rotate(-2deg);
-    }
-    50% {
-        transform: scaleX(-1) translateY(-8px) rotate(2deg);
-    }
+.message-dogs{
+    font-size:45px;
+    margin:18px 0;
 }
 
-/* =========================
-   MESSAGE SCREEN
-========================= */
-
-#messageCard {
-    width: min(720px,94vw);
-    padding-left: clamp(22px,5vw,55px);
-    padding-right: clamp(22px,5vw,55px);
+.message-text{
+    text-align:center;
+    font-size:17px;
+    line-height:1.8;
 }
 
-#messageCard .main-title {
-    text-align: center;
+.message-text p{
+    margin:0 0 22px;
 }
 
-/* Centered dogs */
-
-.message-dogs {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
-    font-size: clamp(38px,10vw,55px);
-    margin: 12px auto 28px;
-    line-height: 1;
+.closing{
+    font-weight:bold;
+    color:#d95784;
+    margin-top:25px !important;
 }
 
-/* =========================
-   SLOW MESSAGE REVEAL
-========================= */
-
-.message {
-    width: 100%;
-    max-width: 620px;
-    margin: 0 auto;
-    text-align: left;
+.note{
+    font-size:15px;
+    color:#765763;
+    margin-top:30px !important;
 }
 
-/*
-   Every message part starts invisible.
-   JavaScript reveals them one by one.
-*/
-
-.reveal {
-    opacity: 0;
-    transform: translateY(18px);
-    transition:
-        opacity 1.5s ease,
-        transform 1.5s ease;
+.final{
+    font-size:21px;
+    font-weight:bold;
+    color:#d94f82;
+    margin-top:30px !important;
 }
 
-.reveal.show {
-    opacity: 1;
-    transform: translateY(0);
+/* SLOW REVEAL */
+.reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity 1.5s ease, transform 1.5s ease;
 }
 
-.message p {
-    font-size: 18px;
-    line-height: 1.85;
-    margin-bottom: 22px;
-    color: #604957;
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
-.message .closing {
-    text-align: center;
-    font-size: 21px;
-    color: #9b5877;
-    margin-top: 30px;
+/* FLOATING PAWS */
+.paw{
+    position:fixed;
+    z-index:0;
+    opacity:.18;
+    font-size:30px;
+    animation:floatPaw 8s ease-in-out infinite;
 }
 
-.note {
-    width: 100%;
-    margin: 30px auto 0;
-    padding: 22px;
-    border-radius: 20px;
-    background: rgba(255,224,237,.5);
-    border: 1px solid rgba(215,140,168,.3);
-    font-size: 16px;
-    line-height: 1.7;
-    text-align: center;
+.p1{left:8%;top:15%;animation-delay:0s;}
+.p2{right:10%;top:30%;animation-delay:2s;}
+.p3{left:15%;bottom:18%;animation-delay:4s;}
+.p4{right:15%;bottom:12%;animation-delay:1s;}
+.p5{left:45%;top:8%;animation-delay:3s;}
+.p6{right:40%;bottom:35%;animation-delay:5s;}
+.p7{left:3%;top:55%;animation-delay:1.5s;}
+.p8{right:3%;top:65%;animation-delay:3.5s;}
+
+@keyframes floatPaw{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-18px) rotate(8deg);}
 }
 
-.final {
-    width: 100%;
-    margin-top: 34px;
-    font-size: clamp(24px,6vw,34px);
-    color: #9b5877;
-    font-weight: bold;
-    text-align: center;
+/* HEARTS */
+.heart{
+    position:fixed;
+    z-index:0;
+    color:#ff9dbc;
+    opacity:.25;
+    font-size:25px;
+    animation:heartFloat 7s ease-in-out infinite;
 }
 
-@keyframes messageAppear {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+.h1{left:20%;top:10%;animation-delay:1s;}
+.h2{right:20%;top:15%;animation-delay:3s;}
+.h3{left:8%;bottom:30%;animation-delay:2s;}
+.h4{right:8%;bottom:25%;animation-delay:4s;}
+.h5{left:50%;top:20%;animation-delay:5s;}
+
+@keyframes heartFloat{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
+}
+
+/* CONFETTI */
+.confetti{
+    position:fixed;
+    z-index:10;
+    width:8px;
+    height:14px;
+    top:-20px;
+    pointer-events:none;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
     }
 }
 
-/* =========================
-   PHONE
-========================= */
-
-@media (max-width:600px) {
-
-    .main {
-        padding: 25px 10px;
-        align-items: flex-start;
+/* MOBILE */
+@media(max-width:600px){
+    .page{
+        padding:20px 10px 40px;
     }
 
-    .card {
-        width: 100%;
-        padding: 28px 18px;
-        border-radius: 25px;
-        margin-top: 10px;
+    .card{
+        padding:28px 18px;
+        border-radius:25px;
     }
 
-    #messageCard {
-        width: 100%;
-        padding: 28px 18px;
+    h1{
+        font-size:29px;
     }
 
-    .cake-area {
-        width: 100%;
-        gap: 0;
-        justify-content: center;
-        align-items: flex-end;
-        margin-left: auto;
-        margin-right: auto;
+    .subtitle{
+        font-size:16px;
     }
 
-    .cake {
-        transform: scale(.78);
-        transform-origin: center bottom;
-        margin-left: -12px;
-        margin-right: -12px;
+    .cake-area{
+        width:100%;
+        gap:0;
+        justify-content:center;
+        margin-left:0;
+        margin-right:0;
     }
 
-    .dog {
-        font-size: 42px;
+    .cake{
+        transform:scale(.78);
+        transform-origin:center bottom;
+        margin-left:-12px;
+        margin-right:-12px;
     }
 
-    .message-dogs {
-        gap: 15px;
-        margin-bottom: 25px;
+    .dog{
+        font-size:40px;
     }
 
-    .message {
-        width: 100%;
+    .message-dogs{
+        font-size:38px;
     }
 
-    .message p {
-        font-size: 17px;
-        line-height: 1.78;
-    }
-
-    .note {
-        padding: 19px 16px;
-        font-size: 15.5px;
-    }
-
-    .final {
-        font-size: 27px;
+    .message-text{
+        font-size:16px;
+        line-height:1.7;
     }
 }
 
-@media (max-width:380px) {
-
-    .card,
-    #messageCard {
-        padding-left: 15px;
-        padding-right: 15px;
+@media(max-width:380px){
+    .cake{
+        transform:scale(.68);
+        margin-left:-18px;
+        margin-right:-18px;
     }
 
-    .cake {
-        transform: scale(.68);
-        margin-left: -20px;
-        margin-right: -20px;
-    }
-
-    .dog {
-        font-size: 36px;
-    }
-
-    .message p {
-        font-size: 16px;
+    .dog{
+        font-size:34px;
     }
 }
 </style>
@@ -610,488 +386,340 @@ h1.main-title {
 
 <body>
 
-<!-- =========================
-     LOCAL MUSIC
-========================= -->
+<!-- MUSIC GATE -->
+<div id="musicGate">
+    <div class="gate-card">
+        <h1>🎂 A little birthday surprise</h1>
+        <p>Tap the button below to start the birthday music.</p>
+        <button class="start-btn" id="startMusicBtn">
+            🎵 Start Birthday Music
+        </button>
+    </div>
+</div>
 
+<!-- DECORATIONS -->
+<div class="paw p1">🐾</div>
+<div class="paw p2">🐾</div>
+<div class="paw p3">🐾</div>
+<div class="paw p4">🐾</div>
+<div class="paw p5">🐾</div>
+<div class="paw p6">🐾</div>
+<div class="paw p7">🐾</div>
+<div class="paw p8">🐾</div>
+
+<div class="heart h1">❤️</div>
+<div class="heart h2">❤️</div>
+<div class="heart h3">❤️</div>
+<div class="heart h4">❤️</div>
+<div class="heart h5">❤️</div>
+
+<!-- MAIN PAGE -->
+<main class="page">
+
+    <!-- INTRO CARD -->
+    <section class="card" id="introCard">
+
+        <div class="small-title">
+            A little birthday surprise
+        </div>
+
+        <h1>
+            For Pauleen 💗
+        </h1>
+
+        <div class="subtitle">
+            Someone left a little message here just for you. ✨
+        </div>
+
+        <div class="cake-area">
+
+            <div class="dog">
+                🐶
+            </div>
+
+            <div class="cake">
+                <div class="flame"></div>
+                <div class="candle"></div>
+                <div class="cake-top"></div>
+                <div class="icing"></div>
+                <div class="cake-bottom"></div>
+            </div>
+
+            <div class="dog">
+                🐶
+            </div>
+
+        </div>
+
+        <button class="open-btn" id="openButton">
+            Open your surprise 🎁
+        </button>
+
+    </section>
+
+    <!-- MESSAGE CARD -->
+    <section class="card hidden" id="messageCard">
+
+        <div class="message-title reveal">
+            A little message for you
+        </div>
+
+        <h1 class="reveal">
+            Happy Birthday, Pauleen 💗
+        </h1>
+
+        <div class="message-dogs reveal">
+            🐶 🐶
+        </div>
+
+        <div class="message-text">
+
+            <p class="reveal">
+                I hope you celebrate your day with your loved ones and the people who are always there for you. I hope you're doing good, and I wish you all the best. May God lead you to the right path and help you achieve all your goals in life.
+            </p>
+
+            <p class="reveal">
+                I am happy and thankful that you made my last months and my last semester — which was the hardest and most crucial one — a bit lighter. I already graduated. Thankuu ng marami sayo!
+            </p>
+
+            <p class="reveal">
+                How r u? Nakauwi ka na kaya?
+            </p>
+
+            <p class="reveal">
+                Sana happy ka sa career and path na tinatahak mo ngayon. May God give you peace, guide you, and lead you to good decisions.
+            </p>
+
+            <p class="reveal">
+                Take care as always, Pauleen. I genuinely hope that life treats you well and that this new chapter brings you good things.
+            </p>
+
+            <p class="closing reveal">
+                Happy Birthday again. 💗
+            </p>
+
+            <p class="note reveal">
+                I tried my best to include your favorite animal in this little website, and of course, your favorite song too. I hope you like it. 💗
+            </p>
+
+            <p class="final reveal">
+                Happy Birthday RCST! 🎂💗
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- LOCAL SONG -->
 <audio id="itMightBeYou" preload="auto">
     <source src="it-might-be-you.mp3" type="audio/mpeg">
 </audio>
 
-
-<!-- =========================
-     MUSIC START SCREEN
-========================= -->
-
-<div id="musicGate">
-
-    <div class="gate-card">
-
-        <div style="font-size:55px; margin-bottom:15px;">
-            🎂
-        </div>
-
-        <h1>A little birthday surprise</h1>
-
-        <p>
-            Tap the button below to start the birthday music.
-        </p>
-
-        <button class="music-button" id="startMusic">
-            🎵 Start Birthday Music
-        </button>
-
-    </div>
-
-</div>
-
-
-<div class="page">
-
-    <!-- PAWS -->
-
-    <div class="paw">🐾</div>
-    <div class="paw">🐾</div>
-    <div class="paw">🐾</div>
-    <div class="paw">🐾</div>
-    <div class="paw">🐾</div>
-    <div class="paw">🐾</div>
-    <div class="paw">🐾</div>
-
-    <!-- HEART BALLOONS -->
-
-    <div class="balloon">❤️</div>
-    <div class="balloon">❤️</div>
-    <div class="balloon">❤️</div>
-
-
-    <main class="main">
-
-        <!-- =========================
-             FIRST SLIDE
-        ========================= -->
-
-        <section class="card" id="introCard">
-
-            <div class="small-title">
-                A little birthday surprise
-            </div>
-
-            <h1 class="main-title">
-                For Pauleen 💗
-            </h1>
-
-            <div class="subtitle">
-                Someone left a little message here just for you. ✨
-            </div>
-
-
-            <div class="cake-area">
-
-                <div class="dog left">
-                    🐶
-                </div>
-
-                <div class="cake">
-
-                    <div class="cake-top"></div>
-
-                    <div class="cake-body"></div>
-
-                    <div class="cream"></div>
-
-                    <div class="candle">
-                        <div class="flame"></div>
-                    </div>
-
-                    <div class="candle">
-                        <div class="flame"></div>
-                    </div>
-
-                    <div class="candle">
-                        <div class="flame"></div>
-                    </div>
-
-                </div>
-
-                <div class="dog right">
-                    🐶
-                </div>
-
-            </div>
-
-
-            <button class="open-button" id="openSurprise">
-                Open your surprise 🎁
-            </button>
-
-        </section>
-
-
-        <!-- =========================
-             SECOND SLIDE
-        ========================= -->
-
-        <section class="card hidden" id="messageCard">
-
-            <!-- Heading -->
-
-            <div class="small-title reveal">
-                A little message for you
-            </div>
-
-            <h1 class="main-title reveal">
-                Happy Birthday, Pauleen 💗
-            </h1>
-
-
-            <!-- Dogs -->
-
-            <div class="message-dogs reveal">
-                <span>🐶</span>
-                <span>🐶</span>
-            </div>
-
-
-            <div class="message">
-
-                <!-- Paragraph 1 -->
-
-                <p class="reveal">
-                    I hope you celebrate your day with your loved ones
-                    and the people who are always there for you.
-                    I hope you're doing good, and I wish you all the best.
-                    May God lead you to the right path and help you achieve
-                    all your goals in life.
-                </p>
-
-
-                <!-- Paragraph 2 -->
-
-                <p class="reveal">
-                    I am happy and thankful that you made my last months
-                    and my last semester — which was the hardest and most
-                    crucial one — a bit lighter. I already graduated.
-                    Thankuu ng marami sayo!
-                </p>
-
-
-                <!-- Paragraph 3 -->
-
-                <p class="reveal">
-                    How r u? Nakauwi ka na kaya?
-                </p>
-
-
-                <!-- Paragraph 4 -->
-
-                <p class="reveal">
-                    Sana happy ka sa career and path na tinatahak mo ngayon.
-                    May God give you peace, guide you, and lead you to good decisions.
-                </p>
-
-
-                <!-- Paragraph 5 -->
-
-                <p class="reveal">
-                    Take care as always, Pauleen.
-                    I genuinely hope that life treats you well and that this
-                    new chapter brings you good things.
-                </p>
-
-
-                <!-- Closing -->
-
-                <p class="closing reveal">
-                    Happy Birthday again. 💗
-                </p>
-
-
-                <!-- Note -->
-
-                <div class="note reveal">
-                    I tried my best to include your favorite animal in this
-                    little website, and of course, your favorite song too.
-                    I hope you like it. 💗
-                </div>
-
-
-                <!-- Final -->
-
-                <div class="final reveal">
-                    Happy Birthday RCST! 🎂💗
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-</div>
-
-
 <script>
-
-/* =========================
-   HAPPY BIRTHDAY MELODY
-========================= */
-
-let audioContext = null;
+let birthdayAudioContext = null;
 let birthdayOscillators = [];
+let birthdayGain = null;
 let birthdayPlaying = false;
 
+/* HAPPY BIRTHDAY NOTES */
 const notes = {
-    C4: 261.63,
-    D4: 293.66,
-    E4: 329.63,
-    F4: 349.23,
-    G4: 392.00,
-    A4: 440.00,
-    B4: 493.88,
-    C5: 523.25,
-    D5: 587.33,
-    E5: 659.25,
-    F5: 698.46,
-    G5: 783.99
+    C4:261.63,
+    D4:293.66,
+    E4:329.63,
+    F4:349.23,
+    G4:392.00,
+    A4:440.00,
+    B4:493.88,
+    C5:523.25,
+    D5:587.33,
+    E5:659.25,
+    F5:698.46,
+    G5:783.99
 };
 
 const birthdayMelody = [
+    ["G4",300],
+    ["G4",300],
+    ["A4",600],
+    ["G4",600],
+    ["C5",600],
+    ["B4",1000],
 
-    ["G4", .35],
-    ["G4", .35],
-    ["A4", .7],
-    ["G4", .7],
-    ["C5", .7],
-    ["B4", 1],
+    ["G4",300],
+    ["G4",300],
+    ["A4",600],
+    ["G4",600],
+    ["D5",600],
+    ["C5",1000],
 
-    ["G4", .35],
-    ["G4", .35],
-    ["A4", .7],
-    ["G4", .7],
-    ["D5", .7],
-    ["C5", 1],
+    ["G4",300],
+    ["G4",300],
+    ["G5",600],
+    ["E5",600],
+    ["C5",600],
+    ["B4",600],
+    ["A4",1000],
 
-    ["G4", .35],
-    ["G4", .35],
-    ["G5", .7],
-    ["E5", .7],
-    ["C5", .7],
-    ["B4", .7],
-    ["A4", 1],
-
-    ["F5", .35],
-    ["F5", .35],
-    ["E5", .7],
-    ["C5", .7],
-    ["D5", .7],
-    ["C5", 1.2]
-
+    ["F5",300],
+    ["F5",300],
+    ["E5",600],
+    ["C5",600],
+    ["D5",600],
+    ["C5",1200]
 ];
 
+/* PLAY HAPPY BIRTHDAY */
+function playBirthdayMelody(){
 
-function playBirthdayMelody() {
-
-    if (birthdayPlaying) return;
+    if(birthdayPlaying) return;
 
     birthdayPlaying = true;
 
-    audioContext = new (
-        window.AudioContext ||
-        window.webkitAudioContext
-    )();
+    birthdayAudioContext =
+        new (window.AudioContext || window.webkitAudioContext)();
 
-    let startTime =
-        audioContext.currentTime + .05;
+    birthdayGain =
+        birthdayAudioContext.createGain();
 
+    birthdayGain.gain.value = 0.055;
 
-    birthdayMelody.forEach(item => {
+    birthdayGain.connect(
+        birthdayAudioContext.destination
+    );
 
-        const note = item[0];
-        const duration = item[1];
+    function playLoop(){
 
-        const oscillator =
-            audioContext.createOscillator();
+        if(!birthdayPlaying) return;
 
-        const gain =
-            audioContext.createGain();
+        let time =
+            birthdayAudioContext.currentTime + 0.05;
 
-        oscillator.type = "sine";
+        birthdayMelody.forEach(([note,duration]) => {
 
-        oscillator.frequency.value =
-            notes[note];
+            const oscillator =
+                birthdayAudioContext.createOscillator();
 
-        gain.gain.setValueAtTime(
-            .0001,
-            startTime
+            const gain =
+                birthdayAudioContext.createGain();
+
+            oscillator.type = "sine";
+
+            oscillator.frequency.value =
+                notes[note];
+
+            oscillator.connect(gain);
+            gain.connect(birthdayGain);
+
+            gain.gain.setValueAtTime(
+                0.0001,
+                time
+            );
+
+            gain.gain.exponentialRampToValueAtTime(
+                0.8,
+                time + 0.03
+            );
+
+            gain.gain.exponentialRampToValueAtTime(
+                0.0001,
+                time + duration / 1000 - 0.03
+            );
+
+            oscillator.start(time);
+            oscillator.stop(
+                time + duration / 1000
+            );
+
+            birthdayOscillators.push(oscillator);
+
+            time += duration / 1000;
+        });
+
+        const totalDuration =
+            birthdayMelody.reduce(
+                (sum,item) => sum + item[1],
+                0
+            );
+
+        setTimeout(
+            playLoop,
+            totalDuration
         );
+    }
 
-        gain.gain.exponentialRampToValueAtTime(
-            .14,
-            startTime + .03
-        );
-
-        gain.gain.exponentialRampToValueAtTime(
-            .0001,
-            startTime + duration - .04
-        );
-
-        oscillator.connect(gain);
-        gain.connect(audioContext.destination);
-
-        oscillator.start(startTime);
-
-        oscillator.stop(
-            startTime + duration
-        );
-
-        birthdayOscillators.push(
-            oscillator
-        );
-
-        startTime += duration;
-
-    });
-
-
-    setTimeout(() => {
-
-        if (birthdayPlaying) {
-
-            birthdayPlaying = false;
-
-            birthdayOscillators = [];
-
-            playBirthdayMelody();
-
-        }
-
-    }, (startTime - audioContext.currentTime) * 1000);
-
+    playLoop();
 }
 
-
-function stopBirthdayMelody() {
+/* STOP HAPPY BIRTHDAY */
+function stopBirthdayMelody(){
 
     birthdayPlaying = false;
 
     birthdayOscillators.forEach(
         oscillator => {
-
-            try {
+            try{
                 oscillator.stop();
-            } catch(error) {}
-
+            }catch(e){}
         }
     );
 
     birthdayOscillators = [];
 
-    if (audioContext) {
+    if(birthdayAudioContext){
 
-        try {
-            audioContext.close();
-        } catch(error) {}
+        try{
+            birthdayAudioContext.close();
+        }catch(e){}
 
-        audioContext = null;
+        birthdayAudioContext = null;
     }
 }
 
+/* CONFETTI */
+function createConfetti(){
 
-/* =========================
-   CONFETTI
-========================= */
-
-function createConfetti() {
-
-    const shapes = [
-        "square",
-        "rectangle",
-        "circle"
-    ];
-
-    for (let i = 0; i < 100; i++) {
+    for(let i = 0; i < 100; i++){
 
         const piece =
             document.createElement("div");
 
-        piece.className =
-            "confetti";
-
-        const shape =
-            shapes[
-                Math.floor(
-                    Math.random() * shapes.length
-                )
-            ];
-
-        if (shape === "circle") {
-            piece.style.borderRadius = "50%";
-        }
+        piece.className = "confetti";
 
         piece.style.left =
             Math.random() * 100 + "vw";
 
-        piece.style.width =
-            5 + Math.random() * 7 + "px";
+        piece.style.animationDuration =
+            (3 + Math.random() * 4) + "s";
 
-        piece.style.height =
-            7 + Math.random() * 10 + "px";
+        piece.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        piece.style.transform =
+            `rotate(${Math.random() * 360}deg)`;
 
         piece.style.background =
             [
-                "#e99ab9",
-                "#f5c46b",
-                "#a9c6e8",
-                "#b8dca8",
-                "#d5a7d9"
+                "#ff79a8",
+                "#ffd166",
+                "#7dd3fc",
+                "#a7f3d0",
+                "#c4b5fd"
             ][
                 Math.floor(Math.random() * 5)
             ];
-
-        piece.style.animationDuration =
-            3 + Math.random() * 4 + "s";
-
-        piece.style.animationDelay =
-            Math.random() * 1.5 + "s";
 
         document.body.appendChild(piece);
 
         setTimeout(() => {
             piece.remove();
-        }, 8000);
-
+        },8000);
     }
 }
 
-
-/* =========================
-   START BIRTHDAY MUSIC
-========================= */
-
-const startMusicButton =
-    document.getElementById("startMusic");
-
-const musicGate =
-    document.getElementById("musicGate");
-
-startMusicButton.addEventListener(
-    "click",
-    function() {
-
-        playBirthdayMelody();
-
-        musicGate.classList.add("hidden");
-
-    }
-);
-
-
-/* =========================
-   SLOW MESSAGE REVEAL
-========================= */
-
-function revealMessageAndThenPlayMusic() {
+/* REVEAL MESSAGE + START SONG WITH FIRST MESSAGE */
+function revealMessageAndPlayMusic(){
 
     const revealItems =
         document.querySelectorAll(
@@ -1100,153 +728,115 @@ function revealMessageAndThenPlayMusic() {
 
     let delay = 500;
 
-    /*
-       Each item appears slowly.
-       There is a pause between each
-       part so the message feels natural.
-    */
-
-    revealItems.forEach((item, index) => {
+    revealItems.forEach((item,index) => {
 
         setTimeout(() => {
 
             item.classList.add("show");
 
-        }, delay);
+            /*
+             * THE FIRST MESSAGE ELEMENT
+             * STARTS IT MIGHT BE YOU.
+             *
+             * This happens when the first actual
+             * message paragraph appears.
+             */
+            if(index === 3){
 
-        /*
-           Each message part gets roughly
-           2 seconds before the next one.
-        */
-
-        delay += 2100;
-
-    });
-
-
-    /*
-       After EVERYTHING has appeared,
-       wait another 2 seconds,
-       THEN start the song.
-    */
-
-    const totalRevealTime =
-        delay + 2000;
-
-
-    setTimeout(() => {
-
-        const itMightBeYou =
-            document.getElementById(
-                "itMightBeYou"
-            );
-
-        itMightBeYou.currentTime = 0;
-
-        const musicPromise =
-            itMightBeYou.play();
-
-        if (musicPromise !== undefined) {
-
-            musicPromise.catch(
-                function(error) {
-
-                    console.log(
-                        "Audio playback was blocked:",
-                        error
+                const song =
+                    document.getElementById(
+                        "itMightBeYou"
                     );
 
+                song.currentTime = 0;
+
+                const playPromise =
+                    song.play();
+
+                if(playPromise !== undefined){
+
+                    playPromise.catch(
+                        function(error){
+                            console.log(
+                                "Audio playback was blocked:",
+                                error
+                            );
+                        }
+                    );
                 }
-            );
+            }
 
-        }
+        },delay);
 
-    }, totalRevealTime);
-
+        delay += 2100;
+    });
 }
 
+/* START BUTTON */
+document
+.getElementById("startMusicBtn")
+.addEventListener("click",function(){
 
-/* =========================
-   OPEN SURPRISE
-========================= */
+    document
+    .getElementById("musicGate")
+    .classList.add("hidden");
 
-const openButton =
-    document.getElementById("openSurprise");
+    /*
+     * Happy Birthday starts immediately
+     * after the user taps the button.
+     */
+    playBirthdayMelody();
 
-const introCard =
-    document.getElementById("introCard");
+});
 
-const messageCard =
-    document.getElementById("messageCard");
+/* OPEN SURPRISE */
+document
+.getElementById("openButton")
+.addEventListener("click",function(){
 
+    /*
+     * STOP HAPPY BIRTHDAY IMMEDIATELY.
+     */
+    stopBirthdayMelody();
 
-openButton.addEventListener(
-    "click",
-    function() {
-
-        /*
-           Stop Happy Birthday.
-        */
-
-        stopBirthdayMelody();
-
-
-        /*
-           Show the message.
-        */
-
-        introCard.classList.add("hidden");
-
-        messageCard.classList.remove("hidden");
-
-
-        /*
-           Start confetti.
-        */
-
-        createConfetti();
-
-
-        /*
-           Scroll to the beginning
-           of the message.
-        */
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-
-        /*
-           Slowly reveal the entire message.
-           Music starts only after
-           EVERYTHING is visible.
-        */
-
-        revealMessageAndThenPlayMusic();
-
-    }
-);
-
-
-/* =========================
-   CONFETTI CLEANUP
-========================= */
-
-setInterval(() => {
-
-    const confetti =
-        document.querySelectorAll(
-            ".confetti"
+    /*
+     * Make sure It Might Be You isn't
+     * accidentally already playing.
+     */
+    const song =
+        document.getElementById(
+            "itMightBeYou"
         );
 
-    if (confetti.length > 120) {
-        confetti[0].remove();
-    }
+    song.pause();
+    song.currentTime = 0;
 
-}, 3000);
+    /*
+     * Show message page.
+     */
+    document
+    .getElementById("introCard")
+    .classList.add("hidden");
 
+    document
+    .getElementById("messageCard")
+    .classList.remove("hidden");
+
+    createConfetti();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    /*
+     * Message starts revealing.
+     * It Might Be You begins when
+     * the first actual paragraph appears.
+     */
+    revealMessageAndPlayMusic();
+
+});
 </script>
 
 </body>
