@@ -7,9 +7,7 @@
 <title>Happy Birthday Pauleen 💗</title>
 
 <style>
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html,body{
     margin:0;
@@ -90,6 +88,138 @@ button{
 
 
 /* =========================
+   BALLOONS
+   BACKGROUND ONLY
+========================= */
+
+.balloons{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.balloon{
+    position:absolute;
+    bottom:-150px;
+    width:48px;
+    height:62px;
+    border-radius:50% 50% 45% 45%;
+    opacity:.32;
+    animation:balloonFly linear infinite;
+}
+
+.balloon::before{
+    content:"";
+    position:absolute;
+    bottom:-7px;
+    left:20px;
+    width:8px;
+    height:8px;
+    background:inherit;
+    transform:rotate(45deg);
+}
+
+.balloon::after{
+    content:"";
+    position:absolute;
+    top:58px;
+    left:23px;
+    width:1px;
+    height:120px;
+    background:rgba(100,70,80,.22);
+}
+
+.b1{
+    left:5%;
+    width:43px;
+    height:56px;
+    animation-duration:16s;
+    animation-delay:0s;
+    background:#ff82ad;
+}
+
+.b2{
+    left:17%;
+    width:52px;
+    height:67px;
+    animation-duration:19s;
+    animation-delay:4s;
+    background:#ffd166;
+}
+
+.b3{
+    left:31%;
+    width:42px;
+    height:55px;
+    animation-duration:17s;
+    animation-delay:8s;
+    background:#8ed8ff;
+}
+
+.b4{
+    left:48%;
+    width:55px;
+    height:71px;
+    animation-duration:21s;
+    animation-delay:2s;
+    background:#c5a3ff;
+}
+
+.b5{
+    left:64%;
+    width:45px;
+    height:59px;
+    animation-duration:18s;
+    animation-delay:6s;
+    background:#ff9fc4;
+}
+
+.b6{
+    left:78%;
+    width:53px;
+    height:68px;
+    animation-duration:20s;
+    animation-delay:10s;
+    background:#9ee6c0;
+}
+
+.b7{
+    left:91%;
+    width:42px;
+    height:55px;
+    animation-duration:15s;
+    animation-delay:3s;
+    background:#ffbd70;
+}
+
+@keyframes balloonFly{
+    0%{
+        transform:translateY(0) translateX(0) rotate(-3deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:.32;
+    }
+
+    50%{
+        transform:translateY(-55vh) translateX(25px) rotate(5deg);
+    }
+
+    90%{
+        opacity:.32;
+    }
+
+    100%{
+        transform:translateY(-125vh) translateX(-20px) rotate(-5deg);
+        opacity:0;
+    }
+}
+
+
+/* =========================
    MAIN
 ========================= */
 
@@ -97,6 +227,7 @@ button{
     min-height:100vh;
     padding:35px 16px 60px;
     position:relative;
+    z-index:2;
 }
 
 .card{
@@ -265,7 +396,7 @@ h1{
 
 
 /* =========================
-   SLOW TEXT REVEAL
+   SLOW REVEAL
 ========================= */
 
 .reveal{
@@ -292,11 +423,6 @@ h1{
     margin-top:5px;
 }
 
-
-/*
-   This is the vertical path of the dog.
-   It stretches with the entire message.
-*/
 .karaoke-track{
     position:absolute;
     left:0;
@@ -307,8 +433,6 @@ h1{
     pointer-events:none;
 }
 
-
-/* Thin vertical guide */
 .karaoke-line{
     position:absolute;
     left:17px;
@@ -319,14 +443,6 @@ h1{
     border-radius:2px;
 }
 
-
-/*
-   THE SLIDING DOG
-
-   It stays inside the karaoke track and
-   changes its top position whenever the
-   next paragraph appears.
-*/
 .message-dog{
     position:absolute;
     left:0;
@@ -351,11 +467,6 @@ h1{
     pointer-events:none;
 }
 
-
-/*
-   Message text leaves enough room on the
-   left for the sliding dog.
-*/
 .karaoke-content{
     position:relative;
     padding-left:46px;
@@ -368,7 +479,7 @@ h1{
 
 .paw{
     position:fixed;
-    z-index:0;
+    z-index:1;
     opacity:.18;
     font-size:30px;
     animation:floatPaw 8s ease-in-out infinite;
@@ -400,7 +511,7 @@ h1{
 
 .heart{
     position:fixed;
-    z-index:0;
+    z-index:1;
     color:#ff9dbc;
     opacity:.25;
     font-size:25px;
@@ -430,7 +541,7 @@ h1{
 
 .confetti{
     position:fixed;
-    z-index:10;
+    z-index:50;
     width:8px;
     height:14px;
     top:-20px;
@@ -470,8 +581,6 @@ h1{
     }
 
 
-    /* CAKE */
-
     .cake-area{
         width:100%;
         gap:0;
@@ -492,8 +601,6 @@ h1{
     }
 
 
-    /* MESSAGE */
-
     .message-dogs{
         font-size:38px;
     }
@@ -503,8 +610,6 @@ h1{
         line-height:1.7;
     }
 
-
-    /* SLIDING DOG */
 
     .karaoke-track{
         width:30px;
@@ -523,6 +628,13 @@ h1{
 
     .karaoke-content{
         padding-left:34px;
+    }
+
+
+    /* Smaller balloons on phones */
+
+    .balloon{
+        transform:scale(.75);
     }
 }
 
@@ -555,8 +667,24 @@ h1{
 </style>
 </head>
 
-
 <body>
+
+
+<!-- =========================
+     BALLOONS
+========================= -->
+
+<div class="balloons">
+
+    <div class="balloon b1"></div>
+    <div class="balloon b2"></div>
+    <div class="balloon b3"></div>
+    <div class="balloon b4"></div>
+    <div class="balloon b5"></div>
+    <div class="balloon b6"></div>
+    <div class="balloon b7"></div>
+
+</div>
 
 
 <!-- =========================
@@ -587,7 +715,7 @@ h1{
 
 
 <!-- =========================
-     DECORATIONS
+     PAWS
 ========================= -->
 
 <div class="paw p1">🐾</div>
@@ -598,6 +726,9 @@ h1{
 <div class="paw p6">🐾</div>
 <div class="paw p7">🐾</div>
 <div class="paw p8">🐾</div>
+
+
+<!-- HEARTS -->
 
 <div class="heart h1">❤️</div>
 <div class="heart h2">❤️</div>
@@ -688,8 +819,6 @@ h1{
         </div>
 
 
-        <!-- ALWAYS VISIBLE -->
-
         <h1>
             Happy Birthday, Pauleen 💗
         </h1>
@@ -700,16 +829,12 @@ h1{
         </div>
 
 
-        <!-- =========================
-             KARAOKE MESSAGE
-        ========================= -->
+        <!-- KARAOKE MESSAGE -->
 
         <div
             class="karaoke-area"
             id="karaokeArea">
 
-
-            <!-- DOG TRACK -->
 
             <div class="karaoke-track">
 
@@ -725,8 +850,6 @@ h1{
 
             </div>
 
-
-            <!-- MESSAGE CONTENT -->
 
             <div class="karaoke-content">
 
@@ -1118,10 +1241,6 @@ function moveDogToParagraph(paragraph){
     }
 
 
-    /*
-     * Get the exact screen position
-     * of the paragraph.
-     */
     const paragraphRect =
         paragraph.getBoundingClientRect();
 
@@ -1130,21 +1249,11 @@ function moveDogToParagraph(paragraph){
         karaokeArea.getBoundingClientRect();
 
 
-    /*
-     * Calculate the paragraph's position
-     * INSIDE the karaoke area.
-     *
-     * This is the important fix.
-     */
     const relativeTop =
         paragraphRect.top -
         areaRect.top;
 
 
-    /*
-     * Put the dog beside the beginning
-     * of the paragraph.
-     */
     dog.style.top =
         Math.max(
             0,
@@ -1159,7 +1268,7 @@ function moveDogToParagraph(paragraph){
 
 
 /* =========================
-   REVEAL MESSAGE
+   REVEAL MESSAGE + SONG
 ========================= */
 
 function revealMessageAndPlayMusic(){
@@ -1185,18 +1294,11 @@ function revealMessageAndPlayMusic(){
             setTimeout(
                 () => {
 
-                    /*
-                     * Reveal the current item.
-                     */
                     item.classList.add(
                         "show"
                     );
 
 
-                    /*
-                     * Check whether this is
-                     * an actual message paragraph.
-                     */
                     const paragraphIndex =
                         Array.from(
                             messageParagraphs
@@ -1208,9 +1310,8 @@ function revealMessageAndPlayMusic(){
                     ){
 
                         /*
-                         * Give the browser a moment
-                         * to apply the reveal before
-                         * calculating the position.
+                         * Wait for the text
+                         * layout to update.
                          */
                         requestAnimationFrame(
                             () => {
@@ -1224,9 +1325,8 @@ function revealMessageAndPlayMusic(){
 
 
                         /*
-                         * Start "It Might Be You"
-                         * when the first actual
-                         * message appears.
+                         * Start the song with
+                         * the first message.
                          */
                         if(
                             paragraphIndex === 0
@@ -1272,9 +1372,6 @@ function revealMessageAndPlayMusic(){
             );
 
 
-            /*
-             * Time between each message.
-             */
             delay += 2100;
 
         }
@@ -1284,7 +1381,7 @@ function revealMessageAndPlayMusic(){
 
 
 /* =========================
-   START MUSIC BUTTON
+   START MUSIC
 ========================= */
 
 document
@@ -1322,15 +1419,9 @@ document
     "click",
     function(){
 
-        /*
-         * Stop Happy Birthday.
-         */
         stopBirthdayMelody();
 
 
-        /*
-         * Reset the local song.
-         */
         const song =
             document.getElementById(
                 "itMightBeYou"
@@ -1343,9 +1434,6 @@ document
             0;
 
 
-        /*
-         * Switch cards.
-         */
         document
         .getElementById(
             "introCard"
@@ -1364,50 +1452,40 @@ document
         );
 
 
-        /*
-         * Confetti.
-         */
         createConfetti();
 
 
-        /*
-         * Start from top.
-         */
         window.scrollTo({
             top:0,
             behavior:"smooth"
         });
 
 
-        /*
-         * Begin message reveal.
-         */
         revealMessageAndPlayMusic();
 
     }
 );
 
 
-/*
- * If the browser resizes or the phone
- * orientation changes, recalculate the
- * dog's position for the paragraph
- * currently being shown.
- */
+/* =========================
+   KEEP DOG ALIGNED
+   ON RESIZE / ROTATION
+========================= */
+
 window.addEventListener(
     "resize",
     function(){
 
-        const visibleParagraph =
-            document.querySelector(
-                "#messageText p.reveal.show:last-of-type"
+        const shown =
+            document.querySelectorAll(
+                "#messageText p.reveal.show"
             );
 
 
-        if(visibleParagraph){
+        if(shown.length){
 
             moveDogToParagraph(
-                visibleParagraph
+                shown[shown.length - 1]
             );
 
         }
