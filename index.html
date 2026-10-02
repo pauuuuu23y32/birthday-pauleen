@@ -7,9 +7,7 @@
 <title>Happy Birthday Pauleen 💗</title>
 
 <style>
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html,body{
     margin:0;
@@ -21,9 +19,7 @@ html,body{
     overflow-x:hidden;
 }
 
-body{
-    min-height:100vh;
-}
+body{min-height:100vh}
 
 button{
     border:0;
@@ -31,9 +27,7 @@ button{
     font-family:inherit;
 }
 
-.hidden{
-    display:none !important;
-}
+.hidden{display:none!important}
 
 /* MUSIC GATE */
 #musicGate{
@@ -210,6 +204,14 @@ h1{
     margin-bottom:8px;
 }
 
+/* IMPORTANT:
+   Birthday title is NOT a reveal anymore.
+   It stays visible.
+*/
+.message-card h2{
+    margin:0;
+}
+
 .message-dogs{
     font-size:45px;
     margin:18px 0 8px;
@@ -228,27 +230,27 @@ h1{
 .closing{
     font-weight:bold;
     color:#d95784;
-    margin-top:25px !important;
+    margin-top:25px!important;
 }
 
 .note{
     font-size:15px;
     color:#765763;
-    margin-top:30px !important;
+    margin-top:30px!important;
 }
 
 .final{
     font-size:21px;
     font-weight:bold;
     color:#d94f82;
-    margin-top:30px !important;
+    margin-top:30px!important;
 }
 
 /* SLOW REVEAL */
 .reveal{
     opacity:0;
     transform:translateY(18px);
-    transition:opacity 1.5s ease, transform 1.5s ease;
+    transition:opacity 1.5s ease,transform 1.5s ease;
 }
 
 .reveal.show{
@@ -256,21 +258,13 @@ h1{
     transform:translateY(0);
 }
 
-/* =================================================
-   VERTICAL KARAOKE DOG
-   ================================================= */
-
+/* KARAOKE DOG */
 .karaoke-area{
     position:relative;
     width:100%;
     margin-top:5px;
 }
 
-/*
-   The dog stays on the side of the message.
-   It moves vertically downward as the
-   message progresses.
-*/
 .message-dog{
     position:absolute;
     left:-8px;
@@ -279,17 +273,10 @@ h1{
     line-height:1;
     z-index:5;
     opacity:0;
-    transition:
-        top 1.5s ease,
-        opacity .8s ease;
+    transition:top 1.5s ease,opacity .8s ease;
     pointer-events:none;
 }
 
-/*
-   A subtle vertical guide.
-   This makes the movement feel intentional,
-   similar to a karaoke progress indicator.
-*/
 .karaoke-line{
     position:absolute;
     left:8px;
@@ -301,10 +288,6 @@ h1{
     pointer-events:none;
 }
 
-/*
-   Give the text a little room so the dog
-   can stay beside it on larger screens.
-*/
 .karaoke-content{
     position:relative;
     padding-left:38px;
@@ -319,23 +302,18 @@ h1{
     animation:floatPaw 8s ease-in-out infinite;
 }
 
-.p1{left:8%;top:15%;animation-delay:0s;}
-.p2{right:10%;top:30%;animation-delay:2s;}
-.p3{left:15%;bottom:18%;animation-delay:4s;}
-.p4{right:15%;bottom:12%;animation-delay:1s;}
-.p5{left:45%;top:8%;animation-delay:3s;}
-.p6{right:40%;bottom:35%;animation-delay:5s;}
-.p7{left:3%;top:55%;animation-delay:1.5s;}
-.p8{right:3%;top:65%;animation-delay:3.5s;}
+.p1{left:8%;top:15%;animation-delay:0s}
+.p2{right:10%;top:30%;animation-delay:2s}
+.p3{left:15%;bottom:18%;animation-delay:4s}
+.p4{right:15%;bottom:12%;animation-delay:1s}
+.p5{left:45%;top:8%;animation-delay:3s}
+.p6{right:40%;bottom:35%;animation-delay:5s}
+.p7{left:3%;top:55%;animation-delay:1.5s}
+.p8{right:3%;top:65%;animation-delay:3.5s}
 
 @keyframes floatPaw{
-    0%,100%{
-        transform:translateY(0) rotate(0deg);
-    }
-
-    50%{
-        transform:translateY(-18px) rotate(8deg);
-    }
+    0%,100%{transform:translateY(0) rotate(0deg)}
+    50%{transform:translateY(-18px) rotate(8deg)}
 }
 
 /* HEARTS */
@@ -348,20 +326,15 @@ h1{
     animation:heartFloat 7s ease-in-out infinite;
 }
 
-.h1{left:20%;top:10%;animation-delay:1s;}
-.h2{right:20%;top:15%;animation-delay:3s;}
-.h3{left:8%;bottom:30%;animation-delay:2s;}
-.h4{right:8%;bottom:25%;animation-delay:4s;}
-.h5{left:50%;top:20%;animation-delay:5s;}
+.h1{left:20%;top:10%;animation-delay:1s}
+.h2{right:20%;top:15%;animation-delay:3s}
+.h3{left:8%;bottom:30%;animation-delay:2s}
+.h4{right:8%;bottom:25%;animation-delay:4s}
+.h5{left:50%;top:20%;animation-delay:5s}
 
 @keyframes heartFloat{
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-20px);
-    }
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-20px)}
 }
 
 /* CONFETTI */
@@ -474,9 +447,7 @@ h1{
 
     <div class="gate-card">
 
-        <h1>
-            🎂 A little birthday surprise
-        </h1>
+        <h1>🎂 A little birthday surprise</h1>
 
         <p>
             Tap the button below to start the birthday music.
@@ -511,7 +482,6 @@ h1{
 <!-- MAIN PAGE -->
 <main class="page">
 
-
     <!-- INTRO CARD -->
     <section class="card" id="introCard">
 
@@ -526,7 +496,6 @@ h1{
         <div class="subtitle">
             Someone left a little message here just for you. ✨
         </div>
-
 
         <div class="cake-area">
 
@@ -554,7 +523,6 @@ h1{
 
         </div>
 
-
         <button class="open-btn" id="openButton">
             Open your surprise 🎁
         </button>
@@ -569,7 +537,8 @@ h1{
             A little message for you
         </div>
 
-        <h1 class="reveal">
+        <!-- THIS TITLE NOW STAYS VISIBLE -->
+        <h1>
             Happy Birthday, Pauleen 💗
         </h1>
 
@@ -581,16 +550,13 @@ h1{
         <!-- KARAOKE STYLE MESSAGE -->
         <div class="karaoke-area">
 
-            <!-- vertical guide -->
             <div class="karaoke-line"></div>
 
-            <!-- DOG FOLLOWER -->
             <div
                 class="message-dog"
                 id="messageDog">
                 🐶
             </div>
-
 
             <div class="karaoke-content">
 
@@ -746,37 +712,28 @@ function playBirthdayMelody(){
                 const gain =
                     birthdayAudioContext.createGain();
 
-
                 oscillator.type = "sine";
 
                 oscillator.frequency.value =
                     notes[note];
 
-
                 oscillator.connect(gain);
-
                 gain.connect(birthdayGain);
-
 
                 gain.gain.setValueAtTime(
                     0.0001,
                     time
                 );
 
-
                 gain.gain.exponentialRampToValueAtTime(
                     0.8,
                     time + 0.03
                 );
 
-
                 gain.gain.exponentialRampToValueAtTime(
                     0.0001,
-                    time +
-                    duration / 1000 -
-                    0.03
+                    time + duration / 1000 - 0.03
                 );
-
 
                 oscillator.start(time);
 
@@ -784,11 +741,9 @@ function playBirthdayMelody(){
                     time + duration / 1000
                 );
 
-
                 birthdayOscillators.push(
                     oscillator
                 );
-
 
                 time += duration / 1000;
 
@@ -798,8 +753,7 @@ function playBirthdayMelody(){
 
         const totalDuration =
             birthdayMelody.reduce(
-                (sum,item) =>
-                    sum + item[1],
+                (sum,item) => sum + item[1],
                 0
             );
 
@@ -823,7 +777,6 @@ function stopBirthdayMelody(){
 
     birthdayPlaying = false;
 
-
     birthdayOscillators.forEach(
         oscillator => {
 
@@ -834,9 +787,7 @@ function stopBirthdayMelody(){
         }
     );
 
-
     birthdayOscillators = [];
-
 
     if(birthdayAudioContext){
 
@@ -860,26 +811,20 @@ function createConfetti(){
         const piece =
             document.createElement("div");
 
-
         piece.className =
             "confetti";
-
 
         piece.style.left =
             Math.random() * 100 + "vw";
 
-
         piece.style.animationDuration =
             (3 + Math.random() * 4) + "s";
-
 
         piece.style.animationDelay =
             Math.random() * 2 + "s";
 
-
         piece.style.transform =
             `rotate(${Math.random() * 360}deg)`;
-
 
         piece.style.background =
             [
@@ -892,9 +837,7 @@ function createConfetti(){
                 Math.floor(Math.random() * 5)
             ];
 
-
         document.body.appendChild(piece);
-
 
         setTimeout(
             () => piece.remove(),
@@ -906,9 +849,7 @@ function createConfetti(){
 }
 
 
-/* ================================================
-   VERTICAL DOG FOLLOWER
-   ================================================ */
+/* MOVE DOG TO CURRENT PARAGRAPH */
 
 function moveDogToParagraph(paragraph){
 
@@ -917,38 +858,28 @@ function moveDogToParagraph(paragraph){
             "messageDog"
         );
 
-    const area =
-        document.querySelector(
-            ".karaoke-area"
-        );
-
-
-    if(!dog || !area || !paragraph)
+    if(!dog || !paragraph)
         return;
 
 
-    const paragraphTop =
-        paragraph.offsetTop;
-
-
     /*
-     * Put the dog slightly above the
+     * Move the dog vertically to the
      * current paragraph.
      */
     const dogPosition =
-        paragraphTop + 2;
+        paragraph.offsetTop + 2;
 
 
     dog.style.top =
         dogPosition + "px";
 
-
-    dog.style.opacity = "1";
+    dog.style.opacity =
+        "1";
 
 }
 
 
-/* REVEAL MESSAGE */
+/* REVEAL MESSAGE + PLAY SONG */
 
 function revealMessageAndPlayMusic(){
 
@@ -958,9 +889,6 @@ function revealMessageAndPlayMusic(){
         );
 
 
-    /*
-     * Actual message paragraphs.
-     */
     const messageParagraphs =
         document.querySelectorAll(
             "#messageText p.reveal"
@@ -971,20 +899,22 @@ function revealMessageAndPlayMusic(){
 
 
     revealItems.forEach(
-        (item,index) => {
+        (item) => {
 
             setTimeout(
                 () => {
 
+                    /*
+                     * Slowly reveal the item.
+                     */
                     item.classList.add(
                         "show"
                     );
 
 
                     /*
-                     * When each actual message
-                     * paragraph appears, move
-                     * the dog beside it.
+                     * Check if this is an
+                     * actual message paragraph.
                      */
                     const paragraphIndex =
                         Array.from(
@@ -996,47 +926,50 @@ function revealMessageAndPlayMusic(){
                         paragraphIndex !== -1
                     ){
 
+                        /*
+                         * Move dog down to
+                         * this paragraph.
+                         */
                         moveDogToParagraph(
                             item
                         );
 
-                    }
 
-
-                    /*
-                     * Start It Might Be You
-                     * when the FIRST message
-                     * paragraph appears.
-                     */
-                    if(index === 3){
-
-                        const song =
-                            document.getElementById(
-                                "itMightBeYou"
-                            );
-
-
-                        song.currentTime = 0;
-
-
-                        const playPromise =
-                            song.play();
-
-
+                        /*
+                         * Start "It Might Be You"
+                         * exactly when the FIRST
+                         * actual paragraph appears.
+                         */
                         if(
-                            playPromise !== undefined
+                            paragraphIndex === 0
                         ){
 
-                            playPromise.catch(
-                                function(error){
+                            const song =
+                                document.getElementById(
+                                    "itMightBeYou"
+                                );
 
-                                    console.log(
-                                        "Audio playback was blocked:",
-                                        error
-                                    );
+                            song.currentTime = 0;
 
-                                }
-                            );
+                            const playPromise =
+                                song.play();
+
+                            if(
+                                playPromise !== undefined
+                            ){
+
+                                playPromise.catch(
+                                    function(error){
+
+                                        console.log(
+                                            "Audio playback was blocked:",
+                                            error
+                                        );
+
+                                    }
+                                );
+
+                            }
 
                         }
 
@@ -1047,6 +980,9 @@ function revealMessageAndPlayMusic(){
             );
 
 
+            /*
+             * Time between each reveal.
+             */
             delay += 2100;
 
         }
@@ -1055,7 +991,7 @@ function revealMessageAndPlayMusic(){
 }
 
 
-/* START BUTTON */
+/* START MUSIC BUTTON */
 
 document
 .getElementById("startMusicBtn")
@@ -1067,10 +1003,6 @@ document
         .getElementById("musicGate")
         .classList.add("hidden");
 
-
-        /*
-         * Happy Birthday begins here.
-         */
         playBirthdayMelody();
 
     }
@@ -1086,32 +1018,29 @@ document
     function(){
 
         /*
-         * Happy Birthday stops immediately.
+         * Stop Happy Birthday.
          */
         stopBirthdayMelody();
 
 
         /*
-         * Reset second song.
+         * Reset It Might Be You.
          */
         const song =
             document.getElementById(
                 "itMightBeYou"
             );
 
-
         song.pause();
-
         song.currentTime = 0;
 
 
         /*
-         * Show message.
+         * Switch to message card.
          */
         document
         .getElementById("introCard")
         .classList.add("hidden");
-
 
         document
         .getElementById("messageCard")
@@ -1125,7 +1054,7 @@ document
 
 
         /*
-         * Start from top.
+         * Start at top.
          */
         window.scrollTo({
             top:0,
@@ -1134,7 +1063,7 @@ document
 
 
         /*
-         * Start the message sequence.
+         * Begin slow message reveal.
          */
         revealMessageAndPlayMusic();
 
