@@ -88,132 +88,91 @@ button{
 
 
 /* =========================
-   BALLOONS
-   BACKGROUND ONLY
+   BACKGROUND BALLOONS
 ========================= */
 
-.balloons{
+.page-balloons{
     position:fixed;
     inset:0;
-    z-index:0;
     overflow:hidden;
     pointer-events:none;
+    z-index:0;
 }
 
-.balloon{
+.page-balloon{
     position:absolute;
-    bottom:-150px;
-    width:48px;
-    height:62px;
-    border-radius:50% 50% 45% 45%;
-    opacity:.32;
-    animation:balloonFly linear infinite;
+    bottom:-120px;
+    width:42px;
+    height:55px;
+    border-radius:50%;
+    opacity:.20;
+    animation:floatPageBalloon linear infinite;
 }
 
-.balloon::before{
+.page-balloon::after{
     content:"";
     position:absolute;
-    bottom:-7px;
-    left:20px;
-    width:8px;
-    height:8px;
-    background:inherit;
-    transform:rotate(45deg);
-}
-
-.balloon::after{
-    content:"";
-    position:absolute;
-    top:58px;
-    left:23px;
+    top:52px;
+    left:50%;
     width:1px;
-    height:120px;
-    background:rgba(100,70,80,.22);
+    height:100px;
+    background:rgba(100,70,80,.18);
 }
 
-.b1{
+.pb1{
     left:5%;
-    width:43px;
-    height:56px;
-    animation-duration:16s;
-    animation-delay:0s;
     background:#ff82ad;
-}
-
-.b2{
-    left:17%;
-    width:52px;
-    height:67px;
-    animation-duration:19s;
-    animation-delay:4s;
-    background:#ffd166;
-}
-
-.b3{
-    left:31%;
-    width:42px;
-    height:55px;
     animation-duration:17s;
-    animation-delay:8s;
-    background:#8ed8ff;
 }
 
-.b4{
-    left:48%;
-    width:55px;
-    height:71px;
+.pb2{
+    left:25%;
+    background:#ffd166;
     animation-duration:21s;
-    animation-delay:2s;
+    animation-delay:4s;
+}
+
+.pb3{
+    left:48%;
+    background:#8ed8ff;
+    animation-duration:19s;
+    animation-delay:7s;
+}
+
+.pb4{
+    left:72%;
     background:#c5a3ff;
+    animation-duration:22s;
+    animation-delay:2s;
 }
 
-.b5{
-    left:64%;
-    width:45px;
-    height:59px;
-    animation-duration:18s;
-    animation-delay:6s;
-    background:#ff9fc4;
-}
-
-.b6{
-    left:78%;
-    width:53px;
-    height:68px;
-    animation-duration:20s;
-    animation-delay:10s;
+.pb5{
+    left:90%;
     background:#9ee6c0;
+    animation-duration:18s;
+    animation-delay:9s;
 }
 
-.b7{
-    left:91%;
-    width:42px;
-    height:55px;
-    animation-duration:15s;
-    animation-delay:3s;
-    background:#ffbd70;
-}
-
-@keyframes balloonFly{
+@keyframes floatPageBalloon{
     0%{
-        transform:translateY(0) translateX(0) rotate(-3deg);
+        transform:translateY(0) translateX(0);
         opacity:0;
     }
 
     10%{
-        opacity:.32;
+        opacity:.20;
     }
 
     50%{
-        transform:translateY(-55vh) translateX(25px) rotate(5deg);
+        transform:translateY(-55vh) translateX(25px);
     }
 
     90%{
-        opacity:.32;
+        opacity:.20;
     }
 
     100%{
-        transform:translateY(-125vh) translateX(-20px) rotate(-5deg);
+        transform:translateY(-125vh) translateX(-20px);
         opacity:0;
     }
 }
@@ -241,6 +200,149 @@ button{
     box-shadow:0 15px 45px rgba(180,90,120,.18);
     text-align:center;
 }
+
+
+/* =========================
+   MESSAGE CARD BALLOONS
+========================= */
+
+/*
+   These balloons are INSIDE the message card.
+   They are behind the text but above the card
+   background, so you can actually see them.
+*/
+
+#messageCard{
+    overflow:hidden;
+}
+
+.text-balloons{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:0;
+}
+
+.text-balloon{
+    position:absolute;
+    bottom:-100px;
+    width:38px;
+    height:50px;
+    border-radius:50%;
+    opacity:.16;
+    animation:textBalloonFloat linear infinite;
+}
+
+.text-balloon::before{
+    content:"";
+    position:absolute;
+    bottom:-5px;
+    left:15px;
+    width:8px;
+    height:8px;
+    background:inherit;
+    transform:rotate(45deg);
+}
+
+.text-balloon::after{
+    content:"";
+    position:absolute;
+    top:48px;
+    left:50%;
+    width:1px;
+    height:110px;
+    background:rgba(90,60,70,.18);
+}
+
+.tb1{
+    left:4%;
+    background:#ff75a5;
+    animation-duration:18s;
+    animation-delay:0s;
+}
+
+.tb2{
+    left:20%;
+    background:#ffd166;
+    width:32px;
+    height:43px;
+    animation-duration:22s;
+    animation-delay:6s;
+}
+
+.tb3{
+    left:37%;
+    background:#7dd3fc;
+    width:45px;
+    height:58px;
+    animation-duration:20s;
+    animation-delay:3s;
+}
+
+.tb4{
+    left:55%;
+    background:#c4b5fd;
+    width:34px;
+    height:45px;
+    animation-duration:24s;
+    animation-delay:9s;
+}
+
+.tb5{
+    left:73%;
+    background:#ff9fc4;
+    width:43px;
+    height:56px;
+    animation-duration:19s;
+    animation-delay:5s;
+}
+
+.tb6{
+    left:89%;
+    background:#86efac;
+    width:34px;
+    height:45px;
+    animation-duration:21s;
+    animation-delay:12s;
+}
+
+@keyframes textBalloonFloat{
+    0%{
+        transform:translateY(0) translateX(0) rotate(-3deg);
+        opacity:0;
+    }
+
+    12%{
+        opacity:.16;
+    }
+
+    50%{
+        transform:translateY(-420px) translateX(20px) rotate(5deg);
+    }
+
+    88%{
+        opacity:.16;
+    }
+
+    100%{
+        transform:translateY(-900px) translateX(-15px) rotate(-4deg);
+        opacity:0;
+    }
+}
+
+
+/* Keep all actual message content above balloons */
+
+#messageCard > *:not(.text-balloons){
+    position:relative;
+    z-index:5;
+}
+
+
+/* =========================
+   TITLES
+========================= */
 
 .small-title{
     color:#d65b86;
@@ -414,7 +516,7 @@ h1{
 
 
 /* =========================
-   KARAOKE SLIDING DOG
+   SLIDING DOG
 ========================= */
 
 .karaoke-area{
@@ -449,21 +551,16 @@ h1{
     top:0;
     width:36px;
     height:36px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     font-size:31px;
     line-height:1;
-
     z-index:30;
     opacity:0;
-
     transition:
         top 1.5s cubic-bezier(.4,0,.2,1),
         opacity .7s ease;
-
     pointer-events:none;
 }
 
@@ -474,7 +571,7 @@ h1{
 
 
 /* =========================
-   FLOATING PAWS
+   PAWS
 ========================= */
 
 .paw{
@@ -580,7 +677,6 @@ h1{
         font-size:16px;
     }
 
-
     .cake-area{
         width:100%;
         gap:0;
@@ -600,7 +696,6 @@ h1{
         font-size:40px;
     }
 
-
     .message-dogs{
         font-size:38px;
     }
@@ -609,7 +704,6 @@ h1{
         font-size:16px;
         line-height:1.7;
     }
-
 
     .karaoke-track{
         width:30px;
@@ -630,10 +724,7 @@ h1{
         padding-left:34px;
     }
 
-
-    /* Smaller balloons on phones */
-
-    .balloon{
+    .text-balloon{
         transform:scale(.75);
     }
 }
@@ -664,32 +755,28 @@ h1{
         padding-left:32px;
     }
 }
+
 </style>
 </head>
+
 
 <body>
 
 
-<!-- =========================
-     BALLOONS
-========================= -->
+<!-- BACKGROUND BALLOONS -->
 
-<div class="balloons">
+<div class="page-balloons">
 
-    <div class="balloon b1"></div>
-    <div class="balloon b2"></div>
-    <div class="balloon b3"></div>
-    <div class="balloon b4"></div>
-    <div class="balloon b5"></div>
-    <div class="balloon b6"></div>
-    <div class="balloon b7"></div>
+    <div class="page-balloon pb1"></div>
+    <div class="page-balloon pb2"></div>
+    <div class="page-balloon pb3"></div>
+    <div class="page-balloon pb4"></div>
+    <div class="page-balloon pb5"></div>
 
 </div>
 
 
-<!-- =========================
-     MUSIC GATE
-========================= -->
+<!-- MUSIC GATE -->
 
 <div id="musicGate">
 
@@ -714,9 +801,7 @@ h1{
 </div>
 
 
-<!-- =========================
-     PAWS
-========================= -->
+<!-- PAWS -->
 
 <div class="paw p1">🐾</div>
 <div class="paw p2">🐾</div>
@@ -737,14 +822,12 @@ h1{
 <div class="heart h5">❤️</div>
 
 
-<!-- =========================
-     MAIN PAGE
-========================= -->
+<!-- MAIN -->
 
 <main class="page">
 
 
-    <!-- INTRO CARD -->
+    <!-- INTRO -->
 
     <section
         class="card"
@@ -762,8 +845,6 @@ h1{
             Someone left a little message here just for you. ✨
         </div>
 
-
-        <!-- CAKE -->
 
         <div class="cake-area">
 
@@ -805,13 +886,25 @@ h1{
     </section>
 
 
-    <!-- =========================
-         MESSAGE CARD
-    ========================= -->
+    <!-- MESSAGE -->
 
     <section
         class="card hidden"
         id="messageCard">
+
+
+        <!-- BALLOONS INSIDE MESSAGE BACKGROUND -->
+
+        <div class="text-balloons">
+
+            <div class="text-balloon tb1"></div>
+            <div class="text-balloon tb2"></div>
+            <div class="text-balloon tb3"></div>
+            <div class="text-balloon tb4"></div>
+            <div class="text-balloon tb5"></div>
+            <div class="text-balloon tb6"></div>
+
+        </div>
 
 
         <div class="message-title reveal">
@@ -829,7 +922,7 @@ h1{
         </div>
 
 
-        <!-- KARAOKE MESSAGE -->
+        <!-- KARAOKE -->
 
         <div
             class="karaoke-area"
@@ -909,9 +1002,7 @@ h1{
 </main>
 
 
-<!-- =========================
-     LOCAL SONG
-========================= -->
+<!-- LOCAL SONG -->
 
 <audio
     id="itMightBeYou"
@@ -926,9 +1017,8 @@ h1{
 
 <script>
 
-
 /* =========================
-   HAPPY BIRTHDAY MUSIC
+   HAPPY BIRTHDAY
 ========================= */
 
 let birthdayAudioContext = null;
@@ -990,8 +1080,6 @@ const birthdayMelody = [
 ];
 
 
-/* PLAY HAPPY BIRTHDAY */
-
 function playBirthdayMelody(){
 
     if(birthdayPlaying){
@@ -1022,7 +1110,6 @@ function playBirthdayMelody(){
         if(!birthdayPlaying){
             return;
         }
-
 
         let time =
             birthdayAudioContext.currentTime + 0.05;
@@ -1110,8 +1197,6 @@ function playBirthdayMelody(){
 
 }
 
-
-/* STOP HAPPY BIRTHDAY */
 
 function stopBirthdayMelody(){
 
@@ -1268,7 +1353,7 @@ function moveDogToParagraph(paragraph){
 
 
 /* =========================
-   REVEAL MESSAGE + SONG
+   MESSAGE REVEAL
 ========================= */
 
 function revealMessageAndPlayMusic(){
@@ -1309,10 +1394,6 @@ function revealMessageAndPlayMusic(){
                         paragraphIndex !== -1
                     ){
 
-                        /*
-                         * Wait for the text
-                         * layout to update.
-                         */
                         requestAnimationFrame(
                             () => {
 
@@ -1324,10 +1405,6 @@ function revealMessageAndPlayMusic(){
                         );
 
 
-                        /*
-                         * Start the song with
-                         * the first message.
-                         */
                         if(
                             paragraphIndex === 0
                         ){
@@ -1469,7 +1546,6 @@ document
 
 /* =========================
    KEEP DOG ALIGNED
-   ON RESIZE / ROTATION
 ========================= */
 
 window.addEventListener(
