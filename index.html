@@ -194,22 +194,14 @@ h1{
 }
 
 /* MESSAGE */
-#messageCard{
-    margin-top:0;
-}
-
 .message-title{
     color:#d95b87;
     font-size:16px;
     margin-bottom:8px;
 }
 
-/* IMPORTANT:
-   Birthday title is NOT a reveal anymore.
-   It stays visible.
-*/
-.message-card h2{
-    margin:0;
+.message-card h1{
+    margin:0 0 15px;
 }
 
 .message-dogs{
@@ -258,39 +250,62 @@ h1{
     transform:translateY(0);
 }
 
-/* KARAOKE DOG */
+/* KARAOKE AREA */
 .karaoke-area{
     position:relative;
     width:100%;
     margin-top:5px;
 }
 
-.message-dog{
+/*
+   The dog now belongs to the karaoke area itself.
+   It remains visible while the message grows.
+*/
+.karaoke-track{
     position:absolute;
-    left:-8px;
+    left:0;
     top:0;
-    font-size:31px;
-    line-height:1;
-    z-index:5;
-    opacity:0;
-    transition:top 1.5s ease,opacity .8s ease;
+    width:34px;
+    height:100%;
+    z-index:20;
     pointer-events:none;
 }
 
+/* VERTICAL TRACK */
 .karaoke-line{
     position:absolute;
-    left:8px;
-    top:4px;
+    left:15px;
+    top:5px;
     bottom:10px;
     width:2px;
-    background:rgba(217,79,130,.12);
+    background:rgba(217,79,130,.15);
     border-radius:2px;
-    pointer-events:none;
 }
 
+/* SLIDING DOG */
+.message-dog{
+    position:absolute;
+    left:0;
+    top:0;
+    width:32px;
+    height:32px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:29px;
+    line-height:1;
+    z-index:30;
+    opacity:0;
+    transform:translateY(0);
+    transition:
+        top 1.5s ease,
+        opacity .8s ease;
+}
+
+/* MESSAGE CONTENT */
 .karaoke-content{
     position:relative;
-    padding-left:38px;
+    padding-left:42px;
 }
 
 /* FLOATING PAWS */
@@ -403,17 +418,23 @@ h1{
         line-height:1.7;
     }
 
-    .message-dog{
-        left:-4px;
-        font-size:27px;
-    }
-
-    .karaoke-content{
-        padding-left:30px;
+    .karaoke-track{
+        width:28px;
     }
 
     .karaoke-line{
-        left:7px;
+        left:12px;
+    }
+
+    .message-dog{
+        left:-2px;
+        width:27px;
+        height:27px;
+        font-size:25px;
+    }
+
+    .karaoke-content{
+        padding-left:34px;
     }
 }
 
@@ -430,11 +451,11 @@ h1{
     }
 
     .message-dog{
-        font-size:25px;
+        font-size:23px;
     }
 
     .karaoke-content{
-        padding-left:28px;
+        padding-left:32px;
     }
 }
 </style>
@@ -537,7 +558,7 @@ h1{
             A little message for you
         </div>
 
-        <!-- THIS TITLE NOW STAYS VISIBLE -->
+        <!-- ALWAYS VISIBLE -->
         <h1>
             Happy Birthday, Pauleen 💗
         </h1>
@@ -547,17 +568,24 @@ h1{
         </div>
 
 
-        <!-- KARAOKE STYLE MESSAGE -->
+        <!-- KARAOKE MESSAGE -->
         <div class="karaoke-area">
 
-            <div class="karaoke-line"></div>
+            <!-- DOG TRACK -->
+            <div class="karaoke-track">
 
-            <div
-                class="message-dog"
-                id="messageDog">
-                🐶
+                <div class="karaoke-line"></div>
+
+                <div
+                    class="message-dog"
+                    id="messageDog">
+                    🐶
+                </div>
+
             </div>
 
+
+            <!-- MESSAGE CONTENT -->
             <div class="karaoke-content">
 
                 <div class="message-text" id="messageText">
@@ -638,6 +666,8 @@ const notes = {
 
 };
 
+
+/* HAPPY BIRTHDAY MELODY */
 
 const birthdayMelody = [
 
@@ -849,29 +879,42 @@ function createConfetti(){
 }
 
 
-/* MOVE DOG TO CURRENT PARAGRAPH */
+/* MOVE DOG TO CURRENT MESSAGE */
 
 function moveDogToParagraph(paragraph){
 
     const dog =
-        document.getElementById(
-            "messageDog"
-        );
+        document.getElementById("messageDog");
 
-    if(!dog || !paragraph)
+    const karaokeArea =
+        document.querySelector(".karaoke-area");
+
+    if(!dog || !paragraph || !karaokeArea)
         return;
 
 
     /*
-     * Move the dog vertically to the
-     * current paragraph.
+     * Get the paragraph position relative
+     * to the karaoke area.
      */
-    const dogPosition =
-        paragraph.offsetTop + 2;
+    const paragraphTop =
+        paragraph.offsetTop;
 
 
+    /*
+     * Put the dog slightly beside the
+     * beginning of the current paragraph.
+     */
+    const dogTop =
+        paragraphTop + 2;
+
+
+    /*
+     * Keep the dog inside the track.
+     */
     dog.style.top =
-        dogPosition + "px";
+        dogTop + "px";
+
 
     dog.style.opacity =
         "1";
@@ -905,16 +948,14 @@ function revealMessageAndPlayMusic(){
                 () => {
 
                     /*
-                     * Slowly reveal the item.
+                     * Reveal slowly.
                      */
-                    item.classList.add(
-                        "show"
-                    );
+                    item.classList.add("show");
 
 
                     /*
-                     * Check if this is an
-                     * actual message paragraph.
+                     * Check if this item is
+                     * an actual message paragraph.
                      */
                     const paragraphIndex =
                         Array.from(
@@ -922,27 +963,20 @@ function revealMessageAndPlayMusic(){
                         ).indexOf(item);
 
 
-                    if(
-                        paragraphIndex !== -1
-                    ){
+                    if(paragraphIndex !== -1){
 
                         /*
-                         * Move dog down to
-                         * this paragraph.
+                         * Move the dog to the
+                         * paragraph currently appearing.
                          */
-                        moveDogToParagraph(
-                            item
-                        );
+                        moveDogToParagraph(item);
 
 
                         /*
-                         * Start "It Might Be You"
-                         * exactly when the FIRST
-                         * actual paragraph appears.
+                         * Start the song when
+                         * the first paragraph appears.
                          */
-                        if(
-                            paragraphIndex === 0
-                        ){
+                        if(paragraphIndex === 0){
 
                             const song =
                                 document.getElementById(
@@ -954,9 +988,7 @@ function revealMessageAndPlayMusic(){
                             const playPromise =
                                 song.play();
 
-                            if(
-                                playPromise !== undefined
-                            ){
+                            if(playPromise !== undefined){
 
                                 playPromise.catch(
                                     function(error){
@@ -981,7 +1013,7 @@ function revealMessageAndPlayMusic(){
 
 
             /*
-             * Time between each reveal.
+             * Next message appears after 2.1 seconds.
              */
             delay += 2100;
 
@@ -991,7 +1023,7 @@ function revealMessageAndPlayMusic(){
 }
 
 
-/* START MUSIC BUTTON */
+/* START MUSIC */
 
 document
 .getElementById("startMusicBtn")
@@ -1024,7 +1056,7 @@ document
 
 
         /*
-         * Reset It Might Be You.
+         * Reset the song.
          */
         const song =
             document.getElementById(
@@ -1036,7 +1068,7 @@ document
 
 
         /*
-         * Switch to message card.
+         * Show message.
          */
         document
         .getElementById("introCard")
@@ -1054,7 +1086,7 @@ document
 
 
         /*
-         * Start at top.
+         * Start from top.
          */
         window.scrollTo({
             top:0,
@@ -1063,7 +1095,7 @@ document
 
 
         /*
-         * Begin slow message reveal.
+         * Reveal messages.
          */
         revealMessageAndPlayMusic();
 
