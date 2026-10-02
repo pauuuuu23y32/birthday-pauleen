@@ -203,14 +203,8 @@ button{
 
 
 /* =========================
-   MESSAGE CARD BALLOONS
+   BALLOONS INSIDE TEXT AREA
 ========================= */
-
-/*
-   These balloons are INSIDE the message card.
-   They are behind the text but above the card
-   background, so you can actually see them.
-*/
 
 #messageCard{
     overflow:hidden;
@@ -332,7 +326,7 @@ button{
 }
 
 
-/* Keep all actual message content above balloons */
+/* Keep message content above balloons */
 
 #messageCard > *:not(.text-balloons){
     position:relative;
@@ -571,7 +565,7 @@ h1{
 
 
 /* =========================
-   PAWS
+   FLOATING PAWS
 ========================= */
 
 .paw{
@@ -763,7 +757,9 @@ h1{
 <body>
 
 
-<!-- BACKGROUND BALLOONS -->
+<!-- =========================
+     BACKGROUND BALLOONS
+========================= -->
 
 <div class="page-balloons">
 
@@ -776,7 +772,9 @@ h1{
 </div>
 
 
-<!-- MUSIC GATE -->
+<!-- =========================
+     MUSIC GATE
+========================= -->
 
 <div id="musicGate">
 
@@ -801,7 +799,9 @@ h1{
 </div>
 
 
-<!-- PAWS -->
+<!-- =========================
+     PAWS
+========================= -->
 
 <div class="paw p1">🐾</div>
 <div class="paw p2">🐾</div>
@@ -822,12 +822,14 @@ h1{
 <div class="heart h5">❤️</div>
 
 
-<!-- MAIN -->
+<!-- =========================
+     MAIN PAGE
+========================= -->
 
 <main class="page">
 
 
-    <!-- INTRO -->
+    <!-- INTRO CARD -->
 
     <section
         class="card"
@@ -845,6 +847,8 @@ h1{
             Someone left a little message here just for you. ✨
         </div>
 
+
+        <!-- CAKE -->
 
         <div class="cake-area">
 
@@ -886,14 +890,16 @@ h1{
     </section>
 
 
-    <!-- MESSAGE -->
+    <!-- =========================
+         MESSAGE CARD
+    ========================= -->
 
     <section
         class="card hidden"
         id="messageCard">
 
 
-        <!-- BALLOONS INSIDE MESSAGE BACKGROUND -->
+        <!-- BALLOONS BEHIND TEXT -->
 
         <div class="text-balloons">
 
@@ -912,6 +918,8 @@ h1{
         </div>
 
 
+        <!-- THIS STAYS VISIBLE -->
+
         <h1>
             Happy Birthday, Pauleen 💗
         </h1>
@@ -922,7 +930,7 @@ h1{
         </div>
 
 
-        <!-- KARAOKE -->
+        <!-- KARAOKE MESSAGE -->
 
         <div
             class="karaoke-area"
@@ -1002,7 +1010,9 @@ h1{
 </main>
 
 
-<!-- LOCAL SONG -->
+<!-- =========================
+     LOCAL SONG
+========================= -->
 
 <audio
     id="itMightBeYou"
@@ -1017,8 +1027,9 @@ h1{
 
 <script>
 
+
 /* =========================
-   HAPPY BIRTHDAY
+   HAPPY BIRTHDAY MUSIC
 ========================= */
 
 let birthdayAudioContext = null;
@@ -1026,6 +1037,213 @@ let birthdayOscillators = [];
 let birthdayGain = null;
 let birthdayPlaying = false;
 
+
+/* =========================
+   IT MIGHT BE YOU
+========================= */
+
+let itMightBeYouContext = null;
+let itMightBeYouBuffer = null;
+let itMightBeYouSource = null;
+let itMightBeYouReady = null;
+
+
+const itMightBeYouAudio =
+    document.getElementById(
+        "itMightBeYou"
+    );
+
+
+/*
+   Prepare the song during the FIRST
+   user interaction.
+
+   IMPORTANT:
+   This does NOT play the song.
+
+   It only loads the MP3 so the browser
+   is already aware of the audio.
+*/
+
+function prepareItMightBeYou(){
+
+    if(itMightBeYouReady){
+        return itMightBeYouReady;
+    }
+
+
+    itMightBeYouContext =
+        new (
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
+
+
+    itMightBeYouReady =
+        fetch(
+            "it-might-be-you.mp3"
+        )
+        .then(
+            response => {
+
+                if(!response.ok){
+
+                    throw new Error(
+                        "Could not load it-might-be-you.mp3"
+                    );
+
+                }
+
+                return response.arrayBuffer();
+
+            }
+        )
+        .then(
+            arrayBuffer => {
+
+                return itMightBeYouContext.decodeAudioData(
+                    arrayBuffer
+                );
+
+            }
+        )
+        .then(
+            buffer => {
+
+                itMightBeYouBuffer =
+                    buffer;
+
+                return buffer;
+
+            }
+        )
+        .catch(
+            error => {
+
+                console.error(
+                    "Could not prepare It Might Be You:",
+                    error
+                );
+
+                return null;
+
+            }
+        );
+
+
+    return itMightBeYouReady;
+
+}
+
+
+/* =========================
+   PLAY IT MIGHT BE YOU
+========================= */
+
+async function playItMightBeYou(){
+
+    try{
+
+        const buffer =
+            await prepareItMightBeYou();
+
+
+        /*
+           If the MP3 was successfully decoded,
+           play it using Web Audio.
+        */
+
+        if(
+            buffer &&
+            itMightBeYouContext
+        ){
+
+            if(
+                itMightBeYouContext.state ===
+                "suspended"
+            ){
+
+                await itMightBeYouContext.resume();
+
+            }
+
+
+            if(itMightBeYouSource){
+
+                try{
+                    itMightBeYouSource.stop();
+                }
+                catch(e){}
+
+            }
+
+
+            itMightBeYouSource =
+                itMightBeYouContext.createBufferSource();
+
+
+            itMightBeYouSource.buffer =
+                buffer;
+
+
+            itMightBeYouSource.connect(
+                itMightBeYouContext.destination
+            );
+
+
+            itMightBeYouSource.start(0);
+
+
+            return;
+
+        }
+
+
+        /*
+           Fallback to normal HTML audio.
+        */
+
+        itMightBeYouAudio.currentTime =
+            0;
+
+
+        const fallback =
+            itMightBeYouAudio.play();
+
+
+        if(
+            fallback !== undefined
+        ){
+
+            fallback.catch(
+                error => {
+
+                    console.log(
+                        "Fallback audio blocked:",
+                        error
+                    );
+
+                }
+            );
+
+        }
+
+    }
+    catch(error){
+
+        console.error(
+            "It Might Be You playback error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================
+   HAPPY BIRTHDAY NOTES
+========================= */
 
 const notes = {
 
@@ -1080,13 +1298,19 @@ const birthdayMelody = [
 ];
 
 
+/* =========================
+   PLAY HAPPY BIRTHDAY
+========================= */
+
 function playBirthdayMelody(){
 
     if(birthdayPlaying){
         return;
     }
 
+
     birthdayPlaying = true;
+
 
     birthdayAudioContext =
         new (
@@ -1098,7 +1322,10 @@ function playBirthdayMelody(){
     birthdayGain =
         birthdayAudioContext.createGain();
 
-    birthdayGain.gain.value = 0.055;
+
+    birthdayGain.gain.value =
+        0.055;
+
 
     birthdayGain.connect(
         birthdayAudioContext.destination
@@ -1111,8 +1338,10 @@ function playBirthdayMelody(){
             return;
         }
 
+
         let time =
-            birthdayAudioContext.currentTime + 0.05;
+            birthdayAudioContext.currentTime +
+            0.05;
 
 
         birthdayMelody.forEach(
@@ -1120,6 +1349,7 @@ function playBirthdayMelody(){
 
                 const oscillator =
                     birthdayAudioContext.createOscillator();
+
 
                 const gain =
                     birthdayAudioContext.createGain();
@@ -1134,6 +1364,7 @@ function playBirthdayMelody(){
 
 
                 oscillator.connect(gain);
+
 
                 gain.connect(
                     birthdayGain
@@ -1154,14 +1385,18 @@ function playBirthdayMelody(){
 
                 gain.gain.exponentialRampToValueAtTime(
                     0.0001,
-                    time + duration / 1000 - 0.03
+                    time +
+                    duration / 1000 -
+                    0.03
                 );
 
 
                 oscillator.start(time);
 
+
                 oscillator.stop(
-                    time + duration / 1000
+                    time +
+                    duration / 1000
                 );
 
 
@@ -1198,9 +1433,14 @@ function playBirthdayMelody(){
 }
 
 
+/* =========================
+   STOP HAPPY BIRTHDAY
+========================= */
+
 function stopBirthdayMelody(){
 
-    birthdayPlaying = false;
+    birthdayPlaying =
+        false;
 
 
     birthdayOscillators.forEach(
@@ -1215,7 +1455,8 @@ function stopBirthdayMelody(){
     );
 
 
-    birthdayOscillators = [];
+    birthdayOscillators =
+        [];
 
 
     if(birthdayAudioContext){
@@ -1225,7 +1466,8 @@ function stopBirthdayMelody(){
         }
         catch(e){}
 
-        birthdayAudioContext = null;
+        birthdayAudioContext =
+            null;
 
     }
 
@@ -1255,15 +1497,22 @@ function createConfetti(){
 
 
         piece.style.left =
-            Math.random() * 100 + "vw";
+            Math.random() *
+            100 +
+            "vw";
 
 
         piece.style.animationDuration =
-            (3 + Math.random() * 4) + "s";
+            (
+                3 +
+                Math.random() * 4
+            ) +
+            "s";
 
 
         piece.style.animationDelay =
-            Math.random() * 2 + "s";
+            Math.random() * 2 +
+            "s";
 
 
         piece.style.transform =
@@ -1303,7 +1552,9 @@ function createConfetti(){
    SLIDING DOG
 ========================= */
 
-function moveDogToParagraph(paragraph){
+function moveDogToParagraph(
+    paragraph
+){
 
     const dog =
         document.getElementById(
@@ -1322,7 +1573,9 @@ function moveDogToParagraph(paragraph){
         !paragraph ||
         !karaokeArea
     ){
+
         return;
+
     }
 
 
@@ -1343,7 +1596,8 @@ function moveDogToParagraph(paragraph){
         Math.max(
             0,
             relativeTop
-        ) + "px";
+        ) +
+        "px";
 
 
     dog.style.opacity =
@@ -1353,7 +1607,7 @@ function moveDogToParagraph(paragraph){
 
 
 /* =========================
-   MESSAGE REVEAL
+   REVEAL MESSAGE
 ========================= */
 
 function revealMessageAndPlayMusic(){
@@ -1370,7 +1624,8 @@ function revealMessageAndPlayMusic(){
         );
 
 
-    let delay = 500;
+    let delay =
+        500;
 
 
     revealItems.forEach(
@@ -1391,7 +1646,8 @@ function revealMessageAndPlayMusic(){
 
 
                     if(
-                        paragraphIndex !== -1
+                        paragraphIndex !==
+                        -1
                     ){
 
                         requestAnimationFrame(
@@ -1405,40 +1661,21 @@ function revealMessageAndPlayMusic(){
                         );
 
 
+                        /*
+                           THIS IS THE ONLY PLACE
+                           WHERE IT MIGHT BE YOU
+                           STARTS.
+
+                           It waits until the FIRST
+                           actual message paragraph
+                           appears.
+                        */
+
                         if(
                             paragraphIndex === 0
                         ){
 
-                            const song =
-                                document.getElementById(
-                                    "itMightBeYou"
-                                );
-
-
-                            song.currentTime =
-                                0;
-
-
-                            const playPromise =
-                                song.play();
-
-
-                            if(
-                                playPromise !== undefined
-                            ){
-
-                                playPromise.catch(
-                                    function(error){
-
-                                        console.log(
-                                            "Audio playback was blocked:",
-                                            error
-                                        );
-
-                                    }
-                                );
-
-                            }
+                            playItMightBeYou();
 
                         }
 
@@ -1449,7 +1686,8 @@ function revealMessageAndPlayMusic(){
             );
 
 
-            delay += 2100;
+            delay +=
+                2100;
 
         }
     );
@@ -1469,6 +1707,15 @@ document
     "click",
     function(){
 
+        /*
+           Prepare the MP3 now.
+
+           It does NOT play.
+        */
+
+        prepareItMightBeYou();
+
+
         document
         .getElementById(
             "musicGate"
@@ -1477,6 +1724,11 @@ document
             "hidden"
         );
 
+
+        /*
+           Happy Birthday still starts
+           exactly here.
+        */
 
         playBirthdayMelody();
 
@@ -1496,20 +1748,27 @@ document
     "click",
     function(){
 
+        /*
+           Stop Happy Birthday.
+        */
+
         stopBirthdayMelody();
 
 
-        const song =
-            document.getElementById(
-                "itMightBeYou"
-            );
+        /*
+           IMPORTANT:
+           Do NOT start It Might Be You here.
+        */
 
+        itMightBeYouAudio.pause();
 
-        song.pause();
-
-        song.currentTime =
+        itMightBeYouAudio.currentTime =
             0;
 
+
+        /*
+           Show message.
+        */
 
         document
         .getElementById(
@@ -1538,6 +1797,12 @@ document
         });
 
 
+        /*
+           This starts the slow message reveal.
+           The first paragraph will trigger
+           It Might Be You.
+        */
+
         revealMessageAndPlayMusic();
 
     }
@@ -1561,7 +1826,9 @@ window.addEventListener(
         if(shown.length){
 
             moveDogToParagraph(
-                shown[shown.length - 1]
+                shown[
+                    shown.length - 1
+                ]
             );
 
         }
