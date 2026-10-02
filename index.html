@@ -25,19 +25,19 @@ body {
     overflow-x: hidden;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
-
 .page {
     min-height: 100vh;
     position: relative;
     overflow: hidden;
     background:
-        radial-gradient(circle at 20% 20%, rgba(255, 190, 215, .28), transparent 28%),
-        radial-gradient(circle at 80% 30%, rgba(255, 220, 170, .25), transparent 28%),
+        radial-gradient(circle at 20% 20%, rgba(255,190,215,.28), transparent 28%),
+        radial-gradient(circle at 80% 30%, rgba(255,220,170,.25), transparent 28%),
         linear-gradient(180deg, #fff8fc 0%, #fff3f8 100%);
 }
+
+/* =========================
+   PAWS
+========================= */
 
 .paw {
     position: fixed;
@@ -73,12 +73,16 @@ body {
     }
 }
 
+/* =========================
+   HEART BALLOONS
+========================= */
+
 .balloon {
     position: fixed;
     width: 48px;
     height: 62px;
-    border-radius: 50% 50% 48% 48%;
-    background: rgba(255, 165, 195, .22);
+    border-radius: 50%;
+    background: rgba(255,165,195,.22);
     pointer-events: none;
     z-index: 1;
     animation: balloonFloat 7s ease-in-out infinite;
@@ -91,7 +95,7 @@ body {
     top: 60px;
     width: 1px;
     height: 100px;
-    background: rgba(150, 100, 120, .15);
+    background: rgba(150,100,120,.15);
 }
 
 .balloon:nth-of-type(8) {
@@ -112,7 +116,7 @@ body {
 }
 
 @keyframes balloonFloat {
-    0%, 100% {
+    0%,100% {
         transform: translateY(0) rotate(-3deg);
     }
     50% {
@@ -154,7 +158,11 @@ body {
     align-items: center;
     padding: 24px;
     background:
-        radial-gradient(circle at center, rgba(255,255,255,.92), rgba(255,235,245,.98));
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,.92),
+            rgba(255,235,245,.98)
+        );
     transition: opacity .8s ease, visibility .8s ease;
 }
 
@@ -170,13 +178,13 @@ body {
     padding: 38px 28px;
     border-radius: 28px;
     background: rgba(255,255,255,.88);
-    box-shadow: 0 20px 60px rgba(110, 65, 90, .15);
-    border: 1px solid rgba(255, 190, 215, .6);
+    box-shadow: 0 20px 60px rgba(110,65,90,.15);
+    border: 1px solid rgba(255,190,215,.6);
     animation: cardAppear 1.2s ease both;
 }
 
 .gate-card h1 {
-    font-size: clamp(27px, 7vw, 42px);
+    font-size: clamp(27px,7vw,42px);
     color: #9b5877;
     margin-bottom: 12px;
 }
@@ -196,15 +204,15 @@ body {
     padding: 15px 25px;
     font-size: 17px;
     color: white;
-    background: linear-gradient(135deg, #d77da1, #a95d80);
-    box-shadow: 0 10px 25px rgba(169, 93, 128, .25);
+    background: linear-gradient(135deg,#d77da1,#a95d80);
+    box-shadow: 0 10px 25px rgba(169,93,128,.25);
     transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .music-button:hover,
 .open-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 14px 30px rgba(169, 93, 128, .3);
+    box-shadow: 0 14px 30px rgba(169,93,128,.3);
 }
 
 @keyframes cardAppear {
@@ -219,7 +227,7 @@ body {
 }
 
 /* =========================
-   MAIN CONTENT
+   MAIN
 ========================= */
 
 .main {
@@ -233,12 +241,12 @@ body {
 }
 
 .card {
-    width: min(720px, 94vw);
+    width: min(720px,94vw);
     background: rgba(255,255,255,.84);
-    border: 1px solid rgba(255, 190, 215, .65);
+    border: 1px solid rgba(255,190,215,.65);
     border-radius: 32px;
-    padding: clamp(28px, 6vw, 55px);
-    box-shadow: 0 25px 80px rgba(110, 65, 90, .13);
+    padding: clamp(28px,6vw,55px);
+    box-shadow: 0 25px 80px rgba(110,65,90,.13);
     text-align: center;
     backdrop-filter: blur(8px);
     animation: mainAppear 1.4s ease both;
@@ -268,20 +276,20 @@ body {
 }
 
 h1.main-title {
-    font-size: clamp(38px, 9vw, 65px);
+    font-size: clamp(38px,9vw,65px);
     color: #9b5877;
     line-height: 1.05;
     margin-bottom: 12px;
 }
 
 .subtitle {
-    font-size: clamp(18px, 4vw, 22px);
+    font-size: clamp(18px,4vw,22px);
     color: #765365;
     margin-bottom: 28px;
 }
 
 /* =========================
-   CAKE + DOGS
+   CAKE
 ========================= */
 
 .cake-area {
@@ -289,7 +297,7 @@ h1.main-title {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    gap: clamp(12px, 5vw, 50px);
+    gap: clamp(12px,5vw,50px);
     margin: 24px 0 32px;
 }
 
@@ -297,7 +305,8 @@ h1.main-title {
     position: relative;
     width: 190px;
     height: 155px;
-    margin: 0 auto;
+    flex: 0 0 190px;
+    margin: 0;
 }
 
 .cake-top {
@@ -353,7 +362,7 @@ h1.main-title {
     position: absolute;
     width: 10px;
     height: 16px;
-    border-radius: 50% 50% 50% 50%;
+    border-radius: 50%;
     background: #f6b84b;
     top: -18px;
     left: .5px;
@@ -361,19 +370,26 @@ h1.main-title {
 }
 
 @keyframes flame {
-    from { transform: scale(.85) translateY(1px); }
-    to { transform: scale(1.1) translateY(-2px); }
+    from {
+        transform: scale(.85) translateY(1px);
+    }
+    to {
+        transform: scale(1.1) translateY(-2px);
+    }
 }
 
+/* DOGS */
+
 .dog {
-    font-size: clamp(45px, 11vw, 75px);
+    font-size: clamp(45px,11vw,75px);
     line-height: 1;
     filter: drop-shadow(0 8px 7px rgba(90,50,70,.1));
     animation: dogFloat 3.5s ease-in-out infinite;
+    flex: 0 0 auto;
 }
 
 .dog.left {
-    transform: scaleX(-1);
+    animation-name: dogFloatLeft;
 }
 
 .dog.right {
@@ -381,27 +397,77 @@ h1.main-title {
 }
 
 @keyframes dogFloat {
-    0%, 100% { transform: translateY(0) rotate(-2deg); }
-    50% { transform: translateY(-8px) rotate(2deg); }
-}
-
-.dog.left {
-    animation-name: dogFloatLeft;
+    0%,100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(2deg);
+    }
 }
 
 @keyframes dogFloatLeft {
-    0%, 100% { transform: scaleX(-1) translateY(0) rotate(-2deg); }
-    50% { transform: scaleX(-1) translateY(-8px) rotate(2deg); }
+    0%,100% {
+        transform: scaleX(-1) translateY(0) rotate(-2deg);
+    }
+    50% {
+        transform: scaleX(-1) translateY(-8px) rotate(2deg);
+    }
 }
 
 /* =========================
-   MESSAGE
+   MESSAGE SCREEN
+========================= */
+
+#messageCard {
+    width: min(720px,94vw);
+    padding-left: clamp(22px,5vw,55px);
+    padding-right: clamp(22px,5vw,55px);
+}
+
+#messageCard .main-title {
+    text-align: center;
+}
+
+/* Centered dogs */
+
+.message-dogs {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    font-size: clamp(38px,10vw,55px);
+    margin: 12px auto 28px;
+    line-height: 1;
+}
+
+/* =========================
+   SLOW MESSAGE REVEAL
 ========================= */
 
 .message {
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
     text-align: left;
-    margin-top: 25px;
-    animation: messageAppear 1.2s ease both;
+}
+
+/*
+   Every message part starts invisible.
+   JavaScript reveals them one by one.
+*/
+
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .message p {
@@ -419,29 +485,24 @@ h1.main-title {
 }
 
 .note {
-    margin-top: 30px;
+    width: 100%;
+    margin: 30px auto 0;
     padding: 22px;
     border-radius: 20px;
-    background: rgba(255, 224, 237, .5);
-    border: 1px solid rgba(215, 140, 168, .3);
+    background: rgba(255,224,237,.5);
+    border: 1px solid rgba(215,140,168,.3);
     font-size: 16px;
     line-height: 1.7;
     text-align: center;
 }
 
 .final {
+    width: 100%;
     margin-top: 34px;
-    font-size: clamp(24px, 6vw, 34px);
+    font-size: clamp(24px,6vw,34px);
     color: #9b5877;
     font-weight: bold;
     text-align: center;
-}
-
-.message-dogs {
-    text-align: center;
-    font-size: 48px;
-    margin: 5px 0 25px;
-    letter-spacing: 18px;
 }
 
 @keyframes messageAppear {
@@ -456,36 +517,92 @@ h1.main-title {
 }
 
 /* =========================
-   RESPONSIVE
+   PHONE
 ========================= */
 
-@media (max-width: 600px) {
+@media (max-width:600px) {
+
+    .main {
+        padding: 25px 10px;
+        align-items: flex-start;
+    }
+
     .card {
-        padding: 28px 20px;
+        width: 100%;
+        padding: 28px 18px;
         border-radius: 25px;
+        margin-top: 10px;
+    }
+
+    #messageCard {
+        width: 100%;
+        padding: 28px 18px;
     }
 
     .cake-area {
-        gap: 8px;
-    }
-
-    .dog {
-        font-size: 45px;
+        width: 100%;
+        gap: 0;
+        justify-content: center;
+        align-items: flex-end;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .cake {
-        transform: scale(.85);
-        margin-left: -8px;
-        margin-right: -8px;
+        transform: scale(.78);
+        transform-origin: center bottom;
+        margin-left: -12px;
+        margin-right: -12px;
+    }
+
+    .dog {
+        font-size: 42px;
+    }
+
+    .message-dogs {
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .message {
+        width: 100%;
     }
 
     .message p {
         font-size: 17px;
-        line-height: 1.75;
+        line-height: 1.78;
     }
 
-    .gate-card {
-        padding: 32px 21px;
+    .note {
+        padding: 19px 16px;
+        font-size: 15.5px;
+    }
+
+    .final {
+        font-size: 27px;
+    }
+}
+
+@media (max-width:380px) {
+
+    .card,
+    #messageCard {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .cake {
+        transform: scale(.68);
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+
+    .dog {
+        font-size: 36px;
+    }
+
+    .message p {
+        font-size: 16px;
     }
 }
 </style>
@@ -494,20 +611,25 @@ h1.main-title {
 <body>
 
 <!-- =========================
-     LOCAL AUDIO
+     LOCAL MUSIC
 ========================= -->
 
 <audio id="itMightBeYou" preload="auto">
     <source src="it-might-be-you.mp3" type="audio/mpeg">
 </audio>
 
+
 <!-- =========================
      MUSIC START SCREEN
 ========================= -->
 
 <div id="musicGate">
+
     <div class="gate-card">
-        <div style="font-size:55px; margin-bottom:15px;">🎂</div>
+
+        <div style="font-size:55px; margin-bottom:15px;">
+            🎂
+        </div>
 
         <h1>A little birthday surprise</h1>
 
@@ -518,16 +640,16 @@ h1.main-title {
         <button class="music-button" id="startMusic">
             🎵 Start Birthday Music
         </button>
+
     </div>
+
 </div>
 
-<!-- =========================
-     MAIN PAGE
-========================= -->
 
 <div class="page">
 
-    <!-- Floating paws -->
+    <!-- PAWS -->
+
     <div class="paw">🐾</div>
     <div class="paw">🐾</div>
     <div class="paw">🐾</div>
@@ -536,14 +658,18 @@ h1.main-title {
     <div class="paw">🐾</div>
     <div class="paw">🐾</div>
 
-    <!-- Heart balloons -->
+    <!-- HEART BALLOONS -->
+
     <div class="balloon">❤️</div>
     <div class="balloon">❤️</div>
     <div class="balloon">❤️</div>
+
 
     <main class="main">
 
-        <!-- INTRO CARD -->
+        <!-- =========================
+             FIRST SLIDE
+        ========================= -->
 
         <section class="card" id="introCard">
 
@@ -558,6 +684,7 @@ h1.main-title {
             <div class="subtitle">
                 Someone left a little message here just for you. ✨
             </div>
+
 
             <div class="cake-area">
 
@@ -593,6 +720,7 @@ h1.main-title {
 
             </div>
 
+
             <button class="open-button" id="openSurprise">
                 Open your surprise 🎁
             </button>
@@ -600,25 +728,36 @@ h1.main-title {
         </section>
 
 
-        <!-- MESSAGE CARD -->
+        <!-- =========================
+             SECOND SLIDE
+        ========================= -->
 
         <section class="card hidden" id="messageCard">
 
-            <div class="small-title">
+            <!-- Heading -->
+
+            <div class="small-title reveal">
                 A little message for you
             </div>
 
-            <h1 class="main-title">
+            <h1 class="main-title reveal">
                 Happy Birthday, Pauleen 💗
             </h1>
 
-            <div class="message-dogs">
-                🐶 🐶
+
+            <!-- Dogs -->
+
+            <div class="message-dogs reveal">
+                <span>🐶</span>
+                <span>🐶</span>
             </div>
+
 
             <div class="message">
 
-                <p>
+                <!-- Paragraph 1 -->
+
+                <p class="reveal">
                     I hope you celebrate your day with your loved ones
                     and the people who are always there for you.
                     I hope you're doing good, and I wish you all the best.
@@ -626,39 +765,60 @@ h1.main-title {
                     all your goals in life.
                 </p>
 
-                <p>
+
+                <!-- Paragraph 2 -->
+
+                <p class="reveal">
                     I am happy and thankful that you made my last months
                     and my last semester — which was the hardest and most
                     crucial one — a bit lighter. I already graduated.
                     Thankuu ng marami sayo!
                 </p>
 
-                <p>
+
+                <!-- Paragraph 3 -->
+
+                <p class="reveal">
                     How r u? Nakauwi ka na kaya?
                 </p>
 
-                <p>
+
+                <!-- Paragraph 4 -->
+
+                <p class="reveal">
                     Sana happy ka sa career and path na tinatahak mo ngayon.
                     May God give you peace, guide you, and lead you to good decisions.
                 </p>
 
-                <p>
+
+                <!-- Paragraph 5 -->
+
+                <p class="reveal">
                     Take care as always, Pauleen.
                     I genuinely hope that life treats you well and that this
                     new chapter brings you good things.
                 </p>
 
-                <p class="closing">
+
+                <!-- Closing -->
+
+                <p class="closing reveal">
                     Happy Birthday again. 💗
                 </p>
 
-                <div class="note">
+
+                <!-- Note -->
+
+                <div class="note reveal">
                     I tried my best to include your favorite animal in this
                     little website, and of course, your favorite song too.
                     I hope you like it. 💗
                 </div>
 
-                <div class="final">
+
+                <!-- Final -->
+
+                <div class="final reveal">
                     Happy Birthday RCST! 🎂💗
                 </div>
 
@@ -667,6 +827,7 @@ h1.main-title {
         </section>
 
     </main>
+
 </div>
 
 
@@ -688,45 +849,46 @@ const notes = {
     G4: 392.00,
     A4: 440.00,
     B4: 493.88,
-    C5: 523.25
+    C5: 523.25,
+    D5: 587.33,
+    E5: 659.25,
+    F5: 698.46,
+    G5: 783.99
 };
 
 const birthdayMelody = [
-    ["G4", 0.35],
-    ["G4", 0.35],
-    ["A4", 0.7],
-    ["G4", 0.7],
-    ["C5", 0.7],
-    ["B4", 1.0],
 
-    ["G4", 0.35],
-    ["G4", 0.35],
-    ["A4", 0.7],
-    ["G4", 0.7],
-    ["D5", 0.7],
-    ["C5", 1.0],
+    ["G4", .35],
+    ["G4", .35],
+    ["A4", .7],
+    ["G4", .7],
+    ["C5", .7],
+    ["B4", 1],
 
-    ["G4", 0.35],
-    ["G4", 0.35],
-    ["G5", 0.7],
-    ["E5", 0.7],
-    ["C5", 0.7],
-    ["B4", 0.7],
-    ["A4", 1.0],
+    ["G4", .35],
+    ["G4", .35],
+    ["A4", .7],
+    ["G4", .7],
+    ["D5", .7],
+    ["C5", 1],
 
-    ["F5", 0.35],
-    ["F5", 0.35],
-    ["E5", 0.7],
-    ["C5", 0.7],
-    ["D5", 0.7],
+    ["G4", .35],
+    ["G4", .35],
+    ["G5", .7],
+    ["E5", .7],
+    ["C5", .7],
+    ["B4", .7],
+    ["A4", 1],
+
+    ["F5", .35],
+    ["F5", .35],
+    ["E5", .7],
+    ["C5", .7],
+    ["D5", .7],
     ["C5", 1.2]
+
 ];
 
-/* Add missing notes */
-notes.G5 = 783.99;
-notes.D5 = 587.33;
-notes.E5 = 659.25;
-notes.F5 = 698.46;
 
 function playBirthdayMelody() {
 
@@ -739,51 +901,73 @@ function playBirthdayMelody() {
         window.webkitAudioContext
     )();
 
-    let startTime = audioContext.currentTime + 0.05;
+    let startTime =
+        audioContext.currentTime + .05;
 
-    birthdayMelody.forEach((item, index) => {
+
+    birthdayMelody.forEach(item => {
 
         const note = item[0];
         const duration = item[1];
 
-        const oscillator = audioContext.createOscillator();
-        const gain = audioContext.createGain();
+        const oscillator =
+            audioContext.createOscillator();
+
+        const gain =
+            audioContext.createGain();
 
         oscillator.type = "sine";
-        oscillator.frequency.value = notes[note];
 
-        gain.gain.setValueAtTime(0.0001, startTime);
-        gain.gain.exponentialRampToValueAtTime(
-            0.14,
-            startTime + 0.03
+        oscillator.frequency.value =
+            notes[note];
+
+        gain.gain.setValueAtTime(
+            .0001,
+            startTime
         );
 
         gain.gain.exponentialRampToValueAtTime(
-            0.0001,
-            startTime + duration - 0.04
+            .14,
+            startTime + .03
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            .0001,
+            startTime + duration - .04
         );
 
         oscillator.connect(gain);
         gain.connect(audioContext.destination);
 
         oscillator.start(startTime);
-        oscillator.stop(startTime + duration);
 
-        birthdayOscillators.push(oscillator);
+        oscillator.stop(
+            startTime + duration
+        );
+
+        birthdayOscillators.push(
+            oscillator
+        );
 
         startTime += duration;
+
     });
 
-    /* Repeat after melody ends */
+
     setTimeout(() => {
 
         if (birthdayPlaying) {
+
             birthdayPlaying = false;
+
             birthdayOscillators = [];
+
             playBirthdayMelody();
+
         }
 
     }, (startTime - audioContext.currentTime) * 1000);
+
 }
 
 
@@ -791,13 +975,15 @@ function stopBirthdayMelody() {
 
     birthdayPlaying = false;
 
-    birthdayOscillators.forEach(oscillator => {
+    birthdayOscillators.forEach(
+        oscillator => {
 
-        try {
-            oscillator.stop();
-        } catch (error) {}
+            try {
+                oscillator.stop();
+            } catch(error) {}
 
-    });
+        }
+    );
 
     birthdayOscillators = [];
 
@@ -805,7 +991,7 @@ function stopBirthdayMelody() {
 
         try {
             audioContext.close();
-        } catch (error) {}
+        } catch(error) {}
 
         audioContext = null;
     }
@@ -826,12 +1012,18 @@ function createConfetti() {
 
     for (let i = 0; i < 100; i++) {
 
-        const piece = document.createElement("div");
+        const piece =
+            document.createElement("div");
 
-        piece.className = "confetti";
+        piece.className =
+            "confetti";
 
         const shape =
-            shapes[Math.floor(Math.random() * shapes.length)];
+            shapes[
+                Math.floor(
+                    Math.random() * shapes.length
+                )
+            ];
 
         if (shape === "circle") {
             piece.style.borderRadius = "50%";
@@ -841,10 +1033,10 @@ function createConfetti() {
             Math.random() * 100 + "vw";
 
         piece.style.width =
-            (5 + Math.random() * 7) + "px";
+            5 + Math.random() * 7 + "px";
 
         piece.style.height =
-            (7 + Math.random() * 10) + "px";
+            7 + Math.random() * 10 + "px";
 
         piece.style.background =
             [
@@ -853,10 +1045,12 @@ function createConfetti() {
                 "#a9c6e8",
                 "#b8dca8",
                 "#d5a7d9"
-            ][Math.floor(Math.random() * 5)];
+            ][
+                Math.floor(Math.random() * 5)
+            ];
 
         piece.style.animationDuration =
-            (3 + Math.random() * 4) + "s";
+            3 + Math.random() * 4 + "s";
 
         piece.style.animationDelay =
             Math.random() * 1.5 + "s";
@@ -866,12 +1060,13 @@ function createConfetti() {
         setTimeout(() => {
             piece.remove();
         }, 8000);
+
     }
 }
 
 
 /* =========================
-   START MUSIC BUTTON
+   START BIRTHDAY MUSIC
 ========================= */
 
 const startMusicButton =
@@ -880,13 +1075,95 @@ const startMusicButton =
 const musicGate =
     document.getElementById("musicGate");
 
-startMusicButton.addEventListener("click", function () {
+startMusicButton.addEventListener(
+    "click",
+    function() {
 
-    playBirthdayMelody();
+        playBirthdayMelody();
 
-    musicGate.classList.add("hidden");
+        musicGate.classList.add("hidden");
 
-});
+    }
+);
+
+
+/* =========================
+   SLOW MESSAGE REVEAL
+========================= */
+
+function revealMessageAndThenPlayMusic() {
+
+    const revealItems =
+        document.querySelectorAll(
+            "#messageCard .reveal"
+        );
+
+    let delay = 500;
+
+    /*
+       Each item appears slowly.
+       There is a pause between each
+       part so the message feels natural.
+    */
+
+    revealItems.forEach((item, index) => {
+
+        setTimeout(() => {
+
+            item.classList.add("show");
+
+        }, delay);
+
+        /*
+           Each message part gets roughly
+           2 seconds before the next one.
+        */
+
+        delay += 2100;
+
+    });
+
+
+    /*
+       After EVERYTHING has appeared,
+       wait another 2 seconds,
+       THEN start the song.
+    */
+
+    const totalRevealTime =
+        delay + 2000;
+
+
+    setTimeout(() => {
+
+        const itMightBeYou =
+            document.getElementById(
+                "itMightBeYou"
+            );
+
+        itMightBeYou.currentTime = 0;
+
+        const musicPromise =
+            itMightBeYou.play();
+
+        if (musicPromise !== undefined) {
+
+            musicPromise.catch(
+                function(error) {
+
+                    console.log(
+                        "Audio playback was blocked:",
+                        error
+                    );
+
+                }
+            );
+
+        }
+
+    }, totalRevealTime);
+
+}
 
 
 /* =========================
@@ -902,79 +1179,70 @@ const introCard =
 const messageCard =
     document.getElementById("messageCard");
 
-const itMightBeYou =
-    document.getElementById("itMightBeYou");
+
+openButton.addEventListener(
+    "click",
+    function() {
+
+        /*
+           Stop Happy Birthday.
+        */
+
+        stopBirthdayMelody();
 
 
-openButton.addEventListener("click", function () {
+        /*
+           Show the message.
+        */
 
-    /*
-       IMPORTANT:
-       This play() happens directly inside the
-       user's click event.
+        introCard.classList.add("hidden");
 
-       That means the browser sees the audio
-       as being started by the user's interaction,
-       which is much more reliable than YouTube
-       autoplay.
-    */
+        messageCard.classList.remove("hidden");
 
-    stopBirthdayMelody();
 
-    introCard.classList.add("hidden");
+        /*
+           Start confetti.
+        */
 
-    messageCard.classList.remove("hidden");
+        createConfetti();
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
 
-    /*
-       Start the uploaded MP3.
-    */
+        /*
+           Scroll to the beginning
+           of the message.
+        */
 
-    itMightBeYou.currentTime = 0;
-
-    const musicPromise =
-        itMightBeYou.play();
-
-    if (musicPromise !== undefined) {
-
-        musicPromise.catch(function(error) {
-
-            /*
-               If a browser still blocks playback,
-               the audio element remains ready.
-               The rest of the surprise continues.
-            */
-
-            console.log(
-                "Audio playback was blocked by the browser:",
-                error
-            );
-
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
         });
+
+
+        /*
+           Slowly reveal the entire message.
+           Music starts only after
+           EVERYTHING is visible.
+        */
+
+        revealMessageAndThenPlayMusic();
+
     }
-
-    createConfetti();
-
-});
+);
 
 
 /* =========================
-   STOP CONFETTI WHEN NEEDED
+   CONFETTI CLEANUP
 ========================= */
 
 setInterval(() => {
 
     const confetti =
-        document.querySelectorAll(".confetti");
+        document.querySelectorAll(
+            ".confetti"
+        );
 
     if (confetti.length > 120) {
-
         confetti[0].remove();
-
     }
 
 }, 3000);
