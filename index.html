@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,8 +28,40 @@ button{
 
 .hidden{display:none!important}
 
-/* BUTTON */
-.open-btn{
+/* MUSIC GATE */
+
+#musicGate{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:linear-gradient(135deg,#ffdce9,#fff4f8);
+}
+
+.gate-card{
+    width:min(430px,100%);
+    text-align:center;
+    background:rgba(255,255,255,.94);
+    padding:35px 25px;
+    border-radius:28px;
+    box-shadow:0 15px 45px rgba(180,90,120,.2);
+}
+
+.gate-card h1{
+    margin:0 0 12px;
+    color:#d95b87;
+    font-size:28px;
+}
+
+.gate-card p{
+    line-height:1.6;
+    margin:0 0 25px;
+}
+
+.start-btn,.open-btn{
     background:linear-gradient(135deg,#ff78a8,#e9568a);
     color:white;
     padding:15px 24px;
@@ -41,9 +72,12 @@ button{
     transition:.25s;
 }
 
-.open-btn:hover{transform:translateY(-2px)}
+.start-btn:hover,.open-btn:hover{
+    transform:translateY(-2px);
+}
 
 /* BACKGROUND BALLOONS */
+
 .page-balloons{
     position:fixed;
     inset:0;
@@ -87,6 +121,7 @@ button{
 }
 
 /* MAIN */
+
 .page{
     min-height:100vh;
     padding:35px 16px 60px;
@@ -106,7 +141,8 @@ button{
     text-align:center;
 }
 
-/* BALLOONS INSIDE MESSAGE */
+/* BALLOONS INSIDE TEXT AREA */
+
 #messageCard{overflow:hidden}
 
 .text-balloons{
@@ -169,6 +205,7 @@ button{
 }
 
 /* TITLES */
+
 .small-title{
     color:#d65b86;
     font-size:15px;
@@ -188,6 +225,7 @@ h1{
 }
 
 /* CAKE */
+
 .cake-area{
     width:100%;
     display:flex;
@@ -258,6 +296,7 @@ h1{
 }
 
 /* DOGS */
+
 .dog{
     font-size:50px;
     line-height:1;
@@ -265,6 +304,7 @@ h1{
 }
 
 /* MESSAGE */
+
 .message-title{
     color:#d95b87;
     font-size:16px;
@@ -306,6 +346,7 @@ h1{
 }
 
 /* SLOW REVEAL */
+
 .reveal{
     opacity:0;
     transform:translateY(18px);
@@ -318,6 +359,7 @@ h1{
 }
 
 /* SLIDING DOG */
+
 .karaoke-area{
     position:relative;
     width:100%;
@@ -367,6 +409,7 @@ h1{
 }
 
 /* FLOATING PAWS */
+
 .paw{
     position:fixed;
     z-index:1;
@@ -390,6 +433,7 @@ h1{
 }
 
 /* HEARTS */
+
 .heart{
     position:fixed;
     z-index:1;
@@ -411,6 +455,7 @@ h1{
 }
 
 /* CONFETTI */
+
 .confetti{
     position:fixed;
     z-index:50;
@@ -422,15 +467,20 @@ h1{
 }
 
 @keyframes fall{
-    to{transform:translateY(110vh) rotate(720deg);opacity:0}
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
 }
 
 /* MOBILE */
+
 @media(max-width:600px){
     .page{padding:20px 10px 40px}
     .card{padding:28px 18px;border-radius:25px}
     h1{font-size:29px}
     .subtitle{font-size:16px}
+
     .cake-area{
         width:100%;
         gap:0;
@@ -438,23 +488,27 @@ h1{
         margin-left:0;
         margin-right:0;
     }
+
     .cake{
         transform:scale(.78);
         transform-origin:center bottom;
         margin-left:-12px;
         margin-right:-12px;
     }
+
     .dog{font-size:40px}
     .message-dogs{font-size:38px}
     .message-text{font-size:16px;line-height:1.7}
     .karaoke-track{width:30px}
     .karaoke-line{left:12px}
+
     .message-dog{
         left:-2px;
         width:28px;
         height:28px;
         font-size:25px;
     }
+
     .karaoke-content{padding-left:34px}
     .text-balloon{transform:scale(.75)}
 }
@@ -465,9 +519,15 @@ h1{
         margin-left:-18px;
         margin-right:-18px;
     }
+
     .dog{font-size:34px}
     .karaoke-track{width:28px}
-    .message-dog{left:-2px;font-size:23px}
+
+    .message-dog{
+        left:-2px;
+        font-size:23px;
+    }
+
     .karaoke-content{padding-left:32px}
 }
 </style>
@@ -476,6 +536,7 @@ h1{
 <body>
 
 <!-- BACKGROUND BALLOONS -->
+
 <div class="page-balloons">
     <div class="page-balloon pb1"></div>
     <div class="page-balloon pb2"></div>
@@ -484,7 +545,20 @@ h1{
     <div class="page-balloon pb5"></div>
 </div>
 
+<!-- MUSIC GATE -->
+
+<div id="musicGate">
+    <div class="gate-card">
+        <h1>🎂 A little birthday surprise</h1>
+        <p>Tap the button below to start the birthday music.</p>
+        <button class="start-btn" id="startMusicBtn">
+            🎵 Start Birthday Music
+        </button>
+    </div>
+</div>
+
 <!-- PAWS -->
+
 <div class="paw p1">🐾</div>
 <div class="paw p2">🐾</div>
 <div class="paw p3">🐾</div>
@@ -495,6 +569,7 @@ h1{
 <div class="paw p8">🐾</div>
 
 <!-- HEARTS -->
+
 <div class="heart h1">❤️</div>
 <div class="heart h2">❤️</div>
 <div class="heart h3">❤️</div>
@@ -502,19 +577,27 @@ h1{
 <div class="heart h5">❤️</div>
 
 <!-- MAIN PAGE -->
+
 <main class="page">
 
     <!-- INTRO CARD -->
+
     <section class="card" id="introCard">
-        <div class="small-title">A little birthday surprise</div>
+        <div class="small-title">
+            A little birthday surprise
+        </div>
+
         <h1>For Pauleen 💗</h1>
+
         <div class="subtitle">
             Someone left a little message here just for you. ✨
         </div>
 
         <!-- CAKE -->
+
         <div class="cake-area">
             <div class="dog">🐶</div>
+
             <div class="cake">
                 <div class="flame"></div>
                 <div class="candle"></div>
@@ -522,6 +605,7 @@ h1{
                 <div class="icing"></div>
                 <div class="cake-bottom"></div>
             </div>
+
             <div class="dog">🐶</div>
         </div>
 
@@ -531,9 +615,11 @@ h1{
     </section>
 
     <!-- MESSAGE CARD -->
+
     <section class="card hidden" id="messageCard">
 
         <!-- BALLOONS BEHIND TEXT -->
+
         <div class="text-balloons">
             <div class="text-balloon tb1"></div>
             <div class="text-balloon tb2"></div>
@@ -543,18 +629,27 @@ h1{
             <div class="text-balloon tb6"></div>
         </div>
 
-        <div class="message-title reveal">A little message for you</div>
+        <div class="message-title reveal">
+            A little message for you
+        </div>
+
         <h1>Happy Birthday, Pauleen 💗</h1>
-        <div class="message-dogs reveal">🐶 🐶</div>
+
+        <div class="message-dogs reveal">
+            🐶 🐶
+        </div>
 
         <!-- KARAOKE MESSAGE -->
+
         <div class="karaoke-area" id="karaokeArea">
+
             <div class="karaoke-track">
                 <div class="karaoke-line"></div>
                 <div class="message-dog" id="messageDog">🐶</div>
             </div>
 
             <div class="karaoke-content">
+
                 <div class="message-text" id="messageText">
 
                     <p class="reveal">
@@ -607,20 +702,23 @@ h1{
     </section>
 </main>
 
-<!-- LOCAL SONG: keep it-might-be-you.mp3 in the repository root -->
-<audio id="itMightBeYou" preload="auto" playsinline>
+<!-- LOCAL SONG: KEEP THIS MP3 IN THE SAME FOLDER AS index.html -->
+
+<audio id="itMightBeYou" preload="auto" playsinline webkit-playsinline>
     <source src="it-might-be-you.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+
 /* HAPPY BIRTHDAY MUSIC */
+
 let birthdayAudioContext = null;
 let birthdayOscillators = [];
 let birthdayGain = null;
 let birthdayPlaying = false;
-let birthdayLoopTimer = null;
 
 /* IT MIGHT BE YOU */
+
 let itMightBeYouContext = null;
 let itMightBeYouBuffer = null;
 let itMightBeYouSource = null;
@@ -628,70 +726,77 @@ let itMightBeYouReady = null;
 
 const itMightBeYouAudio = document.getElementById("itMightBeYou");
 
+// Ask mobile browsers to begin loading the local MP3 early.
+itMightBeYouAudio.load();
+
 /*
-  Create and resume the song's AudioContext directly inside the
-  button tap handler. This is important for iPhone Safari.
-  Fetch/decode the MP3 in advance without starting the song yet.
+   Prepare the song during the first user interaction.
+   This does NOT play the song.
 */
+
 function prepareItMightBeYou(){
+
     if(itMightBeYouReady){
         return itMightBeYouReady;
     }
 
     const AudioContextClass =
-        window.AudioContext || window.webkitAudioContext;
+        window.AudioContext ||
+        window.webkitAudioContext;
 
     if(!AudioContextClass){
+        console.warn("Web Audio is not supported in this browser.");
         return Promise.resolve(null);
     }
 
-    try{
-        itMightBeYouContext = new AudioContextClass();
+    itMightBeYouContext = new AudioContextClass();
 
-        /* Call resume immediately during the user's tap. */
-        const resumePromise = itMightBeYouContext.resume();
+    /*
+       iPhone/iPad Safari requires Web Audio to be resumed
+       directly from a user gesture.
+    */
 
-        itMightBeYouReady = fetch(
-            new URL("it-might-be-you.mp3", document.baseURI).href
-        )
-        .then(response => {
-            if(!response.ok){
-                throw new Error("Could not load it-might-be-you.mp3");
-            }
-            return response.arrayBuffer();
-        })
-        .then(arrayBuffer => {
-            return itMightBeYouContext.decodeAudioData(arrayBuffer);
-        })
-        .then(buffer => {
-            itMightBeYouBuffer = buffer;
-            return buffer;
-        })
-        .catch(error => {
-            console.error("Could not prepare It Might Be You:", error);
-            return null;
+    if(itMightBeYouContext.state === "suspended"){
+        itMightBeYouContext.resume().catch(error => {
+            console.warn("Could not unlock song audio:", error);
         });
-
-        if(resumePromise && typeof resumePromise.catch === "function"){
-            resumePromise.catch(error => {
-                console.warn("Audio context resume:", error);
-            });
-        }
-
-        return itMightBeYouReady;
-    }catch(error){
-        console.error("Could not initialize song audio:", error);
-        return Promise.resolve(null);
     }
+
+    itMightBeYouReady = fetch(
+        "./it-might-be-you.mp3",
+        {cache:"force-cache"}
+    )
+    .then(response => {
+        if(!response.ok){
+            throw new Error("Could not load it-might-be-you.mp3");
+        }
+        return response.arrayBuffer();
+    })
+    .then(arrayBuffer => {
+        return itMightBeYouContext.decodeAudioData(arrayBuffer);
+    })
+    .then(buffer => {
+        itMightBeYouBuffer = buffer;
+        return buffer;
+    })
+    .catch(error => {
+        console.error("Could not prepare It Might Be You:", error);
+        return null;
+    });
+
+    return itMightBeYouReady;
 }
 
 /* PLAY IT MIGHT BE YOU */
+
 async function playItMightBeYou(){
+
     try{
         const buffer = await prepareItMightBeYou();
 
         if(buffer && itMightBeYouContext){
-            if(itMightBeYouContext.state !== "running"){
+
+            if(itMightBeYouContext.state === "suspended"){
                 await itMightBeYouContext.resume();
             }
 
@@ -713,21 +818,24 @@ async function playItMightBeYou(){
             return;
         }
 
-        /* Fallback for browsers without Web Audio support. */
+        // Fallback to normal HTML audio.
         itMightBeYouAudio.currentTime = 0;
-        const playPromise = itMightBeYouAudio.play();
 
-        if(playPromise && typeof playPromise.catch === "function"){
-            playPromise.catch(error => {
-                console.error("Song playback was blocked:", error);
+        const fallback = itMightBeYouAudio.play();
+
+        if(fallback !== undefined){
+            fallback.catch(error => {
+                console.log("Fallback audio blocked:", error);
             });
         }
+
     }catch(error){
         console.error("It Might Be You playback error:", error);
     }
 }
 
 /* HAPPY BIRTHDAY NOTES */
+
 const notes = {
     C4:261.63,
     D4:293.66,
@@ -774,98 +882,102 @@ const birthdayMelody = [
     ["C5",1200]
 ];
 
-/*
-  Start the birthday melody directly from the Open button tap.
-  The AudioContext is created and resumed during that interaction.
-*/
-function playBirthdayMelody(){
+/* PLAY HAPPY BIRTHDAY */
+
+async function playBirthdayMelody(){
+
     if(birthdayPlaying){
         return;
     }
 
     const AudioContextClass =
-        window.AudioContext || window.webkitAudioContext;
+        window.AudioContext ||
+        window.webkitAudioContext;
 
     if(!AudioContextClass){
+        console.warn("Web Audio is not supported in this browser.");
         return;
     }
 
+    birthdayPlaying = true;
+    birthdayAudioContext = new AudioContextClass();
+
+    /*
+       iOS Safari: wait until the audio context is running
+       before scheduling the notes.
+    */
+
     try{
-        birthdayPlaying = true;
-        birthdayAudioContext = new AudioContextClass();
-
-        /* Resume immediately while still in the button handler. */
-        const resumePromise = birthdayAudioContext.resume();
-
-        if(resumePromise && typeof resumePromise.catch === "function"){
-            resumePromise.catch(error => {
-                console.warn("Birthday audio resume:", error);
-            });
+        if(birthdayAudioContext.state !== "running"){
+            await birthdayAudioContext.resume();
         }
-
-        birthdayGain = birthdayAudioContext.createGain();
-        birthdayGain.gain.value = 0.055;
-        birthdayGain.connect(birthdayAudioContext.destination);
-
-        function playLoop(){
-            if(!birthdayPlaying || !birthdayAudioContext){
-                return;
-            }
-
-            const time = birthdayAudioContext.currentTime + 0.05;
-
-            birthdayMelody.forEach(([note,duration],index) => {
-                const startTime = time +
-                    birthdayMelody.slice(0,index)
-                    .reduce((sum,item) => sum + item[1] / 1000,0);
-
-                const oscillator =
-                    birthdayAudioContext.createOscillator();
-                const gain = birthdayAudioContext.createGain();
-
-                oscillator.type = "sine";
-                oscillator.frequency.value = notes[note];
-
-                oscillator.connect(gain);
-                gain.connect(birthdayGain);
-
-                gain.gain.setValueAtTime(0.0001,startTime);
-                gain.gain.exponentialRampToValueAtTime(
-                    0.8,startTime + 0.03
-                );
-                gain.gain.exponentialRampToValueAtTime(
-                    0.0001,
-                    startTime + duration / 1000 - 0.03
-                );
-
-                oscillator.start(startTime);
-                oscillator.stop(startTime + duration / 1000);
-
-                birthdayOscillators.push(oscillator);
-            });
-
-            const totalDuration = birthdayMelody.reduce(
-                (sum,item) => sum + item[1],0
-            );
-
-            birthdayLoopTimer = setTimeout(playLoop,totalDuration);
-        }
-
-        playLoop();
     }catch(error){
         birthdayPlaying = false;
-        console.error("Birthday melody error:",error);
+        console.warn("Could not start birthday music:", error);
+        return;
     }
+
+    birthdayGain = birthdayAudioContext.createGain();
+    birthdayGain.gain.value = 0.055;
+    birthdayGain.connect(birthdayAudioContext.destination);
+
+    function playLoop(){
+
+        if(!birthdayPlaying){
+            return;
+        }
+
+        let time = birthdayAudioContext.currentTime + 0.05;
+
+        birthdayMelody.forEach(([note,duration]) => {
+
+            const oscillator =
+                birthdayAudioContext.createOscillator();
+
+            const gain =
+                birthdayAudioContext.createGain();
+
+            oscillator.type = "sine";
+            oscillator.frequency.value = notes[note];
+
+            oscillator.connect(gain);
+            gain.connect(birthdayGain);
+
+            gain.gain.setValueAtTime(0.0001,time);
+
+            gain.gain.exponentialRampToValueAtTime(
+                0.8,
+                time + 0.03
+            );
+
+            gain.gain.exponentialRampToValueAtTime(
+                0.0001,
+                time + duration / 1000 - 0.03
+            );
+
+            oscillator.start(time);
+            oscillator.stop(time + duration / 1000);
+
+            birthdayOscillators.push(oscillator);
+            time += duration / 1000;
+        });
+
+        const totalDuration = birthdayMelody.reduce(
+            (sum,item) => sum + item[1],
+            0
+        );
+
+        setTimeout(playLoop,totalDuration);
+    }
+
+    playLoop();
 }
 
 /* STOP HAPPY BIRTHDAY */
-function stopBirthdayMelody(){
-    birthdayPlaying = false;
 
-    if(birthdayLoopTimer){
-        clearTimeout(birthdayLoopTimer);
-        birthdayLoopTimer = null;
-    }
+function stopBirthdayMelody(){
+
+    birthdayPlaying = false;
 
     birthdayOscillators.forEach(oscillator => {
         try{
@@ -881,20 +993,25 @@ function stopBirthdayMelody(){
         }catch(e){}
         birthdayAudioContext = null;
     }
-
-    birthdayGain = null;
 }
 
 /* CONFETTI */
+
 function createConfetti(){
+
     for(let i = 0; i < 100; i++){
+
         const piece = document.createElement("div");
         piece.className = "confetti";
 
         piece.style.left = Math.random() * 100 + "vw";
+
         piece.style.animationDuration =
             (3 + Math.random() * 4) + "s";
-        piece.style.animationDelay = Math.random() * 2 + "s";
+
+        piece.style.animationDelay =
+            Math.random() * 2 + "s";
+
         piece.style.transform =
             `rotate(${Math.random() * 360}deg)`;
 
@@ -907,12 +1024,15 @@ function createConfetti(){
         ][Math.floor(Math.random() * 5)];
 
         document.body.appendChild(piece);
+
         setTimeout(() => piece.remove(),8000);
     }
 }
 
 /* SLIDING DOG */
+
 function moveDogToParagraph(paragraph){
+
     const dog = document.getElementById("messageDog");
     const karaokeArea = document.getElementById("karaokeArea");
 
@@ -922,14 +1042,17 @@ function moveDogToParagraph(paragraph){
 
     const paragraphRect = paragraph.getBoundingClientRect();
     const areaRect = karaokeArea.getBoundingClientRect();
+
     const relativeTop = paragraphRect.top - areaRect.top;
 
     dog.style.top = Math.max(0,relativeTop) + "px";
     dog.style.opacity = "1";
 }
 
-/* REVEAL MESSAGE AND PLAY MUSIC */
+/* REVEAL MESSAGE */
+
 function revealMessageAndPlayMusic(){
+
     const revealItems = document.querySelectorAll(
         "#messageCard .reveal"
     );
@@ -941,50 +1064,120 @@ function revealMessageAndPlayMusic(){
     let delay = 500;
 
     revealItems.forEach(item => {
+
         setTimeout(() => {
+
             item.classList.add("show");
 
             const paragraphIndex =
                 Array.from(messageParagraphs).indexOf(item);
 
             if(paragraphIndex !== -1){
+
                 requestAnimationFrame(() => {
                     moveDogToParagraph(item);
                 });
 
                 /*
-                  Switch from Happy Birthday to It Might Be You
-                  when the first message paragraph appears.
+                   The second song is started directly by the Open button click.
+                   iOS Safari can block audio playback initiated later by a timer.
                 */
-                if(paragraphIndex === 0){
-                    stopBirthdayMelody();
-                    playItMightBeYou();
-                }
             }
+
         },delay);
 
         delay += 2100;
     });
 }
 
-/* OPEN SURPRISE — AUDIO IS UNLOCKED ON THIS USER TAP */
+/* UNLOCK IPHONE AUDIO ELEMENT */
+
+function unlockSongAudioElement(){
+
+    /*
+       Play the audio element muted briefly during the Start Music tap,
+       then pause it. The actual song starts later when the surprise is opened.
+    */
+
+    const wasMuted = itMightBeYouAudio.muted;
+
+    itMightBeYouAudio.muted = true;
+    itMightBeYouAudio.currentTime = 0;
+
+    const unlockAttempt = itMightBeYouAudio.play();
+
+    if(unlockAttempt && typeof unlockAttempt.then === "function"){
+
+        unlockAttempt.then(() => {
+
+            itMightBeYouAudio.pause();
+            itMightBeYouAudio.currentTime = 0;
+            itMightBeYouAudio.muted = wasMuted;
+
+        }).catch(() => {
+            itMightBeYouAudio.muted = wasMuted;
+        });
+
+    }else{
+
+        itMightBeYouAudio.pause();
+        itMightBeYouAudio.currentTime = 0;
+        itMightBeYouAudio.muted = wasMuted;
+    }
+}
+
+/* START MUSIC */
+
+document.getElementById("startMusicBtn").addEventListener(
+    "click",
+    function(){
+
+        document.getElementById("musicGate").classList.add("hidden");
+
+        /*
+           Audio-only iPhone compatibility:
+           unlock the HTML audio element and begin loading the second song
+           during this tap. This does NOT play the second song.
+           Happy Birthday starts here; It Might Be You remains reserved
+           for the separate Open your surprise tap.
+        */
+
+        unlockSongAudioElement();
+        prepareItMightBeYou();
+        playBirthdayMelody();
+    }
+);
+
+/* OPEN SURPRISE */
+
 document.getElementById("openButton").addEventListener(
     "click",
     function(){
 
         /*
-          Prepare/resume the song's AudioContext immediately
-          during this tap. Do not wait until the paragraph appears
-          to initialize it, because iPhone Safari may block that.
+           Start the MP3 directly inside this tap handler.
+           Safari may block audio started later by a timer or after asynchronous work.
         */
-        prepareItMightBeYou();
 
-        /* Start Happy Birthday during the button tap. */
-        playBirthdayMelody();
+        stopBirthdayMelody();
 
-        /* Reset fallback audio before showing the message. */
         itMightBeYouAudio.pause();
         itMightBeYouAudio.currentTime = 0;
+        itMightBeYouAudio.muted = false;
+        itMightBeYouAudio.volume = 1;
+
+        const songPlayPromise = itMightBeYouAudio.play();
+
+        if(songPlayPromise && typeof songPlayPromise.catch === "function"){
+            songPlayPromise.catch(error => {
+                console.warn(
+                    "It Might Be You could not play. Check the MP3 file path and tap Open your surprise again.",
+                    error
+                );
+            });
+        }
+
+        /* Show message */
 
         document.getElementById("introCard").classList.add("hidden");
         document.getElementById("messageCard").classList.remove("hidden");
@@ -996,13 +1189,14 @@ document.getElementById("openButton").addEventListener(
             behavior:"smooth"
         });
 
-        /* The first paragraph switches to It Might Be You. */
         revealMessageAndPlayMusic();
     }
 );
 
 /* KEEP DOG ALIGNED */
+
 window.addEventListener("resize",function(){
+
     const shown = document.querySelectorAll(
         "#messageText p.reveal.show"
     );
@@ -1011,6 +1205,7 @@ window.addEventListener("resize",function(){
         moveDogToParagraph(shown[shown.length - 1]);
     }
 });
+
 </script>
 
 </body>
