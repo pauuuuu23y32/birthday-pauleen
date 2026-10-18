@@ -1,1016 +1,474 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Pauleen 💗</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Pauleen! 💗</title>
 
-<style>
-*{box-sizing:border-box}
-
-html,body{
-    margin:0;
-    padding:0;
-    min-height:100%;
-    font-family:Arial,Helvetica,sans-serif;
-    background:linear-gradient(135deg,#ffe6ef,#fff7fb,#ffeef5);
-    color:#5a3945;
-    overflow-x:hidden;
-}
-
-body{min-height:100vh}
-
-button{
-    border:0;
-    cursor:pointer;
-    font-family:inherit;
-}
-
-.hidden{display:none!important}
-
-/* MUSIC GATE */
-#musicGate{
-    position:fixed;
-    inset:0;
-    z-index:1000;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    background:linear-gradient(135deg,#ffdce9,#fff4f8);
-}
-
-.gate-card{
-    width:min(430px,100%);
-    text-align:center;
-    background:rgba(255,255,255,.94);
-    padding:35px 25px;
-    border-radius:28px;
-    box-shadow:0 15px 45px rgba(180,90,120,.2);
-}
-
-.gate-card h1{
-    margin:0 0 12px;
-    color:#d95b87;
-    font-size:28px;
-}
-
-.gate-card p{
-    line-height:1.6;
-    margin:0 0 25px;
-}
-
-.start-btn,.open-btn{
-    background:linear-gradient(135deg,#ff78a8,#e9568a);
-    color:white;
-    padding:15px 24px;
-    border-radius:30px;
-    font-size:16px;
-    font-weight:bold;
-    box-shadow:0 8px 20px rgba(220,80,130,.25);
-    transition:.25s;
-}
-
-.start-btn:hover,.open-btn:hover{
-    transform:translateY(-2px);
-}
-
-/* BACKGROUND BALLOONS */
-.page-balloons{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
-    z-index:0;
-}
-
-.page-balloon{
-    position:absolute;
-    bottom:-120px;
-    width:42px;
-    height:55px;
-    border-radius:50%;
-    opacity:.20;
-    animation:floatPageBalloon linear infinite;
-}
-
-.page-balloon::after{
-    content:"";
-    position:absolute;
-    top:52px;
-    left:50%;
-    width:1px;
-    height:100px;
-    background:rgba(100,70,80,.18);
-}
-
-.pb1{left:5%;background:#ff82ad;animation-duration:17s}
-.pb2{left:25%;background:#ffd166;animation-duration:21s;animation-delay:4s}
-.pb3{left:48%;background:#8ed8ff;animation-duration:19s;animation-delay:7s}
-.pb4{left:72%;background:#c5a3ff;animation-duration:22s;animation-delay:2s}
-.pb5{left:90%;background:#9ee6c0;animation-duration:18s;animation-delay:9s}
-
-@keyframes floatPageBalloon{
-    0%{transform:translateY(0) translateX(0);opacity:0}
-    10%{opacity:.20}
-    50%{transform:translateY(-55vh) translateX(25px)}
-    90%{opacity:.20}
-    100%{transform:translateY(-125vh) translateX(-20px);opacity:0}
-}
-
-/* MAIN */
-.page{
-    min-height:100vh;
-    padding:35px 16px 60px;
-    position:relative;
-    z-index:2;
-}
-
-.card{
-    position:relative;
-    z-index:2;
-    width:min(680px,100%);
-    margin:0 auto;
-    background:rgba(255,255,255,.95);
-    border-radius:30px;
-    padding:35px 25px;
-    box-shadow:0 15px 45px rgba(180,90,120,.18);
-    text-align:center;
-}
-
-/* BALLOONS INSIDE MESSAGE */
-#messageCard{overflow:hidden}
-
-.text-balloons{
-    position:absolute;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none;
-    z-index:0;
-}
-
-.text-balloon{
-    position:absolute;
-    bottom:-100px;
-    width:38px;
-    height:50px;
-    border-radius:50%;
-    opacity:.16;
-    animation:textBalloonFloat linear infinite;
-}
-
-.text-balloon::before{
-    content:"";
-    position:absolute;
-    bottom:-5px;
-    left:15px;
-    width:8px;
-    height:8px;
-    background:inherit;
-    transform:rotate(45deg);
-}
-
-.text-balloon::after{
-    content:"";
-    position:absolute;
-    top:48px;
-    left:50%;
-    width:1px;
-    height:110px;
-    background:rgba(90,60,70,.18);
-}
-
-.tb1{left:4%;background:#ff75a5;animation-duration:18s}
-.tb2{left:20%;background:#ffd166;width:32px;height:43px;animation-duration:22s;animation-delay:6s}
-.tb3{left:37%;background:#7dd3fc;width:45px;height:58px;animation-duration:20s;animation-delay:3s}
-.tb4{left:55%;background:#c4b5fd;width:34px;height:45px;animation-duration:24s;animation-delay:9s}
-.tb5{left:73%;background:#ff9fc4;width:43px;height:56px;animation-duration:19s;animation-delay:5s}
-.tb6{left:89%;background:#86efac;width:34px;height:45px;animation-duration:21s;animation-delay:12s}
-
-@keyframes textBalloonFloat{
-    0%{transform:translateY(0) translateX(0) rotate(-3deg);opacity:0}
-    12%{opacity:.16}
-    50%{transform:translateY(-420px) translateX(20px) rotate(5deg)}
-    88%{opacity:.16}
-    100%{transform:translateY(-900px) translateX(-15px) rotate(-4deg);opacity:0}
-}
-
-#messageCard > *:not(.text-balloons){
-    position:relative;
-    z-index:5;
-}
-
-/* TITLES */
-.small-title{
-    color:#d65b86;
-    font-size:15px;
-    margin-bottom:10px;
-}
-
-h1{
-    margin:0 0 15px;
-    color:#d94f82;
-    font-size:34px;
-}
-
-.subtitle{
-    font-size:17px;
-    line-height:1.6;
-    margin-bottom:25px;
-}
-
-/* CAKE */
-.cake-area{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    align-items:flex-end;
-    gap:0;
-    margin:5px auto 20px;
-    overflow:visible;
-}
-
-.cake{
-    position:relative;
-    width:180px;
-    height:130px;
-    margin:0 -10px;
-}
-
-.cake-bottom{
-    position:absolute;
-    bottom:0;
-    left:20px;
-    width:140px;
-    height:65px;
-    background:#ff9fbd;
-    border-radius:12px 12px 20px 20px;
-    box-shadow:inset 0 -8px rgba(220,75,120,.15);
-}
-
-.cake-top{
-    position:absolute;
-    bottom:55px;
-    left:30px;
-    width:120px;
-    height:35px;
-    background:#fff;
-    border-radius:50%;
-}
-
-.icing{
-    position:absolute;
-    bottom:55px;
-    left:30px;
-    width:120px;
-    height:25px;
-    background:#fff0f5;
-    border-radius:50%;
-}
-
-.candle{
-    position:absolute;
-    bottom:83px;
-    left:85px;
-    width:10px;
-    height:30px;
-    background:#f3b1ca;
-    border-radius:4px;
-}
-
-.flame{
-    position:absolute;
-    bottom:112px;
-    left:85px;
-    width:10px;
-    height:15px;
-    background:#ffbd4a;
-    border-radius:50%;
-    box-shadow:0 0 12px #ffbd4a;
-}
-
-/* DOGS */
-.dog{
-    font-size:50px;
-    line-height:1;
-    transform:translateY(2px);
-}
-
-/* MESSAGE */
-.message-title{
-    color:#d95b87;
-    font-size:16px;
-    margin-bottom:8px;
-}
-
-.message-card h1{margin:0 0 15px}
-
-.message-dogs{
-    font-size:45px;
-    margin:18px 0 8px;
-}
-
-.message-text{
-    text-align:center;
-    font-size:17px;
-    line-height:1.8;
-}
-
-.message-text p{margin:0 0 22px}
-
-.closing{
-    font-weight:bold;
-    color:#d95784;
-    margin-top:25px!important;
-}
-
-.note{
-    font-size:15px;
-    color:#765763;
-    margin-top:30px!important;
-}
-
-.final{
-    font-size:21px;
-    font-weight:bold;
-    color:#d94f82;
-    margin-top:30px!important;
-}
-
-/* SLOW REVEAL */
-.reveal{
-    opacity:0;
-    transform:translateY(18px);
-    transition:opacity 1.5s ease,transform 1.5s ease;
-}
-
-.reveal.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* SLIDING DOG */
-.karaoke-area{
-    position:relative;
-    width:100%;
-    margin-top:5px;
-}
-
-.karaoke-track{
-    position:absolute;
-    left:0;
-    top:0;
-    bottom:0;
-    width:42px;
-    z-index:20;
-    pointer-events:none;
-}
-
-.karaoke-line{
-    position:absolute;
-    left:17px;
-    top:0;
-    bottom:0;
-    width:2px;
-    background:rgba(217,79,130,.12);
-    border-radius:2px;
-}
-
-.message-dog{
-    position:absolute;
-    left:0;
-    top:0;
-    width:36px;
-    height:36px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:31px;
-    line-height:1;
-    z-index:30;
-    opacity:0;
-    transition:top 1.5s cubic-bezier(.4,0,.2,1),opacity .7s ease;
-    pointer-events:none;
-}
-
-.karaoke-content{
-    position:relative;
-    padding-left:46px;
-}
-
-/* FLOATING PAWS */
-.paw{
-    position:fixed;
-    z-index:1;
-    opacity:.18;
-    font-size:30px;
-    animation:floatPaw 8s ease-in-out infinite;
-}
-
-.p1{left:8%;top:15%;animation-delay:0s}
-.p2{right:10%;top:30%;animation-delay:2s}
-.p3{left:15%;bottom:18%;animation-delay:4s}
-.p4{right:15%;bottom:12%;animation-delay:1s}
-.p5{left:45%;top:8%;animation-delay:3s}
-.p6{right:40%;bottom:35%;animation-delay:5s}
-.p7{left:3%;top:55%;animation-delay:1.5s}
-.p8{right:3%;top:65%;animation-delay:3.5s}
-
-@keyframes floatPaw{
-    0%,100%{transform:translateY(0) rotate(0deg)}
-    50%{transform:translateY(-18px) rotate(8deg)}
-}
-
-/* HEARTS */
-.heart{
-    position:fixed;
-    z-index:1;
-    color:#ff9dbc;
-    opacity:.25;
-    font-size:25px;
-    animation:heartFloat 7s ease-in-out infinite;
-}
-
-.h1{left:20%;top:10%;animation-delay:1s}
-.h2{right:20%;top:15%;animation-delay:3s}
-.h3{left:8%;bottom:30%;animation-delay:2s}
-.h4{right:8%;bottom:25%;animation-delay:4s}
-.h5{left:50%;top:20%;animation-delay:5s}
-
-@keyframes heartFloat{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-20px)}
-}
-
-/* CONFETTI */
-.confetti{
-    position:fixed;
-    z-index:50;
-    width:8px;
-    height:14px;
-    top:-20px;
-    pointer-events:none;
-    animation:fall linear forwards;
-}
-
-@keyframes fall{
-    to{transform:translateY(110vh) rotate(720deg);opacity:0}
-}
-
-/* MOBILE */
-@media(max-width:600px){
-    .page{padding:20px 10px 40px}
-    .card{padding:28px 18px;border-radius:25px}
-    h1{font-size:29px}
-    .subtitle{font-size:16px}
-    .cake-area{
-        width:100%;
-        gap:0;
-        justify-content:center;
-        margin-left:0;
-        margin-right:0;
+  <style>
+    * {
+      box-sizing: border-box;
     }
-    .cake{
-        transform:scale(.78);
-        transform-origin:center bottom;
-        margin-left:-12px;
-        margin-right:-12px;
-    }
-    .dog{font-size:40px}
-    .message-dogs{font-size:38px}
-    .message-text{font-size:16px;line-height:1.7}
-    .karaoke-track{width:30px}
-    .karaoke-line{left:12px}
-    .message-dog{left:-2px;width:28px;height:28px;font-size:25px}
-    .karaoke-content{padding-left:34px}
-    .text-balloon{transform:scale(.75)}
-}
 
-@media(max-width:380px){
-    .cake{
-        transform:scale(.68);
-        margin-left:-18px;
-        margin-right:-18px;
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color: #743d56;
+      background: linear-gradient(135deg, #ffe6f0, #fff5f8, #ffd6e7);
+      text-align: center;
     }
-    .dog{font-size:34px}
-    .karaoke-track{width:28px}
-    .message-dog{left:-2px;font-size:23px}
-    .karaoke-content{padding-left:32px}
-}
 
-/* Respect reduced-motion preferences on iOS and other devices */
-@media(prefers-reduced-motion:reduce){
-    *,*::before,*::after{
-        scroll-behavior:auto!important;
+    button {
+      border: none;
+      border-radius: 30px;
+      padding: 14px 24px;
+      margin: 10px 5px;
+      background: #ed83ae;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 5px 14px #d77da755;
     }
-}
-</style>
+
+    button:hover {
+      background: #df6597;
+    }
+
+    .page {
+      position: relative;
+      z-index: 2;
+      width: min(92%, 760px);
+      margin: 0 auto;
+      padding: 28px 0 60px;
+    }
+
+    .intro,
+    .message-card {
+      padding: 28px 22px;
+      margin: 20px auto;
+      border: 2px solid #ffffffc9;
+      border-radius: 28px;
+      background: #ffffffd9;
+      box-shadow: 0 12px 35px #bd729126;
+    }
+
+    .cake {
+      font-size: 85px;
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    h1 {
+      color: #d45e91;
+      font-size: clamp(30px, 7vw, 48px);
+      margin: 12px 0;
+    }
+
+    h2 {
+      color: #d45e91;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .message-card {
+      display: none;
+      text-align: left;
+      line-height: 1.9;
+      font-size: 17px;
+      animation: fadeIn 1s ease;
+    }
+
+    .message-card h2,
+    .message-card .ending {
+      text-align: center;
+    }
+
+    .message-card p {
+      margin: 18px 0;
+    }
+
+    .special {
+      background: #fff0f6;
+      border-left: 4px solid #e88bb2;
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .ending {
+      color: #d45e91;
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+
+    .small-note {
+      font-size: 13px;
+      opacity: 0.75;
+    }
+
+    .floating {
+      position: fixed;
+      z-index: 1;
+      bottom: -60px;
+      pointer-events: none;
+      animation: floatUp linear infinite;
+      opacity: 0.75;
+    }
+
+    .dog {
+      position: fixed;
+      z-index: 3;
+      bottom: 8px;
+      font-size: 42px;
+      pointer-events: none;
+      animation: dogBounce 1.5s infinite ease-in-out;
+    }
+
+    .dog.left {
+      left: 5px;
+    }
+
+    .dog.right {
+      right: 5px;
+      animation-delay: 0.4s;
+    }
+
+    .confetti {
+      position: fixed;
+      z-index: 10;
+      top: -15px;
+      width: 9px;
+      height: 13px;
+      pointer-events: none;
+      animation: confettiFall 4s linear forwards;
+    }
+
+    .karaoke {
+      color: #d45e91;
+      font-weight: bold;
+      background: #fff0f6;
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0) rotate(0deg); }
+      to { transform: translateY(-120vh) rotate(25deg); }
+    }
+
+    @keyframes dogBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes confettiFall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        width: 94%;
+        padding-top: 14px;
+      }
+
+      .intro,
+      .message-card {
+        padding: 23px 16px;
+      }
+
+      .message-card {
+        font-size: 16px;
+      }
+
+      .dog {
+        font-size: 30px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="dog left">🐶</div>
+  <div class="dog right">🐕</div>
 
-<!-- BACKGROUND BALLOONS -->
-<div class="page-balloons">
-    <div class="page-balloon pb1"></div>
-    <div class="page-balloon pb2"></div>
-    <div class="page-balloon pb3"></div>
-    <div class="page-balloon pb4"></div>
-    <div class="page-balloon pb5"></div>
-</div>
+  <main class="page">
+    <section class="intro" id="intro">
+      <div class="cake">🎂</div>
+      <h1>A little birthday surprise</h1>
+      <p class="subtitle">For Pauleen 💗</p>
+      <p>I made a little something for your special day.</p>
 
-<!-- MUSIC GATE -->
-<div id="musicGate">
-    <div class="gate-card">
-        <h1>🎂 A little birthday surprise</h1>
-        <p>Tap the button below to start the birthday music.</p>
-        <button class="start-btn" id="startMusicBtn">
-            🎵 Start Birthday Music
-        </button>
-    </div>
-</div>
+      <button id="musicButton" type="button">🎵 Start Birthday Music</button>
+      <br>
+      <button id="openButton" type="button">Open your surprise 🎁</button>
 
-<!-- PAWS -->
-<div class="paw p1">🐾</div>
-<div class="paw p2">🐾</div>
-<div class="paw p3">🐾</div>
-<div class="paw p4">🐾</div>
-<div class="paw p5">🐾</div>
-<div class="paw p6">🐾</div>
-<div class="paw p7">🐾</div>
-<div class="paw p8">🐾</div>
-
-<!-- HEARTS -->
-<div class="heart h1">❤️</div>
-<div class="heart h2">❤️</div>
-<div class="heart h3">❤️</div>
-<div class="heart h4">❤️</div>
-<div class="heart h5">❤️</div>
-
-<!-- MAIN PAGE -->
-<main class="page">
-
-    <!-- INTRO CARD -->
-    <section class="card" id="introCard">
-        <div class="small-title">A little birthday surprise</div>
-        <h1>For Pauleen 💗</h1>
-        <div class="subtitle">
-            Someone left a little message here just for you. ✨
-        </div>
-
-        <!-- CAKE -->
-        <div class="cake-area">
-            <div class="dog">🐶</div>
-
-            <div class="cake">
-                <div class="flame"></div>
-                <div class="candle"></div>
-                <div class="cake-top"></div>
-                <div class="icing"></div>
-                <div class="cake-bottom"></div>
-            </div>
-
-            <div class="dog">🐶</div>
-        </div>
-
-        <button class="open-btn" id="openButton">
-            Open your surprise 🎁
-        </button>
+      <p class="small-note">
+        If the music doesn't start, tap the music button again.
+      </p>
     </section>
 
-    <!-- MESSAGE CARD -->
-    <section class="card hidden" id="messageCard">
+    <section class="message-card" id="message">
+      <h2>Happiest Birthday, Pau! 💗</h2>
 
-        <!-- BALLOONS BEHIND TEXT -->
-        <div class="text-balloons">
-            <div class="text-balloon tb1"></div>
-            <div class="text-balloon tb2"></div>
-            <div class="text-balloon tb3"></div>
-            <div class="text-balloon tb4"></div>
-            <div class="text-balloon tb5"></div>
-            <div class="text-balloon tb6"></div>
-        </div>
+      <p>
+        Happiesssstt Birthday, Pau! Hope you're doing good, and I wish you all
+        the best. May God lead you to the right path and help you achieve all
+        your goals in life. Sana makauwi ka na kung yan ang wish mo!
+      </p>
 
-        <div class="message-title reveal">A little message for you</div>
+      <p>
+        I hope you celebrate your day with your loved ones and the people who
+        are always there for you. I hope this new year of your life brings you
+        more happiness, good opportunities, and reasons to smile.
+      </p>
 
-        <h1>Happy Birthday, Pauleen 💗</h1>
+      <p class="special">
+        I am happy and thankful that you made my last months and my last
+        semester, which was the hardest and most crucial one, a bit lighter.
+        I already graduated. Thankuu ng marami sayo!
+      </p>
 
-        <div class="message-dogs reveal">🐶 🐶</div>
+      <p>How r u? Nakauwi ka na kaya?</p>
 
-        <!-- KARAOKE MESSAGE -->
-        <div class="karaoke-area" id="karaokeArea">
+      <p>
+        Sana happy ka sa career and path na tinatahak mo ngayon. May God give
+        you peace, guide you, and lead you to good decisions. I hope things
+        continue to work out for you, one step at a time.
+      </p>
 
-            <div class="karaoke-track">
-                <div class="karaoke-line"></div>
-                <div class="message-dog" id="messageDog">🐶</div>
-            </div>
+      <p>
+        It's kind of amazing when you think about how many little things had
+        to happen for any of us to exist. So many different possibilities,
+        choices, and events had to line up just for us to be here today.
+      </p>
 
-            <div class="karaoke-content">
-                <div class="message-text" id="messageText">
+      <p class="special">
+        The odds of dying are 1 in 1, but the odds of you existing are
+        approximately 1 in 10<sup>2,685,000</sup>.
+      </p>
 
-                    <p class="reveal">
-                        I hope you celebrate your day with your loved ones and the people who are always there for you. I hope you're doing good, and I wish you all the best. May God lead you to the right path and help you achieve all your goals in life.
-                    </p>
+      <p>
+        That number is an illustrative estimate, not an exact scientifically
+        established probability. Still, it gives you an idea of how incredibly
+        unlikely our existence can seem when you think about all the possible
+        combinations and circumstances involved.
+      </p>
 
-                    <p class="reveal">
-                        I am happy and thankful that you made my last months and my last semester, which was the hardest and most crucial one, a bit lighter. I already graduated. Thankuu ng marami sayo!
-                    </p>
+      <p>
+        There are billions of people in the world, each with their own story,
+        challenges, and plans. Everyone is figuring things out in their own
+        way. It's a good reminder to keep growing, learning, and appreciating
+        the time we have.
+      </p>
 
-                    <p class="reveal">
-                        How r u? Nakauwi ka na kaya?
-                    </p>
+      <p>
+        You don't have to have everything figured out right away. Keep doing
+        your best, keep learning from the things that happen, and keep being
+        yourself. I hope the coming years bring you good memories, meaningful
+        experiences, and opportunities that help you move closer to your goals.
+      </p>
 
-                    <p class="reveal">
-                        Sana happy ka sa career and path na tinatahak mo ngayon. May God give you peace, guide you, and lead you to good decisions.
-                    </p>
+      <p>
+        Take care as always, Pauleen. I genuinely hope that life treats you
+        well and that this new chapter brings you good things.
+      </p>
 
-                    <p class="reveal">
-                        Take care as always, Pauleen. I genuinely hope that life treats you well and that this new chapter brings you good things.
-                    </p>
-
-                    <p class="reveal" style="margin-top:40px;">
-                        The odds of dying are 1 in 1, but the odds of you existing are 1 in 10<sup>2,685,000</sup>.
-                    </p>
-
-                    <p class="reveal">
-                        Your existence required precise calculations, perfect timing, and countless unpredictable events to fall into place. In short, you're almost impossibly unlikely to exist, a miracle in your own way.
-                    </p>
-
-                    <p class="reveal">
-                        And yet, there are over eight billion people on this planet. Billions of different paths you could have taken, billions of moments when our paths could have crossed or passed without us ever knowing each other. But somehow, we ended up crossing paths, and that's one of the interesting things about life.
-                    </p>
-
-                    <p class="reveal">
-                        Out of all the people in the world, we get to meet certain people, share conversations, make memories, and become part of each other's lives, even if only for a chapter. Everyone has flaws, and there are things about ourselves that we might not always appreciate. But there's always something worth seeing in a person, something that makes them who they are.
-                    </p>
-
-                    <p class="reveal">
-                        I hope you never forget that your existence itself is already something extraordinary. In a world full of people and possibilities, you're one of the many miracles that somehow made it here. Keep growing, keep learning, and keep being yourself. You never know how much good you can bring into the world just by being who you are.
-                    </p>
-
-                    <p class="closing reveal">
-                        Happy Birthday again. 💗
-                    </p>
-
-                </div>
-            </div>
-        </div>
+      <p class="ending">Happy Birthday again. 💗</p>
     </section>
-</main>
+  </main>
 
-<!-- IT MIGHT BE YOU AUDIO -->
-<!-- Keep this MP3 beside index.html in the repository root. -->
-<audio
-    id="itMightBeYou"
-    preload="auto"
-    playsinline
-    webkit-playsinline
-    src="./it-might-be-you.mp3">
-</audio>
+  <audio id="itMightBeYouAudio" src="it-might-be-you.mp3" preload="auto"></audio>
 
-<script>
-"use strict";
+  <script>
+    const musicButton = document.getElementById("musicButton");
+    const openButton = document.getElementById("openButton");
+    const intro = document.getElementById("intro");
+    const message = document.getElementById("message");
+    const itMightBeYouAudio = document.getElementById("itMightBeYouAudio");
 
-/* =========================================
-   HAPPY BIRTHDAY MUSIC
-   Synthesized melody; no external file needed
-========================================= */
+    let birthdayAudioContext = null;
+    let birthdayMusicTimer = null;
+    let birthdayMusicPlaying = false;
 
-let birthdayAudioContext = null;
-let birthdayOscillators = [];
-let birthdayGain = null;
-let birthdayPlaying = false;
-let birthdayLoopTimer = null;
-
-/* =========================================
-   SECOND SONG
-========================================= */
-
-const itMightBeYouAudio = document.getElementById("itMightBeYou");
-
-let secondSongStarted = false;
-
-/*
-   iOS Safari note:
-   The second song's play() function is called immediately
-   inside the Open Your Surprise click handler. Do not move
-   that call into a setTimeout or wait for fetch/decode first.
-*/
-
-/* =========================================
-   HAPPY BIRTHDAY NOTES
-========================================= */
-
-const notes = {
-    C4:261.63,
-    D4:293.66,
-    E4:329.63,
-    F4:349.23,
-    G4:392.00,
-    A4:440.00,
-    B4:493.88,
-    C5:523.25,
-    D5:587.33,
-    E5:659.25,
-    F5:698.46,
-    G5:783.99
-};
-
-const birthdayMelody = [
-    ["G4",300],
-    ["G4",300],
-    ["A4",600],
-    ["G4",600],
-    ["C5",600],
-    ["B4",1000],
-
-    ["G4",300],
-    ["G4",300],
-    ["A4",600],
-    ["G4",600],
-    ["D5",600],
-    ["C5",1000],
-
-    ["G4",300],
-    ["G4",300],
-    ["G5",600],
-    ["E5",600],
-    ["C5",600],
-    ["B4",600],
-    ["A4",1000],
-
-    ["F5",300],
-    ["F5",300],
-    ["E5",600],
-    ["C5",600],
-    ["D5",600],
-    ["C5",1200]
-];
-
-/* =========================================
-   PLAY HAPPY BIRTHDAY
-========================================= */
-
-function playBirthdayMelody(){
-    if(birthdayPlaying) return;
-
-    const AudioContextClass =
-        window.AudioContext || window.webkitAudioContext;
-
-    if(!AudioContextClass){
-        console.warn("Web Audio is not supported in this browser.");
-        return;
-    }
-
-    birthdayPlaying = true;
-    birthdayAudioContext = new AudioContextClass();
-
-    birthdayGain = birthdayAudioContext.createGain();
-    birthdayGain.gain.value = 0.055;
-    birthdayGain.connect(birthdayAudioContext.destination);
-
-    /*
-       Called directly from the Start Birthday Music tap.
-       iOS Safari requires an audio context to be resumed
-       after a real user interaction.
-    */
-    const resumePromise = birthdayAudioContext.resume();
-    if(resumePromise && typeof resumePromise.catch === "function"){
-        resumePromise.catch(error => {
-            console.warn("Could not resume birthday music:", error);
-        });
-    }
-
-    function playLoop(){
-        if(!birthdayPlaying || !birthdayAudioContext) return;
-
-        let time = birthdayAudioContext.currentTime + 0.05;
-
-        birthdayMelody.forEach(([note,duration]) => {
-            if(!birthdayPlaying) return;
-
-            const oscillator = birthdayAudioContext.createOscillator();
-            const gain = birthdayAudioContext.createGain();
-
-            oscillator.type = "sine";
-            oscillator.frequency.value = notes[note];
-
-            oscillator.connect(gain);
-            gain.connect(birthdayGain);
-
-            gain.gain.setValueAtTime(0.0001,time);
-            gain.gain.exponentialRampToValueAtTime(0.8,time+0.03);
-            gain.gain.exponentialRampToValueAtTime(
-                0.0001,
-                time + duration/1000 - 0.03
-            );
-
-            oscillator.start(time);
-            oscillator.stop(time + duration/1000);
-
-            birthdayOscillators.push(oscillator);
-            time += duration/1000;
-        });
-
-        const totalDuration = birthdayMelody.reduce(
-            (sum,item) => sum + item[1],
-            0
-        );
-
-        birthdayLoopTimer = setTimeout(playLoop,totalDuration);
-    }
-
-    playLoop();
-}
-
-/* =========================================
-   STOP HAPPY BIRTHDAY
-========================================= */
-
-function stopBirthdayMelody(){
-    birthdayPlaying = false;
-
-    if(birthdayLoopTimer !== null){
-        clearTimeout(birthdayLoopTimer);
-        birthdayLoopTimer = null;
-    }
-
-    birthdayOscillators.forEach(oscillator => {
-        try{ oscillator.stop(); }catch(error){}
-    });
-
-    birthdayOscillators = [];
-
-    if(birthdayAudioContext){
-        try{ birthdayAudioContext.close(); }catch(error){}
-        birthdayAudioContext = null;
-    }
-
-    birthdayGain = null;
-}
-
-/* =========================================
-   START SECOND SONG
-========================================= */
-
-function startSecondSongFromTap(){
-    if(secondSongStarted) return;
-
-    /*
-       This function must be called synchronously from the
-       Open Your Surprise button click. The browser's play()
-       request is made before any timers or async operations.
-    */
-    secondSongStarted = true;
-
-    try{
-        itMightBeYouAudio.pause();
-        itMightBeYouAudio.currentTime = 0;
-        itMightBeYouAudio.muted = false;
-        itMightBeYouAudio.volume = 1;
-
-        const playPromise = itMightBeYouAudio.play();
-
-        if(playPromise && typeof playPromise.then === "function"){
-            playPromise.catch(error => {
-                secondSongStarted = false;
-                console.error(
-                    "The second song could not start. Check that it-might-be-you.mp3 exists beside index.html.",
-                    error
-                );
-            });
-        }
-    }catch(error){
-        secondSongStarted = false;
-        console.error("Second song playback error:",error);
-    }
-}
-
-/* =========================================
-   CONFETTI
-========================================= */
-
-function createConfetti(){
-    const colors = [
-        "#ff79a8",
-        "#ffd166",
-        "#7dd3fc",
-        "#a7f3d0",
-        "#c4b5fd"
+    const birthdayNotes = [
+      [262, 0.35], [262, 0.25], [294, 0.6], [262, 0.6],
+      [349, 0.6], [330, 1.0],
+      [262, 0.35], [262, 0.25], [294, 0.6], [262, 0.6],
+      [392, 0.6], [349, 1.0],
+      [262, 0.35], [262, 0.25], [523, 0.6], [440, 0.6],
+      [349, 0.6], [330, 0.6], [294, 1.0],
+      [466, 0.35], [466, 0.25], [440, 0.6], [349, 0.6],
+      [392, 0.6], [349, 1.2]
     ];
 
-    for(let i=0;i<100;i++){
-        const piece = document.createElement("div");
-        piece.className = "confetti";
+    function playBirthdayTune() {
+      stopBirthdayTune();
 
-        piece.style.left = Math.random()*100 + "vw";
-        piece.style.animationDuration = (3+Math.random()*4) + "s";
-        piece.style.animationDelay = Math.random()*2 + "s";
-        piece.style.transform = `rotate(${Math.random()*360}deg)`;
-        piece.style.background = colors[Math.floor(Math.random()*colors.length)];
+      const AudioContextClass =
+        window.AudioContext || window.webkitAudioContext;
 
-        document.body.appendChild(piece);
+      if (!AudioContextClass) {
+        musicButton.textContent = "🎵 Your browser doesn't support this music";
+        return;
+      }
 
-        setTimeout(() => piece.remove(),8000);
+      birthdayAudioContext = new AudioContextClass();
+      birthdayAudioContext.resume();
+
+      let noteIndex = 0;
+
+      function playNextNote() {
+        if (!birthdayAudioContext || !birthdayMusicPlaying) return;
+
+        if (noteIndex >= birthdayNotes.length) {
+          noteIndex = 0;
+        }
+
+        const [frequency, duration] = birthdayNotes[noteIndex];
+        const oscillator = birthdayAudioContext.createOscillator();
+        const gain = birthdayAudioContext.createGain();
+
+        oscillator.type = "sine";
+        oscillator.frequency.value = frequency;
+        gain.gain.setValueAtTime(0.0001, birthdayAudioContext.currentTime);
+        gain.gain.exponentialRampToValueAtTime(
+          0.13,
+          birthdayAudioContext.currentTime + 0.03
+        );
+        gain.gain.setValueAtTime(
+          0.13,
+          birthdayAudioContext.currentTime + duration * 0.65
+        );
+        gain.gain.exponentialRampToValueAtTime(
+          0.0001,
+          birthdayAudioContext.currentTime + duration
+        );
+
+        oscillator.connect(gain);
+        gain.connect(birthdayAudioContext.destination);
+
+        oscillator.start();
+        oscillator.stop(birthdayAudioContext.currentTime + duration);
+
+        noteIndex++;
+        birthdayMusicTimer = setTimeout(
+          playNextNote,
+          duration * 1000 + 80
+        );
+      }
+
+      birthdayMusicPlaying = true;
+      playNextNote();
+      musicButton.textContent = "⏸ Stop Birthday Music";
     }
-}
 
-/* =========================================
-   SLIDING DOG
-========================================= */
+    function stopBirthdayTune() {
+      birthdayMusicPlaying = false;
 
-function moveDogToParagraph(paragraph){
-    const dog = document.getElementById("messageDog");
-    const karaokeArea = document.getElementById("karaokeArea");
+      if (birthdayMusicTimer) {
+        clearTimeout(birthdayMusicTimer);
+        birthdayMusicTimer = null;
+      }
 
-    if(!dog || !paragraph || !karaokeArea) return;
+      if (birthdayAudioContext) {
+        birthdayAudioContext.close().catch(() => {});
+        birthdayAudioContext = null;
+      }
 
-    const paragraphRect = paragraph.getBoundingClientRect();
-    const areaRect = karaokeArea.getBoundingClientRect();
-    const relativeTop = paragraphRect.top - areaRect.top;
+      musicButton.textContent = "🎵 Start Birthday Music";
+    }
 
-    dog.style.top = Math.max(0,relativeTop) + "px";
-    dog.style.opacity = "1";
-}
+    musicButton.addEventListener("click", () => {
+      if (birthdayMusicPlaying) {
+        stopBirthdayTune();
+      } else {
+        playBirthdayTune();
+      }
+    });
 
-/* =========================================
-   REVEAL MESSAGE
-========================================= */
+    openButton.addEventListener("click", () => {
+      intro.style.display = "none";
+      message.style.display = "block";
 
-function revealMessage(){
-    const revealItems = document.querySelectorAll("#messageCard .reveal");
-    const messageParagraphs = document.querySelectorAll("#messageText p.reveal");
+      stopBirthdayTune();
 
-    let delay = 500;
+      itMightBeYouAudio.currentTime = 0;
+      itMightBeYouAudio.volume = 0.8;
 
-    revealItems.forEach(item => {
-        const itemDelay = delay;
+      itMightBeYouAudio.play().catch(() => {
+        const note = document.createElement("p");
+        note.className = "small-note";
+        note.textContent =
+          "Tap the page's music controls if the song doesn't play. Make sure it-might-be-you.mp3 is uploaded beside index.html.";
+        message.prepend(note);
+      });
 
+      createConfetti();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    function createFloatingDecoration() {
+      const decorations = ["💗", "💕", "🎈", "🐾", "✨", "💖"];
+      const item = document.createElement("div");
+
+      item.className = "floating";
+      item.textContent =
+        decorations[Math.floor(Math.random() * decorations.length)];
+
+      item.style.left = Math.random() * 100 + "vw";
+      item.style.fontSize = 18 + Math.random() * 22 + "px";
+      item.style.animationDuration = 8 + Math.random() * 9 + "s";
+      item.style.animationDelay = Math.random() * 4 + "s";
+
+      document.body.appendChild(item);
+
+      setTimeout(() => item.remove(), 19000);
+    }
+
+    for (let i = 0; i < 15; i++) {
+      setTimeout(createFloatingDecoration, i * 350);
+    }
+
+    setInterval(createFloatingDecoration, 1000);
+
+    function createConfetti() {
+      const pieces = ["💗", "💕", "✨", "🎉", "💖"];
+
+      for (let i = 0; i < 65; i++) {
         setTimeout(() => {
-            item.classList.add("show");
+          const piece = document.createElement("div");
+          piece.className = "confetti";
+          piece.textContent =
+            pieces[Math.floor(Math.random() * pieces.length)];
 
-            const paragraphIndex = Array.from(messageParagraphs).indexOf(item);
+          piece.style.left = Math.random() * 100 + "vw";
+          piece.style.fontSize = 12 + Math.random() * 18 + "px";
+          piece.style.animationDuration = 2.5 + Math.random() * 3 + "s";
 
-            if(paragraphIndex !== -1){
-                requestAnimationFrame(() => {
-                    moveDogToParagraph(item);
-                });
-            }
-        },itemDelay);
-
-        delay += 2100;
-    });
-}
-
-/* =========================================
-   START BIRTHDAY MUSIC BUTTON
-========================================= */
-
-document.getElementById("startMusicBtn").addEventListener("click",function(){
-    document.getElementById("musicGate").classList.add("hidden");
-    playBirthdayMelody();
-});
-
-/* =========================================
-   OPEN SURPRISE BUTTON
-========================================= */
-
-document.getElementById("openButton").addEventListener("click",function(){
-    /*
-       Start the second song directly inside this user click.
-       This is important for iPhone/iPad Safari autoplay rules.
-    */
-    startSecondSongFromTap();
-
-    /* Stop the Happy Birthday melody. */
-    stopBirthdayMelody();
-
-    /* Show the message card. */
-    document.getElementById("introCard").classList.add("hidden");
-    document.getElementById("messageCard").classList.remove("hidden");
-
-    /* Start confetti and reveal the message slowly. */
-    createConfetti();
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-    revealMessage();
-});
-
-/* =========================================
-   KEEP DOG ALIGNED WHEN SCREEN RESIZES
-========================================= */
-
-window.addEventListener("resize",function(){
-    const shown = document.querySelectorAll("#messageText p.reveal.show");
-
-    if(shown.length){
-        moveDogToParagraph(shown[shown.length-1]);
+          document.body.appendChild(piece);
+          setTimeout(() => piece.remove(), 6000);
+        }, i * 35);
+      }
     }
-});
-</script>
-
+  </script>
 </body>
 </html>
