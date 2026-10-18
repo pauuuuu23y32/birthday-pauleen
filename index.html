@@ -6,7 +6,9 @@
   <title>Happy Birthday, Pauleen! 💗</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -31,7 +33,9 @@
       box-shadow: 0 5px 14px #d77da755;
     }
 
-    button:hover { background: #df6597; }
+    button:hover {
+      background: #df6597;
+    }
 
     .page {
       position: relative;
@@ -41,7 +45,8 @@
       padding: 28px 0 60px;
     }
 
-    .intro, .message-card {
+    .intro,
+    .message-card {
       padding: 28px 22px;
       margin: 20px auto;
       border: 2px solid #ffffffc9;
@@ -61,7 +66,9 @@
       margin: 12px 0;
     }
 
-    h2 { color: #d45e91; }
+    h2 {
+      color: #d45e91;
+    }
 
     .subtitle {
       font-size: 18px;
@@ -81,11 +88,13 @@
       text-align: center;
     }
 
-    .message-card p { margin: 18px 0; }
+    .message-card p {
+      margin: 18px 0;
+    }
 
     .message-card .first-message {
       opacity: 0;
-      transition: opacity 1s ease;
+      transition: opacity 2s ease;
     }
 
     .special {
@@ -125,7 +134,10 @@
       animation: dogBounce 1.5s infinite ease-in-out;
     }
 
-    .dog.left { left: 5px; }
+    .dog.left {
+      left: 5px;
+    }
+
     .dog.right {
       right: 5px;
       animation-delay: 0.4s;
@@ -140,23 +152,45 @@
     }
 
     @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
     }
 
     @keyframes floatUp {
-      from { transform: translateY(0) rotate(0deg); }
-      to { transform: translateY(-120vh) rotate(25deg); }
+      from {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      to {
+        transform: translateY(-120vh) rotate(25deg);
+      }
     }
 
     @keyframes dogBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes confettiFall {
@@ -172,12 +206,18 @@
         padding-top: 14px;
       }
 
-      .intro, .message-card {
+      .intro,
+      .message-card {
         padding: 23px 16px;
       }
 
-      .message-card { font-size: 16px; }
-      .dog { font-size: 30px; }
+      .message-card {
+        font-size: 16px;
+      }
+
+      .dog {
+        font-size: 30px;
+      }
     }
   </style>
 </head>
@@ -189,13 +229,20 @@
   <main class="page">
     <section class="intro" id="intro">
       <div class="cake">🎂</div>
+
       <h1>A little birthday surprise</h1>
       <p class="subtitle">For Pauleen 💗</p>
       <p>I made a little something for your special day.</p>
 
-      <button id="musicButton" type="button">🎵 Start Birthday Music</button>
+      <button id="musicButton" type="button">
+        🎵 Start Birthday Music
+      </button>
+
       <br>
-      <button id="openButton" type="button">Open your surprise 🎁</button>
+
+      <button id="openButton" type="button">
+        Open your surprise 🎁
+      </button>
 
       <p class="small-note">
         If the music doesn't start, tap the music button again.
@@ -272,7 +319,11 @@
     </section>
   </main>
 
-  <audio id="itMightBeYouAudio" src="it-might-be-you.mp3" preload="auto"></audio>
+  <audio
+    id="itMightBeYouAudio"
+    src="it-might-be-you.mp3"
+    preload="auto"
+  ></audio>
 
   <script>
     const musicButton = document.getElementById("musicButton");
@@ -335,7 +386,9 @@
       function playNextNote() {
         if (!birthdayAudioContext || !birthdayMusicPlaying) return;
 
-        if (noteIndex >= birthdayNotes.length) noteIndex = 0;
+        if (noteIndex >= birthdayNotes.length) {
+          noteIndex = 0;
+        }
 
         const [frequency, duration] = birthdayNotes[noteIndex];
         const oscillator = birthdayAudioContext.createOscillator();
@@ -344,23 +397,34 @@
         oscillator.type = "sine";
         oscillator.frequency.value = frequency;
 
-        gain.gain.setValueAtTime(0.0001, birthdayAudioContext.currentTime);
-        gain.gain.exponentialRampToValueAtTime(
-          0.13, birthdayAudioContext.currentTime + 0.03
-        );
         gain.gain.setValueAtTime(
-          0.13, birthdayAudioContext.currentTime + duration * 0.65
+          0.0001,
+          birthdayAudioContext.currentTime
         );
+
         gain.gain.exponentialRampToValueAtTime(
-          0.0001, birthdayAudioContext.currentTime + duration
+          0.13,
+          birthdayAudioContext.currentTime + 0.03
+        );
+
+        gain.gain.setValueAtTime(
+          0.13,
+          birthdayAudioContext.currentTime + duration * 0.65
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+          0.0001,
+          birthdayAudioContext.currentTime + duration
         );
 
         oscillator.connect(gain);
         gain.connect(birthdayAudioContext.destination);
+
         oscillator.start();
         oscillator.stop(birthdayAudioContext.currentTime + duration);
 
         noteIndex++;
+
         birthdayMusicTimer = setTimeout(
           playNextNote,
           duration * 1000 + 80
@@ -378,35 +442,53 @@
       }
     });
 
+    function startItMightBeYou() {
+      itMightBeYouAudio.currentTime = 0;
+      itMightBeYouAudio.volume = 0.8;
+
+      itMightBeYouAudio.play().catch(() => {
+        const note = document.createElement("p");
+        note.className = "small-note";
+        note.textContent =
+          "The song could not play. Check that it-might-be-you.mp3 is uploaded beside index.html.";
+        message.prepend(note);
+      });
+    }
+
     openButton.addEventListener("click", () => {
       if (surpriseOpened) return;
       surpriseOpened = true;
 
       stopBirthdayTune();
+
       intro.style.display = "none";
       message.style.display = "block";
 
       firstMessage.style.opacity = "0";
-      window.scrollTo({ top: 0, behavior: "smooth" });
 
       createConfetti();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      // Start the song only after the first paragraph finishes fading in.
+      firstMessage.addEventListener(
+        "transitionend",
+        function onFirstParagraphAppears(event) {
+          if (event.propertyName !== "opacity") return;
+
+          firstMessage.removeEventListener(
+            "transitionend",
+            onFirstParagraphAppears
+          );
+
+          startItMightBeYou();
+        }
+      );
+
+      // Force the browser to register the initial hidden state.
+      void firstMessage.offsetHeight;
 
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          firstMessage.style.opacity = "1";
-
-          // Start "It Might Be You" as the first paragraph appears.
-          itMightBeYouAudio.currentTime = 0;
-          itMightBeYouAudio.volume = 0.8;
-
-          itMightBeYouAudio.play().catch(() => {
-            const note = document.createElement("p");
-            note.className = "small-note";
-            note.textContent =
-              "If the song doesn't play, check that it-might-be-you.mp3 is uploaded beside index.html.";
-            message.prepend(note);
-          });
-        });
+        firstMessage.style.opacity = "1";
       });
     });
 
@@ -415,14 +497,17 @@
       const item = document.createElement("div");
 
       item.className = "floating";
+
       item.textContent =
         decorations[Math.floor(Math.random() * decorations.length)];
+
       item.style.left = Math.random() * 100 + "vw";
       item.style.fontSize = 18 + Math.random() * 22 + "px";
       item.style.animationDuration = 8 + Math.random() * 9 + "s";
       item.style.animationDelay = Math.random() * 4 + "s";
 
       document.body.appendChild(item);
+
       setTimeout(() => item.remove(), 19000);
     }
 
@@ -438,14 +523,18 @@
       for (let i = 0; i < 65; i++) {
         setTimeout(() => {
           const piece = document.createElement("div");
+
           piece.className = "confetti";
+
           piece.textContent =
             pieces[Math.floor(Math.random() * pieces.length)];
+
           piece.style.left = Math.random() * 100 + "vw";
           piece.style.fontSize = 12 + Math.random() * 18 + "px";
           piece.style.animationDuration = 2.5 + Math.random() * 3 + "s";
 
           document.body.appendChild(piece);
+
           setTimeout(() => piece.remove(), 6000);
         }, i * 35);
       }
