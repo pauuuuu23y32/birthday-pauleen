@@ -18,9 +18,7 @@ html,body{
     overflow-x:hidden;
 }
 
-body{
-    min-height:100vh;
-}
+body{min-height:100vh}
 
 button{
     border:0;
@@ -28,15 +26,9 @@ button{
     font-family:inherit;
 }
 
-.hidden{
-    display:none!important;
-}
+.hidden{display:none!important}
 
-
-/* =========================
-   MUSIC GATE
-========================= */
-
+/* MUSIC GATE */
 #musicGate{
     position:fixed;
     inset:0;
@@ -68,8 +60,7 @@ button{
     margin:0 0 25px;
 }
 
-.start-btn,
-.open-btn{
+.start-btn,.open-btn{
     background:linear-gradient(135deg,#ff78a8,#e9568a);
     color:white;
     padding:15px 24px;
@@ -80,16 +71,11 @@ button{
     transition:.25s;
 }
 
-.start-btn:hover,
-.open-btn:hover{
+.start-btn:hover,.open-btn:hover{
     transform:translateY(-2px);
 }
 
-
-/* =========================
-   BACKGROUND BALLOONS
-========================= */
-
+/* BACKGROUND BALLOONS */
 .page-balloons{
     position:fixed;
     inset:0;
@@ -118,69 +104,21 @@ button{
     background:rgba(100,70,80,.18);
 }
 
-.pb1{
-    left:5%;
-    background:#ff82ad;
-    animation-duration:17s;
-}
-
-.pb2{
-    left:25%;
-    background:#ffd166;
-    animation-duration:21s;
-    animation-delay:4s;
-}
-
-.pb3{
-    left:48%;
-    background:#8ed8ff;
-    animation-duration:19s;
-    animation-delay:7s;
-}
-
-.pb4{
-    left:72%;
-    background:#c5a3ff;
-    animation-duration:22s;
-    animation-delay:2s;
-}
-
-.pb5{
-    left:90%;
-    background:#9ee6c0;
-    animation-duration:18s;
-    animation-delay:9s;
-}
+.pb1{left:5%;background:#ff82ad;animation-duration:17s}
+.pb2{left:25%;background:#ffd166;animation-duration:21s;animation-delay:4s}
+.pb3{left:48%;background:#8ed8ff;animation-duration:19s;animation-delay:7s}
+.pb4{left:72%;background:#c5a3ff;animation-duration:22s;animation-delay:2s}
+.pb5{left:90%;background:#9ee6c0;animation-duration:18s;animation-delay:9s}
 
 @keyframes floatPageBalloon{
-    0%{
-        transform:translateY(0) translateX(0);
-        opacity:0;
-    }
-
-    10%{
-        opacity:.20;
-    }
-
-    50%{
-        transform:translateY(-55vh) translateX(25px);
-    }
-
-    90%{
-        opacity:.20;
-    }
-
-    100%{
-        transform:translateY(-125vh) translateX(-20px);
-        opacity:0;
-    }
+    0%{transform:translateY(0) translateX(0);opacity:0}
+    10%{opacity:.20}
+    50%{transform:translateY(-55vh) translateX(25px)}
+    90%{opacity:.20}
+    100%{transform:translateY(-125vh) translateX(-20px);opacity:0}
 }
 
-
-/* =========================
-   MAIN
-========================= */
-
+/* MAIN */
 .page{
     min-height:100vh;
     padding:35px 16px 60px;
@@ -200,14 +138,8 @@ button{
     text-align:center;
 }
 
-
-/* =========================
-   BALLOONS INSIDE TEXT AREA
-========================= */
-
-#messageCard{
-    overflow:hidden;
-}
+/* BALLOONS INSIDE MESSAGE */
+#messageCard{overflow:hidden}
 
 .text-balloons{
     position:absolute;
@@ -248,95 +180,27 @@ button{
     background:rgba(90,60,70,.18);
 }
 
-.tb1{
-    left:4%;
-    background:#ff75a5;
-    animation-duration:18s;
-    animation-delay:0s;
-}
-
-.tb2{
-    left:20%;
-    background:#ffd166;
-    width:32px;
-    height:43px;
-    animation-duration:22s;
-    animation-delay:6s;
-}
-
-.tb3{
-    left:37%;
-    background:#7dd3fc;
-    width:45px;
-    height:58px;
-    animation-duration:20s;
-    animation-delay:3s;
-}
-
-.tb4{
-    left:55%;
-    background:#c4b5fd;
-    width:34px;
-    height:45px;
-    animation-duration:24s;
-    animation-delay:9s;
-}
-
-.tb5{
-    left:73%;
-    background:#ff9fc4;
-    width:43px;
-    height:56px;
-    animation-duration:19s;
-    animation-delay:5s;
-}
-
-.tb6{
-    left:89%;
-    background:#86efac;
-    width:34px;
-    height:45px;
-    animation-duration:21s;
-    animation-delay:12s;
-}
+.tb1{left:4%;background:#ff75a5;animation-duration:18s;animation-delay:0s}
+.tb2{left:20%;background:#ffd166;width:32px;height:43px;animation-duration:22s;animation-delay:6s}
+.tb3{left:37%;background:#7dd3fc;width:45px;height:58px;animation-duration:20s;animation-delay:3s}
+.tb4{left:55%;background:#c4b5fd;width:34px;height:45px;animation-duration:24s;animation-delay:9s}
+.tb5{left:73%;background:#ff9fc4;width:43px;height:56px;animation-duration:19s;animation-delay:5s}
+.tb6{left:89%;background:#86efac;width:34px;height:45px;animation-duration:21s;animation-delay:12s}
 
 @keyframes textBalloonFloat{
-    0%{
-        transform:translateY(0) translateX(0) rotate(-3deg);
-        opacity:0;
-    }
-
-    12%{
-        opacity:.16;
-    }
-
-    50%{
-        transform:translateY(-420px) translateX(20px) rotate(5deg);
-    }
-
-    88%{
-        opacity:.16;
-    }
-
-    100%{
-        transform:translateY(-900px) translateX(-15px) rotate(-4deg);
-        opacity:0;
-    }
+    0%{transform:translateY(0) translateX(0) rotate(-3deg);opacity:0}
+    12%{opacity:.16}
+    50%{transform:translateY(-420px) translateX(20px) rotate(5deg)}
+    88%{opacity:.16}
+    100%{transform:translateY(-900px) translateX(-15px) rotate(-4deg);opacity:0}
 }
-
-
-/* Keep message content above balloons */
 
 #messageCard > *:not(.text-balloons){
     position:relative;
     z-index:5;
 }
 
-
-/* =========================
-   TITLES
-========================= */
-
+/* TITLES */
 .small-title{
     color:#d65b86;
     font-size:15px;
@@ -355,11 +219,7 @@ h1{
     margin-bottom:25px;
 }
 
-
-/* =========================
-   CAKE
-========================= */
-
+/* CAKE */
 .cake-area{
     width:100%;
     display:flex;
@@ -429,31 +289,21 @@ h1{
     box-shadow:0 0 12px #ffbd4a;
 }
 
-
-/* =========================
-   DOGS
-========================= */
-
+/* DOGS */
 .dog{
     font-size:50px;
     line-height:1;
     transform:translateY(2px);
 }
 
-
-/* =========================
-   MESSAGE
-========================= */
-
+/* MESSAGE */
 .message-title{
     color:#d95b87;
     font-size:16px;
     margin-bottom:8px;
 }
 
-.message-card h1{
-    margin:0 0 15px;
-}
+.message-card h1{margin:0 0 15px}
 
 .message-dogs{
     font-size:45px;
@@ -466,9 +316,7 @@ h1{
     line-height:1.8;
 }
 
-.message-text p{
-    margin:0 0 22px;
-}
+.message-text p{margin:0 0 22px}
 
 .closing{
     font-weight:bold;
@@ -489,17 +337,11 @@ h1{
     margin-top:30px!important;
 }
 
-
-/* =========================
-   SLOW REVEAL
-========================= */
-
+/* SLOW REVEAL */
 .reveal{
     opacity:0;
     transform:translateY(18px);
-    transition:
-        opacity 1.5s ease,
-        transform 1.5s ease;
+    transition:opacity 1.5s ease,transform 1.5s ease;
 }
 
 .reveal.show{
@@ -507,11 +349,7 @@ h1{
     transform:translateY(0);
 }
 
-
-/* =========================
-   SLIDING DOG
-========================= */
-
+/* SLIDING DOG */
 .karaoke-area{
     position:relative;
     width:100%;
@@ -551,9 +389,7 @@ h1{
     line-height:1;
     z-index:30;
     opacity:0;
-    transition:
-        top 1.5s cubic-bezier(.4,0,.2,1),
-        opacity .7s ease;
+    transition:top 1.5s cubic-bezier(.4,0,.2,1),opacity .7s ease;
     pointer-events:none;
 }
 
@@ -562,11 +398,7 @@ h1{
     padding-left:46px;
 }
 
-
-/* =========================
-   FLOATING PAWS
-========================= */
-
+/* FLOATING PAWS */
 .paw{
     position:fixed;
     z-index:1;
@@ -585,20 +417,11 @@ h1{
 .p8{right:3%;top:65%;animation-delay:3.5s}
 
 @keyframes floatPaw{
-    0%,100%{
-        transform:translateY(0) rotate(0deg);
-    }
-
-    50%{
-        transform:translateY(-18px) rotate(8deg);
-    }
+    0%,100%{transform:translateY(0) rotate(0deg)}
+    50%{transform:translateY(-18px) rotate(8deg)}
 }
 
-
-/* =========================
-   HEARTS
-========================= */
-
+/* HEARTS */
 .heart{
     position:fixed;
     z-index:1;
@@ -615,20 +438,11 @@ h1{
 .h5{left:50%;top:20%;animation-delay:5s}
 
 @keyframes heartFloat{
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-20px);
-    }
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-20px)}
 }
 
-
-/* =========================
-   CONFETTI
-========================= */
-
+/* CONFETTI */
 .confetti{
     position:fixed;
     z-index:50;
@@ -640,36 +454,15 @@ h1{
 }
 
 @keyframes fall{
-    to{
-        transform:translateY(110vh) rotate(720deg);
-        opacity:0;
-    }
+    to{transform:translateY(110vh) rotate(720deg);opacity:0}
 }
 
-
-/* =========================
-   MOBILE
-========================= */
-
+/* MOBILE */
 @media(max-width:600px){
-
-    .page{
-        padding:20px 10px 40px;
-    }
-
-    .card{
-        padding:28px 18px;
-        border-radius:25px;
-    }
-
-    h1{
-        font-size:29px;
-    }
-
-    .subtitle{
-        font-size:16px;
-    }
-
+    .page{padding:20px 10px 40px}
+    .card{padding:28px 18px;border-radius:25px}
+    h1{font-size:29px}
+    .subtitle{font-size:16px}
     .cake-area{
         width:100%;
         gap:0;
@@ -677,131 +470,64 @@ h1{
         margin-left:0;
         margin-right:0;
     }
-
     .cake{
         transform:scale(.78);
         transform-origin:center bottom;
         margin-left:-12px;
         margin-right:-12px;
     }
-
-    .dog{
-        font-size:40px;
-    }
-
-    .message-dogs{
-        font-size:38px;
-    }
-
-    .message-text{
-        font-size:16px;
-        line-height:1.7;
-    }
-
-    .karaoke-track{
-        width:30px;
-    }
-
-    .karaoke-line{
-        left:12px;
-    }
-
+    .dog{font-size:40px}
+    .message-dogs{font-size:38px}
+    .message-text{font-size:16px;line-height:1.7}
+    .karaoke-track{width:30px}
+    .karaoke-line{left:12px}
     .message-dog{
         left:-2px;
         width:28px;
         height:28px;
         font-size:25px;
     }
-
-    .karaoke-content{
-        padding-left:34px;
-    }
-
-    .text-balloon{
-        transform:scale(.75);
-    }
+    .karaoke-content{padding-left:34px}
+    .text-balloon{transform:scale(.75)}
 }
 
-
 @media(max-width:380px){
-
     .cake{
         transform:scale(.68);
         margin-left:-18px;
         margin-right:-18px;
     }
-
-    .dog{
-        font-size:34px;
-    }
-
-    .karaoke-track{
-        width:28px;
-    }
-
-    .message-dog{
-        left:-2px;
-        font-size:23px;
-    }
-
-    .karaoke-content{
-        padding-left:32px;
-    }
+    .dog{font-size:34px}
+    .karaoke-track{width:28px}
+    .message-dog{left:-2px;font-size:23px}
+    .karaoke-content{padding-left:32px}
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =========================
-     BACKGROUND BALLOONS
-========================= -->
-
+<!-- BACKGROUND BALLOONS -->
 <div class="page-balloons">
-
     <div class="page-balloon pb1"></div>
     <div class="page-balloon pb2"></div>
     <div class="page-balloon pb3"></div>
     <div class="page-balloon pb4"></div>
     <div class="page-balloon pb5"></div>
-
 </div>
 
-
-<!-- =========================
-     MUSIC GATE
-========================= -->
-
+<!-- MUSIC GATE -->
 <div id="musicGate">
-
     <div class="gate-card">
-
         <h1>🎂 A little birthday surprise</h1>
-
-        <p>
-            Tap the button below to start the birthday music.
-        </p>
-
-        <button
-            class="start-btn"
-            id="startMusicBtn">
-
+        <p>Tap the button below to start the birthday music.</p>
+        <button class="start-btn" id="startMusicBtn">
             🎵 Start Birthday Music
-
         </button>
-
     </div>
-
 </div>
 
-
-<!-- =========================
-     PAWS
-========================= -->
-
+<!-- PAWS -->
 <div class="paw p1">🐾</div>
 <div class="paw p2">🐾</div>
 <div class="paw p3">🐾</div>
@@ -811,480 +537,226 @@ h1{
 <div class="paw p7">🐾</div>
 <div class="paw p8">🐾</div>
 
-
 <!-- HEARTS -->
-
 <div class="heart h1">❤️</div>
 <div class="heart h2">❤️</div>
 <div class="heart h3">❤️</div>
 <div class="heart h4">❤️</div>
 <div class="heart h5">❤️</div>
 
-
-<!-- =========================
-     MAIN PAGE
-========================= -->
-
+<!-- MAIN PAGE -->
 <main class="page">
 
-
     <!-- INTRO CARD -->
-
-    <section
-        class="card"
-        id="introCard">
-
-        <div class="small-title">
-            A little birthday surprise
-        </div>
-
-        <h1>
-            For Pauleen 💗
-        </h1>
-
+    <section class="card" id="introCard">
+        <div class="small-title">A little birthday surprise</div>
+        <h1>For Pauleen 💗</h1>
         <div class="subtitle">
             Someone left a little message here just for you. ✨
         </div>
 
-
         <!-- CAKE -->
-
         <div class="cake-area">
-
-            <div class="dog">
-                🐶
-            </div>
-
-
+            <div class="dog">🐶</div>
             <div class="cake">
-
                 <div class="flame"></div>
-
                 <div class="candle"></div>
-
                 <div class="cake-top"></div>
-
                 <div class="icing"></div>
-
                 <div class="cake-bottom"></div>
-
             </div>
-
-
-            <div class="dog">
-                🐶
-            </div>
-
+            <div class="dog">🐶</div>
         </div>
 
-
-        <button
-            class="open-btn"
-            id="openButton">
-
+        <button class="open-btn" id="openButton">
             Open your surprise 🎁
-
         </button>
-
     </section>
 
-
-    <!-- =========================
-         MESSAGE CARD
-    ========================= -->
-
-    <section
-        class="card hidden"
-        id="messageCard">
-
+    <!-- MESSAGE CARD -->
+    <section class="card hidden" id="messageCard">
 
         <!-- BALLOONS BEHIND TEXT -->
-
         <div class="text-balloons">
-
             <div class="text-balloon tb1"></div>
             <div class="text-balloon tb2"></div>
             <div class="text-balloon tb3"></div>
             <div class="text-balloon tb4"></div>
             <div class="text-balloon tb5"></div>
             <div class="text-balloon tb6"></div>
-
         </div>
 
-
-        <div class="message-title reveal">
-            A little message for you
-        </div>
-
-
-        <!-- THIS STAYS VISIBLE -->
-
-        <h1>
-            Happy Birthday, Pauleen 💗
-        </h1>
-
-
-        <div class="message-dogs reveal">
-            🐶 🐶
-        </div>
-
+        <div class="message-title reveal">A little message for you</div>
+        <h1>Happy Birthday, Pauleen 💗</h1>
+        <div class="message-dogs reveal">🐶 🐶</div>
 
         <!-- KARAOKE MESSAGE -->
-
-        <div
-            class="karaoke-area"
-            id="karaokeArea">
-
-
+        <div class="karaoke-area" id="karaokeArea">
             <div class="karaoke-track">
-
                 <div class="karaoke-line"></div>
-
-                <div
-                    class="message-dog"
-                    id="messageDog">
-
-                    🐶
-
-                </div>
-
+                <div class="message-dog" id="messageDog">🐶</div>
             </div>
 
-
             <div class="karaoke-content">
-
-                <div
-                    class="message-text"
-                    id="messageText">
+                <div class="message-text" id="messageText">
 
                     <p class="reveal">
                         I hope you celebrate your day with your loved ones and the people who are always there for you. I hope you're doing good, and I wish you all the best. May God lead you to the right path and help you achieve all your goals in life.
                     </p>
 
-
                     <p class="reveal">
                         I am happy and thankful that you made my last months and my last semester, which was the hardest and most crucial one, a bit lighter. I already graduated. Thankuu ng marami sayo!
                     </p>
-
 
                     <p class="reveal">
                         How r u? Nakauwi ka na kaya?
                     </p>
 
-
                     <p class="reveal">
                         Sana happy ka sa career and path na tinatahak mo ngayon. May God give you peace, guide you, and lead you to good decisions.
                     </p>
-
 
                     <p class="reveal">
                         Take care as always, Pauleen. I genuinely hope that life treats you well and that this new chapter brings you good things.
                     </p>
 
-
                     <p class="reveal" style="margin-top:40px;">
                         The odds of dying are 1 in 1, but the odds of you existing are 1 in 10<sup>2,685,000</sup>.
                     </p>
-
 
                     <p class="reveal">
                         Your existence required precise calculations, perfect timing, and countless unpredictable events to fall into place. In short, you're almost impossibly unlikely to exist, a miracle in your own way.
                     </p>
 
-
                     <p class="reveal">
                         And yet, there are over eight billion people on this planet. Billions of different paths you could have taken, billions of moments when our paths could have crossed or passed without us ever knowing each other. But somehow, we ended up crossing paths, and that's one of the interesting things about life.
                     </p>
-
 
                     <p class="reveal">
                         Out of all the people in the world, we get to meet certain people, share conversations, make memories, and become part of each other's lives, even if only for a chapter. Everyone has flaws, and there are things about ourselves that we might not always appreciate. But there's always something worth seeing in a person, something that makes them who they are.
                     </p>
 
-
                     <p class="reveal">
                         I hope you never forget that your existence itself is already something extraordinary. In a world full of people and possibilities, you're one of the many miracles that somehow made it here. Keep growing, keep learning, and keep being yourself. You never know how much good you can bring into the world just by being who you are.
                     </p>
-
 
                     <p class="closing reveal">
                         Happy Birthday again. 💗
                     </p>
 
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 </main>
 
-
-<!-- =========================
-     LOCAL SONG
-========================= -->
-
-<audio
-    id="itMightBeYou"
-    preload="auto"
-    playsinline
-    webkit-playsinline>
-
-    <source
-        src="it-might-be-you.mp3"
-        type="audio/mpeg">
-
+<!-- LOCAL SONG -->
+<audio id="itMightBeYou" preload="auto">
+    <source src="it-might-be-you.mp3" type="audio/mpeg">
 </audio>
-
 
 <script>
 
-
-/* =========================
-   HAPPY BIRTHDAY MUSIC
-========================= */
-
+/* HAPPY BIRTHDAY MUSIC */
 let birthdayAudioContext = null;
 let birthdayOscillators = [];
 let birthdayGain = null;
 let birthdayPlaying = false;
 
-
-/* =========================
-   IT MIGHT BE YOU
-========================= */
-
+/* IT MIGHT BE YOU */
 let itMightBeYouContext = null;
 let itMightBeYouBuffer = null;
 let itMightBeYouSource = null;
 let itMightBeYouReady = null;
 
-
-const itMightBeYouAudio =
-    document.getElementById(
-        "itMightBeYou"
-    );
-
-// Ask mobile browsers to begin loading the local MP3 early.
-itMightBeYouAudio.load();
-
+const itMightBeYouAudio = document.getElementById("itMightBeYou");
 
 /*
-   Prepare the song during the FIRST
-   user interaction.
-
-   IMPORTANT:
-   This does NOT play the song.
-
-   It only loads the MP3 so the browser
-   is already aware of the audio.
+  Prepare the song during the first user interaction.
+  This loads the MP3 but does not play it.
 */
-
 function prepareItMightBeYou(){
 
     if(itMightBeYouReady){
         return itMightBeYouReady;
     }
 
-
-    const AudioContextClass =
+    itMightBeYouContext = new (
         window.AudioContext ||
-        window.webkitAudioContext;
+        window.webkitAudioContext
+    )();
 
-    if (!AudioContextClass) {
-        console.warn("Web Audio is not supported in this browser.");
-        return Promise.resolve(null);
-    }
-
-    itMightBeYouContext =
-        new AudioContextClass();
-
-    /*
-       iPhone/iPad Safari requires Web Audio to be
-       resumed directly from a user gesture. This
-       function is first called by the Start Music
-       button, so resume the context immediately,
-       before the MP3 fetch/decode begins.
-    */
-    if (itMightBeYouContext.state === "suspended") {
-        itMightBeYouContext.resume().catch(error => {
-            console.warn("Could not unlock song audio:", error);
+    itMightBeYouReady = fetch("it-might-be-you.mp3")
+        .then(response => {
+            if(!response.ok){
+                throw new Error("Could not load it-might-be-you.mp3");
+            }
+            return response.arrayBuffer();
+        })
+        .then(arrayBuffer => {
+            return itMightBeYouContext.decodeAudioData(arrayBuffer);
+        })
+        .then(buffer => {
+            itMightBeYouBuffer = buffer;
+            return buffer;
+        })
+        .catch(error => {
+            console.error("Could not prepare It Might Be You:", error);
+            return null;
         });
-    }
-
-
-    itMightBeYouReady =
-        fetch(
-            "./it-might-be-you.mp3",
-            { cache: "force-cache" }
-        )
-        .then(
-            response => {
-
-                if(!response.ok){
-
-                    throw new Error(
-                        "Could not load it-might-be-you.mp3"
-                    );
-
-                }
-
-                return response.arrayBuffer();
-
-            }
-        )
-        .then(
-            arrayBuffer => {
-
-                return itMightBeYouContext.decodeAudioData(
-                    arrayBuffer
-                );
-
-            }
-        )
-        .then(
-            buffer => {
-
-                itMightBeYouBuffer =
-                    buffer;
-
-                return buffer;
-
-            }
-        )
-        .catch(
-            error => {
-
-                console.error(
-                    "Could not prepare It Might Be You:",
-                    error
-                );
-
-                return null;
-
-            }
-        );
-
 
     return itMightBeYouReady;
-
 }
 
-
-/* =========================
-   PLAY IT MIGHT BE YOU
-========================= */
-
+/* PLAY IT MIGHT BE YOU */
 async function playItMightBeYou(){
 
     try{
+        const buffer = await prepareItMightBeYou();
 
-        const buffer =
-            await prepareItMightBeYou();
+        if(buffer && itMightBeYouContext){
 
-
-        /*
-           If the MP3 was successfully decoded,
-           play it using Web Audio.
-        */
-
-        if(
-            buffer &&
-            itMightBeYouContext
-        ){
-
-            if(
-                itMightBeYouContext.state ===
-                "suspended"
-            ){
-
+            if(itMightBeYouContext.state === "suspended"){
                 await itMightBeYouContext.resume();
-
             }
-
 
             if(itMightBeYouSource){
-
                 try{
                     itMightBeYouSource.stop();
-                }
-                catch(e){}
-
+                }catch(e){}
             }
-
 
             itMightBeYouSource =
                 itMightBeYouContext.createBufferSource();
 
-
-            itMightBeYouSource.buffer =
-                buffer;
-
+            itMightBeYouSource.buffer = buffer;
 
             itMightBeYouSource.connect(
                 itMightBeYouContext.destination
             );
 
-
             itMightBeYouSource.start(0);
-
-
             return;
-
         }
 
+        /* Fallback to normal HTML audio */
+        itMightBeYouAudio.currentTime = 0;
 
-        /*
-           Fallback to normal HTML audio.
-        */
+        const fallback = itMightBeYouAudio.play();
 
-        itMightBeYouAudio.currentTime =
-            0;
-
-
-        const fallback =
-            itMightBeYouAudio.play();
-
-
-        if(
-            fallback !== undefined
-        ){
-
-            fallback.catch(
-                error => {
-
-                    console.log(
-                        "Fallback audio blocked:",
-                        error
-                    );
-
-                }
-            );
-
+        if(fallback !== undefined){
+            fallback.catch(error => {
+                console.log("Fallback audio blocked:", error);
+            });
         }
 
+    }catch(error){
+        console.error("It Might Be You playback error:", error);
     }
-    catch(error){
-
-        console.error(
-            "It Might Be You playback error:",
-            error
-        );
-
-    }
-
 }
 
-
-/* =========================
-   HAPPY BIRTHDAY NOTES
-========================= */
-
+/* HAPPY BIRTHDAY NOTES */
 const notes = {
-
     C4:261.63,
     D4:293.66,
     E4:329.63,
@@ -1292,18 +764,14 @@ const notes = {
     G4:392.00,
     A4:440.00,
     B4:493.88,
-
     C5:523.25,
     D5:587.33,
     E5:659.25,
     F5:698.46,
     G5:783.99
-
 };
 
-
 const birthdayMelody = [
-
     ["G4",300],
     ["G4",300],
     ["A4",600],
@@ -1332,54 +800,25 @@ const birthdayMelody = [
     ["C5",600],
     ["D5",600],
     ["C5",1200]
-
 ];
 
-
-/* =========================
-   PLAY HAPPY BIRTHDAY
-========================= */
-
+/* PLAY HAPPY BIRTHDAY */
 function playBirthdayMelody(){
 
     if(birthdayPlaying){
         return;
     }
 
-    const AudioContextClass =
-        window.AudioContext ||
-        window.webkitAudioContext;
-
-    if (!AudioContextClass) {
-        console.warn("Web Audio is not supported in this browser.");
-        return;
-    }
-
     birthdayPlaying = true;
 
-    birthdayAudioContext =
-        new AudioContextClass();
+    birthdayAudioContext = new (
+        window.AudioContext ||
+        window.webkitAudioContext
+    )();
 
-    /* Resume immediately inside the Start Music click.
-       This is required by iOS Safari before it will play audio. */
-    if (birthdayAudioContext.state === "suspended") {
-        birthdayAudioContext.resume().catch(error => {
-            console.warn("Could not start birthday music:", error);
-        });
-    }
-
-    birthdayGain =
-        birthdayAudioContext.createGain();
-
-
-    birthdayGain.gain.value =
-        0.055;
-
-
-    birthdayGain.connect(
-        birthdayAudioContext.destination
-    );
-
+    birthdayGain = birthdayAudioContext.createGain();
+    birthdayGain.gain.value = 0.055;
+    birthdayGain.connect(birthdayAudioContext.destination);
 
     function playLoop(){
 
@@ -1387,568 +826,212 @@ function playBirthdayMelody(){
             return;
         }
 
+        let time = birthdayAudioContext.currentTime + 0.05;
 
-        let time =
-            birthdayAudioContext.currentTime +
-            0.05;
+        birthdayMelody.forEach(([note,duration]) => {
 
+            const oscillator = birthdayAudioContext.createOscillator();
+            const gain = birthdayAudioContext.createGain();
 
-        birthdayMelody.forEach(
-            ([note,duration]) => {
+            oscillator.type = "sine";
+            oscillator.frequency.value = notes[note];
 
-                const oscillator =
-                    birthdayAudioContext.createOscillator();
+            oscillator.connect(gain);
+            gain.connect(birthdayGain);
 
-
-                const gain =
-                    birthdayAudioContext.createGain();
-
-
-                oscillator.type =
-                    "sine";
-
-
-                oscillator.frequency.value =
-                    notes[note];
-
-
-                oscillator.connect(gain);
-
-
-                gain.connect(
-                    birthdayGain
-                );
-
-
-                gain.gain.setValueAtTime(
-                    0.0001,
-                    time
-                );
-
-
-                gain.gain.exponentialRampToValueAtTime(
-                    0.8,
-                    time + 0.03
-                );
-
-
-                gain.gain.exponentialRampToValueAtTime(
-                    0.0001,
-                    time +
-                    duration / 1000 -
-                    0.03
-                );
-
-
-                oscillator.start(time);
-
-
-                oscillator.stop(
-                    time +
-                    duration / 1000
-                );
-
-
-                birthdayOscillators.push(
-                    oscillator
-                );
-
-
-                time +=
-                    duration / 1000;
-
-            }
-        );
-
-
-        const totalDuration =
-            birthdayMelody.reduce(
-                (sum,item) =>
-                    sum + item[1],
-                0
+            gain.gain.setValueAtTime(0.0001,time);
+            gain.gain.exponentialRampToValueAtTime(0.8,time + 0.03);
+            gain.gain.exponentialRampToValueAtTime(
+                0.0001,
+                time + duration / 1000 - 0.03
             );
 
+            oscillator.start(time);
+            oscillator.stop(time + duration / 1000);
 
-        setTimeout(
-            playLoop,
-            totalDuration
+            birthdayOscillators.push(oscillator);
+            time += duration / 1000;
+        });
+
+        const totalDuration = birthdayMelody.reduce(
+            (sum,item) => sum + item[1],
+            0
         );
 
+        setTimeout(playLoop,totalDuration);
     }
-
 
     playLoop();
-
 }
 
-
-/* =========================
-   STOP HAPPY BIRTHDAY
-========================= */
-
+/* STOP HAPPY BIRTHDAY */
 function stopBirthdayMelody(){
 
-    birthdayPlaying =
-        false;
+    birthdayPlaying = false;
 
+    birthdayOscillators.forEach(oscillator => {
+        try{
+            oscillator.stop();
+        }catch(e){}
+    });
 
-    birthdayOscillators.forEach(
-        oscillator => {
-
-            try{
-                oscillator.stop();
-            }
-            catch(e){}
-
-        }
-    );
-
-
-    birthdayOscillators =
-        [];
-
+    birthdayOscillators = [];
 
     if(birthdayAudioContext){
-
         try{
             birthdayAudioContext.close();
-        }
-        catch(e){}
-
-        birthdayAudioContext =
-            null;
-
+        }catch(e){}
+        birthdayAudioContext = null;
     }
-
 }
 
-
-/* =========================
-   CONFETTI
-========================= */
-
+/* CONFETTI */
 function createConfetti(){
 
-    for(
-        let i = 0;
-        i < 100;
-        i++
-    ){
+    for(let i = 0; i < 100; i++){
 
-        const piece =
-            document.createElement(
-                "div"
-            );
+        const piece = document.createElement("div");
+        piece.className = "confetti";
 
-
-        piece.className =
-            "confetti";
-
-
-        piece.style.left =
-            Math.random() *
-            100 +
-            "vw";
-
+        piece.style.left = Math.random() * 100 + "vw";
 
         piece.style.animationDuration =
-            (
-                3 +
-                Math.random() * 4
-            ) +
-            "s";
+            (3 + Math.random() * 4) + "s";
 
-
-        piece.style.animationDelay =
-            Math.random() * 2 +
-            "s";
-
+        piece.style.animationDelay = Math.random() * 2 + "s";
 
         piece.style.transform =
             `rotate(${Math.random() * 360}deg)`;
 
+        piece.style.background = [
+            "#ff79a8",
+            "#ffd166",
+            "#7dd3fc",
+            "#a7f3d0",
+            "#c4b5fd"
+        ][Math.floor(Math.random() * 5)];
 
-        piece.style.background =
-            [
-                "#ff79a8",
-                "#ffd166",
-                "#7dd3fc",
-                "#a7f3d0",
-                "#c4b5fd"
-            ][
-                Math.floor(
-                    Math.random() * 5
-                )
-            ];
+        document.body.appendChild(piece);
 
-
-        document.body.appendChild(
-            piece
-        );
-
-
-        setTimeout(
-            () => piece.remove(),
-            8000
-        );
-
+        setTimeout(() => piece.remove(),8000);
     }
-
 }
 
+/* SLIDING DOG */
+function moveDogToParagraph(paragraph){
 
-/* =========================
-   SLIDING DOG
-========================= */
+    const dog = document.getElementById("messageDog");
+    const karaokeArea = document.getElementById("karaokeArea");
 
-function moveDogToParagraph(
-    paragraph
-){
-
-    const dog =
-        document.getElementById(
-            "messageDog"
-        );
-
-
-    const karaokeArea =
-        document.getElementById(
-            "karaokeArea"
-        );
-
-
-    if(
-        !dog ||
-        !paragraph ||
-        !karaokeArea
-    ){
-
+    if(!dog || !paragraph || !karaokeArea){
         return;
-
     }
 
+    const paragraphRect = paragraph.getBoundingClientRect();
+    const areaRect = karaokeArea.getBoundingClientRect();
 
-    const paragraphRect =
-        paragraph.getBoundingClientRect();
+    const relativeTop = paragraphRect.top - areaRect.top;
 
-
-    const areaRect =
-        karaokeArea.getBoundingClientRect();
-
-
-    const relativeTop =
-        paragraphRect.top -
-        areaRect.top;
-
-
-    dog.style.top =
-        Math.max(
-            0,
-            relativeTop
-        ) +
-        "px";
-
-
-    dog.style.opacity =
-        "1";
-
+    dog.style.top = Math.max(0,relativeTop) + "px";
+    dog.style.opacity = "1";
 }
 
-
-/* =========================
-   REVEAL MESSAGE
-========================= */
-
+/* REVEAL MESSAGE AND PLAY MUSIC */
 function revealMessageAndPlayMusic(){
 
-    const revealItems =
-        document.querySelectorAll(
-            "#messageCard .reveal"
-        );
-
-
-    const messageParagraphs =
-        document.querySelectorAll(
-            "#messageText p.reveal"
-        );
-
-
-    let delay =
-        500;
-
-
-    revealItems.forEach(
-        (item) => {
-
-            setTimeout(
-                () => {
-
-                    item.classList.add(
-                        "show"
-                    );
-
-
-                    const paragraphIndex =
-                        Array.from(
-                            messageParagraphs
-                        ).indexOf(item);
-
-
-                    if(
-                        paragraphIndex !==
-                        -1
-                    ){
-
-                        requestAnimationFrame(
-                            () => {
-
-                                moveDogToParagraph(
-                                    item
-                                );
-
-                            }
-                        );
-
-
-                        /*
-                           FIX:
-                           Wait until the first actual message
-                           paragraph has completed its fade-in.
-                           Only then start "It Might Be You".
-                        */
-
-                        if (paragraphIndex === 0) {
-
-                            const startSongAfterReveal =
-                                function(event){
-
-                                    if(
-                                        event.propertyName !==
-                                        "opacity"
-                                    ){
-                                        return;
-                                    }
-
-                                    item.removeEventListener(
-                                        "transitionend",
-                                        startSongAfterReveal
-                                    );
-
-                                    playItMightBeYou();
-
-                                };
-
-                            item.addEventListener(
-                                "transitionend",
-                                startSongAfterReveal
-                            );
-
-                        }
-
-                    }
-
-                },
-                delay
-            );
-
-
-            delay +=
-                2100;
-
-        }
+    const revealItems = document.querySelectorAll(
+        "#messageCard .reveal"
     );
 
+    const messageParagraphs = document.querySelectorAll(
+        "#messageText p.reveal"
+    );
+
+    let delay = 500;
+
+    revealItems.forEach(item => {
+
+        setTimeout(() => {
+
+            item.classList.add("show");
+
+            const paragraphIndex =
+                Array.from(messageParagraphs).indexOf(item);
+
+            if(paragraphIndex !== -1){
+
+                requestAnimationFrame(() => {
+                    moveDogToParagraph(item);
+                });
+
+                /*
+                  It Might Be You starts when the
+                  first actual message paragraph appears.
+                */
+                if(paragraphIndex === 0){
+                    playItMightBeYou();
+                }
+            }
+
+        },delay);
+
+        delay += 2100;
+    });
 }
 
-
-/* =========================
-   UNLOCK IPHONE AUDIO ELEMENT
-========================= */
-
-function unlockSongAudioElement(){
-
-    /*
-       Some iOS Safari versions also require the HTMLAudioElement
-       to be played from a direct user action. Play it muted briefly
-       during the Start Music tap, then pause it. The actual song
-       still starts after the first paragraph has appeared.
-    */
-
-    const wasMuted =
-        itMightBeYouAudio.muted;
-
-    itMightBeYouAudio.muted =
-        true;
-
-    itMightBeYouAudio.currentTime =
-        0;
-
-    const unlockAttempt =
-        itMightBeYouAudio.play();
-
-    if (
-        unlockAttempt &&
-        typeof unlockAttempt.then === "function"
-    ) {
-
-        unlockAttempt.then(() => {
-
-            itMightBeYouAudio.pause();
-
-            itMightBeYouAudio.currentTime =
-                0;
-
-            itMightBeYouAudio.muted =
-                wasMuted;
-
-        }).catch(() => {
-
-            itMightBeYouAudio.muted =
-                wasMuted;
-
-        });
-
-    } else {
-
-        itMightBeYouAudio.pause();
-
-        itMightBeYouAudio.currentTime =
-            0;
-
-        itMightBeYouAudio.muted =
-            wasMuted;
-
-    }
-
-}
-
-
-/* =========================
-   START MUSIC
-========================= */
-
-document
-.getElementById(
-    "startMusicBtn"
-)
-.addEventListener(
+/* START MUSIC */
+document.getElementById("startMusicBtn").addEventListener(
     "click",
     function(){
 
-        document
-        .getElementById(
-            "musicGate"
-        )
-        .classList.add(
-            "hidden"
-        );
-
-
-        /*
-           Happy Birthday starts here, as before.
-           Prepare the second song quietly in advance.
-        */
-
-        playBirthdayMelody();
-
+        /* Load It Might Be You without playing it yet */
         prepareItMightBeYou();
 
-        unlockSongAudioElement();
+        document.getElementById("musicGate").classList.add("hidden");
 
+        /* Happy Birthday starts when this button is clicked */
+        playBirthdayMelody();
     }
 );
 
-
-/* =========================
-   OPEN SURPRISE
-========================= */
-
-document
-.getElementById(
-    "openButton"
-)
-.addEventListener(
+/* OPEN SURPRISE */
+document.getElementById("openButton").addEventListener(
     "click",
     function(){
 
-        /*
-           Stop Happy Birthday.
-           Do NOT start "It Might Be You" here.
-           It will start after the first message paragraph finishes appearing.
-        */
-
+        /* Stop Happy Birthday */
         stopBirthdayMelody();
 
+        /* Reset It Might Be You before showing the message */
+        itMightBeYouAudio.pause();
+        itMightBeYouAudio.currentTime = 0;
 
-        /*
-           Show message.
-        */
-
-        document
-        .getElementById(
-            "introCard"
-        )
-        .classList.add(
-            "hidden"
-        );
-
-
-        document
-        .getElementById(
-            "messageCard"
-        )
-        .classList.remove(
-            "hidden"
-        );
-
+        document.getElementById("introCard").classList.add("hidden");
+        document.getElementById("messageCard").classList.remove("hidden");
 
         createConfetti();
-
 
         window.scrollTo({
             top:0,
             behavior:"smooth"
         });
 
-
-        /*
-           Start the original slow message reveal.
-           The first paragraph triggers the second song
-           after its fade-in has completed.
-        */
-
+        /* The first message paragraph triggers It Might Be You */
         revealMessageAndPlayMusic();
-
     }
 );
 
+/* KEEP DOG ALIGNED */
+window.addEventListener("resize",function(){
 
-/* =========================
-   KEEP DOG ALIGNED
-========================= */
+    const shown = document.querySelectorAll(
+        "#messageText p.reveal.show"
+    );
 
-window.addEventListener(
-    "resize",
-    function(){
-
-        const shown =
-            document.querySelectorAll(
-                "#messageText p.reveal.show"
-            );
-
-
-        if(shown.length){
-
-            moveDogToParagraph(
-                shown[
-                    shown.length - 1
-                ]
-            );
-
-        }
-
+    if(shown.length){
+        moveDogToParagraph(shown[shown.length - 1]);
     }
-);
+});
 
 </script>
 
