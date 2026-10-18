@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,53 +28,6 @@ button{
 }
 
 .hidden{display:none!important}
-
-/* MUSIC GATE */
-#musicGate{
-    position:fixed;
-    inset:0;
-    z-index:1000;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    background:linear-gradient(135deg,#ffdce9,#fff4f8);
-}
-
-.gate-card{
-    width:min(430px,100%);
-    text-align:center;
-    background:rgba(255,255,255,.94);
-    padding:35px 25px;
-    border-radius:28px;
-    box-shadow:0 15px 45px rgba(180,90,120,.2);
-}
-
-.gate-card h1{
-    margin:0 0 12px;
-    color:#d95b87;
-    font-size:28px;
-}
-
-.gate-card p{
-    line-height:1.6;
-    margin:0 0 25px;
-}
-
-.start-btn,.open-btn{
-    background:linear-gradient(135deg,#ff78a8,#e9568a);
-    color:white;
-    padding:15px 24px;
-    border-radius:30px;
-    font-size:16px;
-    font-weight:bold;
-    box-shadow:0 8px 20px rgba(220,80,130,.25);
-    transition:.25s;
-}
-
-.start-btn:hover,.open-btn:hover{
-    transform:translateY(-2px);
-}
 
 /* BACKGROUND BALLOONS */
 .page-balloons{
@@ -516,17 +470,6 @@ h1{
     <div class="page-balloon pb5"></div>
 </div>
 
-<!-- MUSIC GATE -->
-<div id="musicGate">
-    <div class="gate-card">
-        <h1>🎂 A little birthday surprise</h1>
-        <p>Tap the button below to start the birthday music.</p>
-        <button class="start-btn" id="startMusicBtn">
-            🎵 Start Birthday Music
-        </button>
-    </div>
-</div>
-
 <!-- PAWS -->
 <div class="paw p1">🐾</div>
 <div class="paw p2">🐾</div>
@@ -651,8 +594,8 @@ h1{
 </main>
 
 <!-- LOCAL SONG -->
-<audio id="itMightBeYou" preload="auto">
-    <source src="it-might-be-you.mp3" type="audio/mpeg">
+<audio id="itMightBeYou" preload="auto" playsinline>
+    <source src="./it-might-be-you.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -662,6 +605,7 @@ let birthdayAudioContext = null;
 let birthdayOscillators = [];
 let birthdayGain = null;
 let birthdayPlaying = false;
+let birthdayLoopTimer = null;
 
 /* IT MIGHT BE YOU */
 let itMightBeYouContext = null;
@@ -671,47 +615,67 @@ let itMightBeYouReady = null;
 
 const itMightBeYouAudio = document.getElementById("itMightBeYou");
 
-/*
-  Prepare the song during the first user interaction.
-  This loads the MP3 but does not play it.
-*/
+/* PREPARE THE SONG */
 function prepareItMightBeYou(){
 
     if(itMightBeYouReady){
         return itMightBeYouReady;
     }
 
-    itMightBeYouContext = new (
-        window.AudioContext ||
-        window.webkitAudioContext
-    )();
+    const AudioContextClass =
+        window.AudioContext || window.webkitAudioContext;
 
-    itMightBeYouReady = fetch("it-might-be-you.mp3")
-        .then(response => {
-            if(!response.ok){
-                throw new Error("Could not load it-might-be-you.mp3");
-            }
-            return response.arrayBuffer();
-        })
-        .then(arrayBuffer => {
-            return itMightBeYouContext.decodeAudioData(arrayBuffer);
-        })
-        .then(buffer => {
-            itMightBeYouBuffer = buffer;
-            return buffer;
-        })
-        .catch(error => {
-            console.error("Could not prepare It Might Be You:", error);
-            return null;
-        });
+    if(!AudioContextClass){
+        return Promise.resolve(null);
+    }
 
-    return itMightBeYouReady;
+    try{
+        if(!itMightBeYouContext){
+            itMightBeYouContext = new AudioContextClass();
+        }
+
+        itMightBeYouReady = fetch("./it-might-be-you.mp3")
+            .then(response => {
+                if(!response.ok){
+                    throw new Error("Could not load it-might-be-you.mp3");
+                }
+                return response.arrayBuffer();
+            })
+            .then(data => itMightBeYouContext.decodeAudioData(data))
+            .then(buffer => {
+                itMightBeYouBuffer = buffer;
+                return buffer;
+            })
+            .catch(error => {
+                console.error("Could not prepare It Might Be You:",error);
+                itMightBeYouReady = null;
+                return null;
+            });
+
+        return itMightBeYouReady;
+
+    }catch(error){
+        console.error("Audio setup failed:",error);
+        return Promise.resolve(null);
+    }
 }
 
 /* PLAY IT MIGHT BE YOU */
 async function playItMightBeYou(){
 
     try{
+        const AudioContextClass =
+            window.AudioContext || window.webkitAudioContext;
+
+        if(AudioContextClass && !itMightBeYouContext){
+            itMightBeYouContext = new AudioContextClass();
+        }
+
+        if(itMightBeYouContext &&
+           itMightBeYouContext.state === "suspended"){
+            await itMightBeYouContext.resume();
+        }
+
         const buffer = await prepareItMightBeYou();
 
         if(buffer && itMightBeYouContext){
@@ -730,7 +694,6 @@ async function playItMightBeYou(){
                 itMightBeYouContext.createBufferSource();
 
             itMightBeYouSource.buffer = buffer;
-
             itMightBeYouSource.connect(
                 itMightBeYouContext.destination
             );
@@ -739,19 +702,12 @@ async function playItMightBeYou(){
             return;
         }
 
-        /* Fallback to normal HTML audio */
+        /* HTML audio fallback for Safari */
         itMightBeYouAudio.currentTime = 0;
-
-        const fallback = itMightBeYouAudio.play();
-
-        if(fallback !== undefined){
-            fallback.catch(error => {
-                console.log("Fallback audio blocked:", error);
-            });
-        }
+        await itMightBeYouAudio.play();
 
     }catch(error){
-        console.error("It Might Be You playback error:", error);
+        console.error("It Might Be You playback error:",error);
     }
 }
 
@@ -809,65 +765,84 @@ function playBirthdayMelody(){
         return;
     }
 
-    birthdayPlaying = true;
+    const AudioContextClass =
+        window.AudioContext || window.webkitAudioContext;
 
-    birthdayAudioContext = new (
-        window.AudioContext ||
-        window.webkitAudioContext
-    )();
-
-    birthdayGain = birthdayAudioContext.createGain();
-    birthdayGain.gain.value = 0.055;
-    birthdayGain.connect(birthdayAudioContext.destination);
-
-    function playLoop(){
-
-        if(!birthdayPlaying){
-            return;
-        }
-
-        let time = birthdayAudioContext.currentTime + 0.05;
-
-        birthdayMelody.forEach(([note,duration]) => {
-
-            const oscillator = birthdayAudioContext.createOscillator();
-            const gain = birthdayAudioContext.createGain();
-
-            oscillator.type = "sine";
-            oscillator.frequency.value = notes[note];
-
-            oscillator.connect(gain);
-            gain.connect(birthdayGain);
-
-            gain.gain.setValueAtTime(0.0001,time);
-            gain.gain.exponentialRampToValueAtTime(0.8,time + 0.03);
-            gain.gain.exponentialRampToValueAtTime(
-                0.0001,
-                time + duration / 1000 - 0.03
-            );
-
-            oscillator.start(time);
-            oscillator.stop(time + duration / 1000);
-
-            birthdayOscillators.push(oscillator);
-            time += duration / 1000;
-        });
-
-        const totalDuration = birthdayMelody.reduce(
-            (sum,item) => sum + item[1],
-            0
-        );
-
-        setTimeout(playLoop,totalDuration);
+    if(!AudioContextClass){
+        return;
     }
 
-    playLoop();
+    birthdayPlaying = true;
+
+    try{
+        birthdayAudioContext = new AudioContextClass();
+
+        if(birthdayAudioContext.state === "suspended"){
+            birthdayAudioContext.resume();
+        }
+
+        birthdayGain = birthdayAudioContext.createGain();
+        birthdayGain.gain.value = 0.055;
+        birthdayGain.connect(birthdayAudioContext.destination);
+
+        function playLoop(){
+
+            if(!birthdayPlaying || !birthdayAudioContext){
+                return;
+            }
+
+            let time = birthdayAudioContext.currentTime + 0.05;
+
+            birthdayMelody.forEach(([note,duration]) => {
+
+                const oscillator = birthdayAudioContext.createOscillator();
+                const gain = birthdayAudioContext.createGain();
+
+                oscillator.type = "sine";
+                oscillator.frequency.value = notes[note];
+
+                oscillator.connect(gain);
+                gain.connect(birthdayGain);
+
+                gain.gain.setValueAtTime(0.0001,time);
+                gain.gain.exponentialRampToValueAtTime(0.8,time + 0.03);
+                gain.gain.exponentialRampToValueAtTime(
+                    0.0001,
+                    time + duration / 1000 - 0.03
+                );
+
+                oscillator.start(time);
+                oscillator.stop(time + duration / 1000);
+
+                birthdayOscillators.push(oscillator);
+                time += duration / 1000;
+            });
+
+            const totalDuration = birthdayMelody.reduce(
+                (sum,item) => sum + item[1],
+                0
+            );
+
+            birthdayLoopTimer = setTimeout(playLoop,totalDuration);
+        }
+
+        playLoop();
+
+    }catch(error){
+        birthdayPlaying = false;
+        console.error("Birthday music error:",error);
+    }
 }
 
 /* STOP HAPPY BIRTHDAY */
 function stopBirthdayMelody(){
 
     birthdayPlaying = false;
+
+    if(birthdayLoopTimer){
+        clearTimeout(birthdayLoopTimer);
+        birthdayLoopTimer = null;
+    }
 
     birthdayOscillators.forEach(oscillator => {
         try{
@@ -964,10 +939,7 @@ function revealMessageAndPlayMusic(){
                     moveDogToParagraph(item);
                 });
 
-                /*
-                  It Might Be You starts when the
-                  first actual message paragraph appears.
-                */
+                /* Play the song when the first paragraph appears */
                 if(paragraphIndex === 0){
                     playItMightBeYou();
                 }
@@ -979,32 +951,46 @@ function revealMessageAndPlayMusic(){
     });
 }
 
-/* START MUSIC */
-document.getElementById("startMusicBtn").addEventListener(
-    "click",
-    function(){
-
-        /* Load It Might Be You without playing it yet */
-        prepareItMightBeYou();
-
-        document.getElementById("musicGate").classList.add("hidden");
-
-        /* Happy Birthday starts when this button is clicked */
-        playBirthdayMelody();
-    }
-);
-
-/* OPEN SURPRISE */
+/* OPEN SURPRISE — THE ONLY BUTTON */
 document.getElementById("openButton").addEventListener(
     "click",
     function(){
 
-        /* Stop Happy Birthday */
-        stopBirthdayMelody();
+        /*
+          Create/resume the audio context immediately during
+          this tap, so iOS Safari can unlock audio playback.
+        */
+        const AudioContextClass =
+            window.AudioContext || window.webkitAudioContext;
 
-        /* Reset It Might Be You before showing the message */
-        itMightBeYouAudio.pause();
-        itMightBeYouAudio.currentTime = 0;
+        if(AudioContextClass){
+            try{
+                if(!itMightBeYouContext){
+                    itMightBeYouContext = new AudioContextClass();
+                }
+
+                if(itMightBeYouContext.state === "suspended"){
+                    itMightBeYouContext.resume().catch(error => {
+                        console.log("Audio resume:",error);
+                    });
+                }
+
+                /* Begin loading the song during the tap */
+                prepareItMightBeYou();
+
+            }catch(error){
+                console.error("Audio initialization error:",error);
+            }
+        }
+
+        /* Start Happy Birthday from the same tap */
+        playBirthdayMelody();
+
+        /*
+          Stop Happy Birthday after starting the surprise,
+          as in the original behavior.
+        */
+        stopBirthdayMelody();
 
         document.getElementById("introCard").classList.add("hidden");
         document.getElementById("messageCard").classList.remove("hidden");
@@ -1016,7 +1002,7 @@ document.getElementById("openButton").addEventListener(
             behavior:"smooth"
         });
 
-        /* The first message paragraph triggers It Might Be You */
+        /* First paragraph triggers It Might Be You */
         revealMessageAndPlayMusic();
     }
 );
